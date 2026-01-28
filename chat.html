@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Talk to the Telehealth AI Guide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Chat with a calm AI guide about telehealth and online therapy options. Information only – not a crisis or medical service." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="chat-body">
+  <header class="chat-header">
+    <div class="chat-header-main">
+      <span class="chat-title">Telehealth Navigator – AI Guide</span>
+      <span class="chat-subtitle">Calm, informational conversation about online therapy &amp; telehealth options.</span>
+    </div>
+    <a href="index.html" class="chat-back-link">← Back to homepage</a>
+  </header>
+
+  <main class="chat-main">
+    <div id="chatWindow" class="chat-window">
+      <div class="message-row assistant">
+        <div class="message-bubble">
+          <p>
+            Hi, I’m your calm AI telehealth guide. I can help you think through different options for online
+            therapy, psychiatry, and other remote support – in simple language.
+          </p>
+          <p class="message-small">
+            I cannot diagnose, treat, prescribe, or respond to emergencies. If you may be in crisis or in danger,
+            please contact local emergency services or a crisis hotline right away instead of using this chat.
+          </p>
+          <p>
+            When you’re ready, tell me a little bit about what you’re hoping to find or what’s been on your mind.
+            If it’s helpful, I can also point you toward online platforms like BetterHelp, Talkspace, 7 Cups,
+            Teladoc, Amwell, or Doctor On Demand so you can explore them on your own.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <form id="chatForm" class="chat-form">
+      <textarea
+        id="userInput"
+        class="chat-input"
+        rows="1"
+        placeholder="Type a message… (Shift+Enter for a new line)"
+      ></textarea>
+      <button type="submit" class="btn-primary chat-send">Send</button>
+    </form>
+  </main>
+
+  <footer class="chat-footer">
+    <p class="footer-text small">
+      Information only. Not a medical, mental-health, or crisis service. For emergencies, contact local emergency services.
+    </p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
