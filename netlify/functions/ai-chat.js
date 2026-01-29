@@ -35,7 +35,7 @@ exports.handler = async (event) => {
     model: "gpt-4.1-mini",
     messages,
     temperature: 0.9,
-    max_tokens: 600
+    max_tokens: 2048
   });
 
   const options = {
