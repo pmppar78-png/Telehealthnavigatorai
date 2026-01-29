@@ -1,0 +1,12 @@
+# ads.txt file for Telehealth Navigator AI
+# This file declares authorized digital sellers for advertising inventory
+# https://iabtechlab.com/ads-txt/
+
+# Google AdSense
+# Replace PUBLISHER_ID with your actual AdSense Publisher ID when approved
+# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+
+# Placeholder for future authorized sellers
+# Additional ad network entries will be added upon approval
+
+# Contact: advertise@telehealthnavigatorai.com
