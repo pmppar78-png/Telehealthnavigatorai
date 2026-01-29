@@ -1,0 +1,11 @@
+# robots.txt for Telehealth Navigator AI
+# https://www.robotstxt.org/
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://telehealthnavigatorai.com/sitemap.xml
+
+# Allow crawling of all public pages
+# No pages are disallowed - all content is suitable for indexing
