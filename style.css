@@ -23,10 +23,11 @@ img, svg, video, canvas, iframe, embed, object {
   height: auto;
 }
 
-/* Word break for long text/URLs */
+/* Word break for long text/URLs - use gentler settings to avoid mid-word breaks */
 p, li, td, th, a, span, label {
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: auto;
 }
 
 /* Tables responsive wrapper helper - mobile card layout by default */
