@@ -269,7 +269,7 @@
               <option value="all">All insurance types</option>
               <option value="private">Private Insurance</option>
               <option value="medicare">Medicare</option>
-              <option value="medicaid">Medicaid</option>
+              <option value="medicaid">Medicaid / State Programs (Medi-Cal, MassHealth, etc.)</option>
               <option value="selfpay">Self-Pay / Cash</option>
             </select>
           </div>
@@ -336,11 +336,10 @@
         Coverage rules and locations may vary, so verify eligibility with both Medicare and the provider.
       </p>
 
-      <h3>Medicaid</h3>
+      <h3>Medicaid / State-Sponsored Health Insurance</h3>
       <p>
-        Medicaid coverage for telehealth varies significantly by state. Many states have expanded telehealth
-        benefits. Some platforms specifically work with Medicaid patients, while others do not accept Medicaid
-        at all. Check with your state's Medicaid program for current telehealth policies.
+        Medicaid is federally funded but <strong>administered by each state under different program names</strong> – such as MassHealth (Massachusetts), Medi-Cal (California), Apple Health (Washington), TennCare (Tennessee), and many others. Coverage for telehealth varies significantly by state program. Many states have expanded telehealth
+        benefits, and some platforms specifically work with Medicaid patients in select states. Community mental health centers and Federally Qualified Health Centers (FQHCs) are often reliable options for Medicaid members. Check with your state's program for current telehealth policies.
       </p>
 
       <h3>Self-Pay Options</h3>
@@ -367,8 +366,8 @@
           <span class="affiliate-tagline">Guide for Medicare beneficiaries</span>
         </a>
         <a class="affiliate-card" href="guide-medicaid-telehealth.html">
-          <span class="affiliate-name">Medicaid &amp; Telehealth</span>
-          <span class="affiliate-tagline">State-by-state Medicaid coverage</span>
+          <span class="affiliate-name">Medicaid &amp; State Programs</span>
+          <span class="affiliate-tagline">Coverage by state (MassHealth, Medi-Cal, etc.)</span>
         </a>
       </div>
     </section>
@@ -597,7 +596,7 @@
 
       grid.innerHTML = filteredPlatforms.map(platform => {
         const coverageTags = Object.entries(platform.coverage).map(([type, status]) => {
-          const labels = { private: 'Private', medicare: 'Medicare', medicaid: 'Medicaid', selfpay: 'Self-Pay' };
+          const labels = { private: 'Private', medicare: 'Medicare', medicaid: 'Medicaid/State', selfpay: 'Self-Pay' };
           const statusClass = status === 'yes' ? 'yes' : (status === 'limited' ? 'limited' : 'no');
           return `<span class="coverage-tag ${statusClass}">${labels[type]}</span>`;
         }).join('');
