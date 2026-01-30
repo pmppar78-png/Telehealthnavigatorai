@@ -68,7 +68,7 @@
     .legend-dot.developing { background: #f97316; }
     .us-map-wrapper {
       width: 100%;
-      overflow-x: auto;
+      overflow-x: visible;
       -webkit-overflow-scrolling: touch;
       margin-bottom: 1rem;
       max-width: 100%;
@@ -76,26 +76,33 @@
     .us-map {
       display: grid;
       grid-template-columns: repeat(11, 1fr);
-      gap: 3px;
-      min-width: 320px;
-      padding: 1rem 0;
+      gap: 2px;
+      width: 100%;
+      padding: 0.5rem 0;
     }
     @media (min-width: 640px) {
       .us-map {
-        min-width: 500px;
+        gap: 3px;
+        padding: 1rem 0;
       }
     }
     .state-cell {
       aspect-ratio: 1;
-      border-radius: 4px;
+      border-radius: 3px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.55rem;
+      font-size: 0.5rem;
       font-weight: 600;
       cursor: pointer;
       transition: transform 0.1s ease, box-shadow 0.1s ease;
       position: relative;
+    }
+    @media (min-width: 400px) {
+      .state-cell {
+        font-size: 0.55rem;
+        border-radius: 4px;
+      }
     }
     @media (min-width: 640px) {
       .state-cell {
@@ -162,21 +169,27 @@
     .state-info-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 1rem;
+      gap: 0.75rem;
       max-width: 100%;
     }
-    @media (min-width: 640px) {
+    @media (min-width: 500px) {
       .state-info-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
       }
     }
     .info-card {
       background: var(--bg-elevated);
       border: 1px solid var(--border-subtle);
       border-radius: 0.75rem;
-      padding: 1rem;
+      padding: 0.85rem;
       max-width: 100%;
       min-width: 0;
+    }
+    @media (min-width: 640px) {
+      .info-card {
+        padding: 1rem;
+      }
     }
     .info-card h4 {
       font-size: 0.85rem;
@@ -231,33 +244,51 @@
     }
     .stats-overview {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
       margin-top: 2rem;
       max-width: 100%;
     }
-    @media (min-width: 768px) {
+    @media (min-width: 640px) {
       .stats-overview {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
       }
     }
     .stat-card {
       background: var(--bg-elevated);
       border: 1px solid var(--border-subtle);
-      border-radius: 1rem;
-      padding: 1rem;
+      border-radius: 0.75rem;
+      padding: 0.75rem;
       text-align: center;
       min-width: 0;
     }
+    @media (min-width: 640px) {
+      .stat-card {
+        border-radius: 1rem;
+        padding: 1rem;
+      }
+    }
     .stat-value {
-      font-size: 1.75rem;
+      font-size: 1.25rem;
       font-weight: 700;
       color: var(--accent);
     }
+    @media (min-width: 640px) {
+      .stat-value {
+        font-size: 1.75rem;
+      }
+    }
     .stat-label {
-      font-size: 0.8rem;
+      font-size: 0.7rem;
       color: var(--text-muted);
       margin-top: 0.25rem;
+      line-height: 1.3;
+    }
+    @media (min-width: 640px) {
+      .stat-label {
+        font-size: 0.8rem;
+      }
     }
     .state-list {
       margin-top: 2rem;
@@ -293,15 +324,12 @@
       color: var(--accent);
     }
     .table-wrapper {
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
       max-width: 100%;
     }
     .state-table {
       width: 100%;
       border-collapse: collapse;
       font-size: 0.85rem;
-      min-width: 500px;
     }
     .state-table th {
       text-align: left;
@@ -323,6 +351,54 @@
       display: flex;
       align-items: center;
       gap: 0.5rem;
+    }
+    /* Mobile card layout for state table */
+    @media (max-width: 640px) {
+      .state-table,
+      .state-table thead,
+      .state-table tbody,
+      .state-table th,
+      .state-table td,
+      .state-table tr {
+        display: block;
+        width: 100%;
+      }
+      .state-table thead {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+      }
+      .state-table tr {
+        margin-bottom: 0.75rem;
+        background: var(--bg-elevated);
+        border: 1px solid var(--border-subtle);
+        border-radius: 0.75rem;
+        padding: 0.75rem;
+      }
+      .state-table td {
+        position: relative;
+        padding: 0.4rem 0.5rem 0.4rem 45%;
+        text-align: left;
+        border: none;
+        border-bottom: 1px solid var(--border-subtle);
+        font-size: 0.85rem;
+      }
+      .state-table td:last-child {
+        border-bottom: none;
+      }
+      .state-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0.5rem;
+        width: 40%;
+        padding-right: 0.5rem;
+        font-weight: 600;
+        color: var(--text-muted);
+        font-size: 0.75rem;
+      }
+      .state-table .rating-cell {
+        justify-content: flex-start;
+      }
     }
     .rating-indicator {
       width: 8px;
@@ -709,16 +785,16 @@
 
       tbody.innerHTML = states.map(([abbr, state]) => `
         <tr onclick="selectState('${abbr}')" style="cursor: pointer;">
-          <td><strong>${state.name}</strong></td>
-          <td>
+          <td data-label="State"><strong>${state.name}</strong></td>
+          <td data-label="Access Rating">
             <div class="rating-cell">
               <span class="rating-indicator ${state.rating}"></span>
               ${state.rating.charAt(0).toUpperCase() + state.rating.slice(1)}
             </div>
           </td>
-          <td>${state.medicaid}</td>
-          <td>${state.parity}</td>
-          <td>${state.audioOnly}</td>
+          <td data-label="Medicaid">${state.medicaid}</td>
+          <td data-label="Parity Law">${state.parity}</td>
+          <td data-label="Audio-Only">${state.audioOnly}</td>
         </tr>
       `).join('');
     }

@@ -2,16 +2,19 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  max-width: 100%;
 }
 
 /* Global overflow prevention */
 html {
   overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   overflow-x: hidden;
   max-width: 100vw;
+  width: 100%;
 }
 
 /* Prevent any element from exceeding viewport */
@@ -26,15 +29,66 @@ p, li, td, th, a, span, label {
   word-break: break-word;
 }
 
-/* Tables responsive wrapper helper */
+/* Tables responsive wrapper helper - mobile card layout by default */
 .table-wrapper {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
   max-width: 100%;
+  overflow-x: visible;
 }
 
 table {
   max-width: 100%;
+  width: 100%;
+}
+
+/* Mobile-first: Stack tables as cards on small screens */
+@media (max-width: 640px) {
+  .table-wrapper table,
+  .table-wrapper thead,
+  .table-wrapper tbody,
+  .table-wrapper th,
+  .table-wrapper td,
+  .table-wrapper tr {
+    display: block;
+    width: 100%;
+  }
+
+  .table-wrapper thead {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  .table-wrapper tr {
+    margin-bottom: 1rem;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: 0.75rem;
+    padding: 0.75rem;
+  }
+
+  .table-wrapper td {
+    position: relative;
+    padding: 0.5rem 0.5rem 0.5rem 40%;
+    text-align: left;
+    border: none;
+    border-bottom: 1px solid var(--border-subtle);
+    min-height: 2rem;
+  }
+
+  .table-wrapper td:last-child {
+    border-bottom: none;
+  }
+
+  .table-wrapper td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0.5rem;
+    width: 35%;
+    padding-right: 0.5rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+  }
 }
 
 :root {
@@ -932,6 +986,7 @@ body.chat-body {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
+  max-width: 100vw;
 }
 
 .section-nav::-webkit-scrollbar {
@@ -945,6 +1000,8 @@ body.chat-body {
   align-items: center;
   gap: 0.25rem;
   padding: 0.5rem 1.25rem;
+  width: max-content;
+  min-width: 100%;
 }
 
 .section-nav-link {
@@ -959,6 +1016,7 @@ body.chat-body {
   white-space: nowrap;
   transition: background 0.15s ease, color 0.15s ease;
   border: 1px solid transparent;
+  flex-shrink: 0;
 }
 
 .section-nav-link:hover {
@@ -981,5 +1039,144 @@ body.chat-body {
   .section-nav-link {
     padding: 0.4rem 0.7rem;
     font-size: 0.75rem;
+  }
+}
+
+/* Additional mobile responsive fixes */
+@media (max-width: 640px) {
+  /* Ensure main content has proper padding and doesn't overflow */
+  .main {
+    padding: 1rem 1rem 2rem;
+  }
+
+  /* Hero section adjustments */
+  .hero {
+    padding: 1.25rem 1rem;
+    border-radius: 1rem;
+  }
+
+  .hero-title {
+    font-size: 1.5rem;
+  }
+
+  .hero-tag {
+    font-size: 0.6rem;
+    padding: 0.2rem 0.6rem;
+  }
+
+  /* Cards should have proper mobile padding */
+  .card {
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+
+  .section-muted {
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+
+  /* Affiliate cards grid single column */
+  .affiliate-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .affiliate-card {
+    padding: 0.75rem;
+  }
+
+  /* Legal pages font adjustments */
+  .legal-page h1 {
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+
+  .legal-page h2 {
+    font-size: 1.2rem;
+  }
+
+  .legal-page h3 {
+    font-size: 1rem;
+  }
+
+  /* Footer adjustments */
+  .footer-links {
+    gap: 1rem;
+  }
+
+  .footer-links a {
+    font-size: 0.8rem;
+  }
+
+  /* Button size adjustments */
+  .btn-primary,
+  .btn-primary-cta,
+  .btn-outline {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.85rem;
+  }
+
+  /* Header actions on mobile */
+  .header-actions {
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  /* Checklist spacing */
+  .checklist li {
+    font-size: 0.85rem;
+  }
+
+  /* Steps list */
+  .steps {
+    font-size: 0.85rem;
+    padding-left: 1rem;
+  }
+}
+
+/* Extra small screens (320px) */
+@media (max-width: 360px) {
+  .main {
+    padding: 0.75rem 0.75rem 1.5rem;
+  }
+
+  .hero {
+    padding: 1rem 0.75rem;
+  }
+
+  .hero-title {
+    font-size: 1.35rem;
+  }
+
+  .hero-text {
+    font-size: 0.9rem;
+  }
+
+  .card,
+  .section-muted {
+    padding: 0.85rem;
+  }
+
+  .affiliate-card {
+    padding: 0.65rem;
+  }
+
+  .affiliate-name {
+    font-size: 0.9rem;
+  }
+
+  .affiliate-tagline {
+    font-size: 0.78rem;
+  }
+
+  .legal-page h1 {
+    font-size: 1.35rem;
+  }
+
+  /* Buttons need to fit */
+  .btn-primary,
+  .btn-primary-cta,
+  .btn-outline {
+    padding: 0.45rem 0.75rem;
+    font-size: 0.8rem;
   }
 }
