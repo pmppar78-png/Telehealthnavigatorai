@@ -33,8 +33,18 @@
     </nav>
   </header>
 
+  <nav class="section-nav" id="section-nav">
+    <div class="section-nav-inner">
+      <a href="#hero" class="section-nav-link active" data-section="hero">Home</a>
+      <a href="#tools-resources" class="section-nav-link" data-section="tools-resources">Tools</a>
+      <a href="#platforms" class="section-nav-link" data-section="platforms">Platforms</a>
+      <a href="#guides" class="section-nav-link" data-section="guides">Guides</a>
+      <a href="#about-section" class="section-nav-link" data-section="about-section">About</a>
+    </div>
+  </nav>
+
   <main class="main">
-    <section class="hero">
+    <section class="hero" id="hero">
       <div class="hero-tag">CALM AI CONVERSATION · INFORMATION ONLY · NOT A CRISIS SERVICE</div>
       <h1 class="hero-title">
         Find online therapy, psychiatry &amp; telehealth options with a calm <span class="accent">AI guide.</span>
@@ -142,7 +152,7 @@
       </div>
     </section>
 
-    <section class="section section-muted">
+    <section class="section section-muted" id="platforms">
       <h2>Explore online therapy &amp; telehealth platforms</h2>
       <p>
         Below are examples of online services people often explore when looking for therapy, psychiatry,
@@ -300,7 +310,7 @@
       </p>
     </section>
 
-    <section class="section section-muted">
+    <section class="section section-muted" id="guides">
       <h2>Learn more about telehealth</h2>
       <p>
         Explore our comprehensive library of 75+ educational guides covering telehealth, online therapy, mental health conditions, and how to make informed decisions about your care options.
@@ -479,7 +489,7 @@
       </p>
     </section>
 
-    <section class="section section-muted">
+    <section class="section section-muted" id="about-section">
       <h2>About this site</h2>
       <p>
         Telehealth Navigator AI was created to give people a calmer way to think through online help before
@@ -512,5 +522,51 @@
     </p>
   </footer>
   <script src="cookie-consent.js"></script>
+  <script>
+    // Section navigation active state tracking
+    (function() {
+      const navLinks = document.querySelectorAll('.section-nav-link');
+      const sections = [];
+
+      navLinks.forEach(link => {
+        const sectionId = link.getAttribute('data-section');
+        const section = document.getElementById(sectionId);
+        if (section) sections.push({ id: sectionId, el: section, link: link });
+      });
+
+      function updateActiveNav() {
+        const scrollPos = window.scrollY + 150;
+
+        let currentSection = sections[0];
+        for (const section of sections) {
+          if (section.el.offsetTop <= scrollPos) {
+            currentSection = section;
+          }
+        }
+
+        navLinks.forEach(link => link.classList.remove('active'));
+        if (currentSection) {
+          currentSection.link.classList.add('active');
+        }
+      }
+
+      // Smooth scroll for nav links
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href').substring(1);
+          const targetEl = document.getElementById(targetId);
+          if (targetEl) {
+            const offset = 110;
+            const targetPos = targetEl.offsetTop - offset;
+            window.scrollTo({ top: targetPos, behavior: 'smooth' });
+          }
+        });
+      });
+
+      window.addEventListener('scroll', updateActiveNav, { passive: true });
+      updateActiveNav();
+    })();
+  </script>
 </body>
 </html>
