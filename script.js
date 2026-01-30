@@ -2,6 +2,15 @@ const chatWindow = document.getElementById("chatWindow");
 const chatForm = document.getElementById("chatForm");
 const userInput = document.getElementById("userInput");
 
+// Personalization panel elements
+const personalizationPanel = document.getElementById("personalizationPanel");
+const personalizationToggle = document.getElementById("personalizationToggle");
+const personalizationContent = document.getElementById("personalizationContent");
+const personalizationForm = document.getElementById("personalizationForm");
+const skipPersonalization = document.getElementById("skipPersonalization");
+
+let userContext = null; // Stores personalization answers
+
 let conversation = [
   {
     role: "system",
@@ -105,4 +114,95 @@ if (chatForm && userInput) {
       chatForm.dispatchEvent(new Event("submit"));
     }
   });
+}
+
+// Personalization panel functionality
+if (personalizationToggle && personalizationContent) {
+  personalizationToggle.addEventListener("click", () => {
+    const isExpanded = personalizationToggle.getAttribute("aria-expanded") === "true";
+    personalizationToggle.setAttribute("aria-expanded", !isExpanded);
+    personalizationContent.style.display = isExpanded ? "none" : "block";
+  });
+}
+
+if (skipPersonalization) {
+  skipPersonalization.addEventListener("click", () => {
+    collapsePersonalization();
+  });
+}
+
+if (personalizationForm) {
+  personalizationForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    applyPersonalization();
+  });
+}
+
+function collapsePersonalization() {
+  if (personalizationPanel) {
+    personalizationPanel.classList.add("collapsed");
+    personalizationToggle.setAttribute("aria-expanded", "false");
+    personalizationContent.style.display = "none";
+    personalizationToggle.innerHTML = `
+      <span class="toggle-icon">✓</span>
+      <span class="toggle-text">Ready to chat</span>
+    `;
+    personalizationToggle.style.pointerEvents = "none";
+  }
+}
+
+function applyPersonalization() {
+  const pq1 = document.getElementById("pq1")?.value;
+  const pq2 = document.getElementById("pq2")?.value;
+  const pq3 = document.getElementById("pq3")?.value;
+
+  // Build context string from answers
+  const contextParts = [];
+
+  if (pq1) {
+    const reasonMap = {
+      "exploring": "is exploring available telehealth options",
+      "stress": "is dealing with stress or life challenges",
+      "mood": "has concerns about mood or emotions",
+      "specific": "is looking for help with something specific",
+      "someone": "is helping someone else find resources"
+    };
+    if (reasonMap[pq1]) contextParts.push(reasonMap[pq1]);
+  }
+
+  if (pq2) {
+    const typeMap = {
+      "therapy": "is interested in therapy or counseling",
+      "psychiatry": "has questions about psychiatry or medication",
+      "both": "is interested in both therapy and psychiatry",
+      "wellness": "is interested in general wellness and self-care",
+      "unsure": "is not yet sure what type of support they need"
+    };
+    if (typeMap[pq2]) contextParts.push(typeMap[pq2]);
+  }
+
+  if (pq3) {
+    const insuranceMap = {
+      "private": "has private insurance",
+      "medicare": "has Medicare",
+      "medicaid": "has Medicaid",
+      "selfpay": "is looking at self-pay options",
+      "unsure": "is unsure about their insurance situation"
+    };
+    if (insuranceMap[pq3]) contextParts.push(insuranceMap[pq3]);
+  }
+
+  if (contextParts.length > 0) {
+    userContext = contextParts.join(", ");
+    // Add context to the system prompt
+    const contextAddition = ` USER CONTEXT (from optional questionnaire): The user ${userContext}. Use this context to provide more relevant suggestions, but do not reference this directly unless it naturally fits the conversation.`;
+    conversation[0].content += contextAddition;
+  }
+
+  collapsePersonalization();
+
+  // Focus the chat input
+  if (userInput) {
+    userInput.focus();
+  }
 }

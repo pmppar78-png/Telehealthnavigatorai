@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Guided Decision Support – Telehealth Navigator AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Guided flows to help you think through common telehealth decisions. Educational support for exploring your options." />
+  <link rel="stylesheet" href="style.css" />
+  <meta name="google-adsense-account" content="ca-pub-6484141649562994">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6484141649562994"
+     crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0PM741VNXH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0PM741VNXH');
+  </script>
+  <style>
+    .scenarios-intro {
+      margin-bottom: 2rem;
+    }
+    .scenario-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+    @media (min-width: 768px) {
+      .scenario-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    .scenario-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: 1.25rem;
+      padding: 1.5rem;
+      cursor: pointer;
+      transition: border-color 0.15s ease, transform 0.1s ease;
+    }
+    .scenario-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .scenario-card.active {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent);
+    }
+    .scenario-icon {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+    }
+    .scenario-title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+    }
+    .scenario-description {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+    .flow-container {
+      display: none;
+      margin-top: 2rem;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: 1.25rem;
+      padding: 1.5rem;
+    }
+    .flow-container.visible {
+      display: block;
+    }
+    .flow-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .flow-title {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--accent);
+    }
+    .flow-close {
+      background: none;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      padding: 0.4rem 0.8rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+    .flow-close:hover {
+      border-color: var(--text-muted);
+      color: var(--text-main);
+    }
+    .flow-progress {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .progress-step {
+      flex: 1;
+      height: 4px;
+      background: var(--bg-muted);
+      border-radius: 2px;
+    }
+    .progress-step.complete {
+      background: var(--accent);
+    }
+    .progress-step.current {
+      background: linear-gradient(90deg, var(--accent) 50%, var(--bg-muted) 50%);
+    }
+    .flow-step {
+      display: none;
+    }
+    .flow-step.active {
+      display: block;
+    }
+    .step-question {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+    }
+    .step-context {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 1.25rem;
+      line-height: 1.6;
+    }
+    .step-options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .step-option {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 1rem;
+      background: var(--bg-muted);
+      border: 1px solid var(--border-subtle);
+      border-radius: 0.75rem;
+      cursor: pointer;
+      transition: border-color 0.15s ease, background 0.15s ease;
+    }
+    .step-option:hover {
+      border-color: var(--accent);
+      background: rgba(34, 197, 94, 0.05);
+    }
+    .step-option.selected {
+      border-color: var(--accent);
+      background: rgba(34, 197, 94, 0.1);
+    }
+    .option-radio {
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--border-subtle);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .step-option.selected .option-radio {
+      border-color: var(--accent);
+    }
+    .step-option.selected .option-radio::after {
+      content: '';
+      width: 10px;
+      height: 10px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+    .option-content {
+      flex: 1;
+    }
+    .option-label {
+      font-weight: 600;
+      color: var(--text-main);
+      font-size: 0.95rem;
+    }
+    .option-hint {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      margin-top: 0.25rem;
+    }
+    .flow-actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+    .btn-back {
+      background: none;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    .btn-back:hover {
+      border-color: var(--text-muted);
+      color: var(--text-main);
+    }
+    .btn-back:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    .flow-results {
+      display: none;
+    }
+    .flow-results.active {
+      display: block;
+    }
+    .results-summary {
+      background: radial-gradient(circle at top left, rgba(34, 197, 94, 0.08), rgba(15, 23, 42, 0.95));
+      border: 1px solid var(--accent);
+      border-radius: 1rem;
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .results-title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .results-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .results-item:last-child {
+      border-bottom: none;
+    }
+    .results-label {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    .results-value {
+      color: var(--text-main);
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+    .recommendations {
+      margin-top: 1.5rem;
+    }
+    .recommendations h3 {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+    .recommendation-card {
+      background: var(--bg-muted);
+      border: 1px solid var(--border-subtle);
+      border-radius: 0.75rem;
+      padding: 1rem;
+      margin-bottom: 0.75rem;
+    }
+    .recommendation-card h4 {
+      color: #bbf7d0;
+      font-size: 0.95rem;
+      margin: 0 0 0.5rem 0;
+    }
+    .recommendation-card p {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin: 0;
+      line-height: 1.5;
+    }
+    .next-steps {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background: var(--bg-muted);
+      border-radius: 0.75rem;
+    }
+    .next-steps h3 {
+      font-size: 1rem;
+      margin: 0 0 0.75rem 0;
+    }
+    .next-steps ul {
+      margin: 0;
+      padding-left: 1.25rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+    .cta-section {
+      margin-top: 1.5rem;
+      padding: 1.25rem;
+      background: var(--bg-muted);
+      border-radius: 1rem;
+      text-align: center;
+    }
+    .cta-section h3 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1rem;
+    }
+    .cta-section p {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin: 0 0 1rem 0;
+    }
+    .tool-disclaimer {
+      margin-top: 2rem;
+      padding: 1rem;
+      background: var(--bg-muted);
+      border-radius: 0.75rem;
+      border-left: 3px solid #f59e0b;
+    }
+    .tool-disclaimer h3 {
+      color: #f59e0b;
+      font-size: 0.9rem;
+      margin: 0 0 0.5rem 0;
+    }
+    .tool-disclaimer p {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+  </style>
+</head>
+<body class="site-body">
+  <header class="site-header">
+    <div class="logo-block">
+      <div class="status-dot"></div>
+      <div class="logo-text">
+        <span class="logo-title">TELEHEALTH NAVIGATOR AI</span>
+        <span class="logo-subtitle">Calm AI guide for online help options</span>
+      </div>
+    </div>
+    <nav class="header-actions">
+      <a href="index.html" class="btn-outline">Home</a>
+      <a href="chat.html" class="btn-primary">Talk to AI Guide</a>
+    </nav>
+  </header>
+
+  <main class="main legal-page">
+    <h1>Guided Decision Support</h1>
+    <p class="legal-date">Interactive flows to help you think through your options</p>
+
+    <div class="scenarios-intro">
+      <p>
+        Navigating telehealth options can feel overwhelming with many factors to consider. These guided flows
+        help you organize your thoughts around common scenarios, surface relevant questions, and identify
+        what information you might need. Select a scenario below to get started.
+      </p>
+    </div>
+
+    <div class="scenario-grid" id="scenarioGrid">
+      <div class="scenario-card" data-scenario="first-time">
+        <div class="scenario-icon">🌱</div>
+        <div class="scenario-title">First Time Exploring Support</div>
+        <div class="scenario-description">
+          You're new to telehealth or therapy and want to understand your options and what to expect.
+        </div>
+      </div>
+
+      <div class="scenario-card" data-scenario="insurance-complex">
+        <div class="scenario-icon">📋</div>
+        <div class="scenario-title">Insurance Coverage Questions</div>
+        <div class="scenario-description">
+          You have insurance but aren't sure how it applies to telehealth or what your actual costs might be.
+        </div>
+      </div>
+
+      <div class="scenario-card" data-scenario="provider-match">
+        <div class="scenario-icon">🔍</div>
+        <div class="scenario-title">Finding the Right Provider Match</div>
+        <div class="scenario-description">
+          You want help thinking through what type of provider or platform might fit your needs.
+        </div>
+      </div>
+
+      <div class="scenario-card" data-scenario="therapy-vs-psychiatry">
+        <div class="scenario-icon">⚖️</div>
+        <div class="scenario-title">Therapy vs. Psychiatry</div>
+        <div class="scenario-description">
+          You're not sure whether you need therapy, psychiatry, or both for your situation.
+        </div>
+      </div>
+
+      <div class="scenario-card" data-scenario="switching">
+        <div class="scenario-icon">🔄</div>
+        <div class="scenario-title">Considering Switching Providers</div>
+        <div class="scenario-description">
+          You're currently receiving care but wondering if a different provider or platform might work better.
+        </div>
+      </div>
+
+      <div class="scenario-card" data-scenario="cost-conscious">
+        <div class="scenario-icon">💰</div>
+        <div class="scenario-title">Budget-Conscious Care Options</div>
+        <div class="scenario-description">
+          You need to find affordable care options and want to understand all available resources.
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-container" id="flowContainer">
+      <div class="flow-header">
+        <span class="flow-title" id="flowTitle">Guided Flow</span>
+        <button class="flow-close" id="flowClose">Close</button>
+      </div>
+      <div class="flow-progress" id="flowProgress"></div>
+      <div id="flowSteps"></div>
+      <div class="flow-results" id="flowResults"></div>
+    </div>
+
+    <div class="tool-disclaimer">
+      <h3>About These Guided Flows</h3>
+      <p>
+        These decision support flows are educational tools to help organize your thinking. They do not provide
+        medical advice, diagnoses, or treatment recommendations. The suggestions generated are general in nature
+        and may not apply to your specific situation. Always consult with licensed healthcare professionals
+        for personalized guidance about your care needs.
+      </p>
+    </div>
+
+    <section class="section" style="margin-top: 2rem;">
+      <h2>Prefer a Conversation?</h2>
+      <p>
+        If you'd rather explore your questions through conversation, our AI guide is available to help
+        you think through your options in a calm, supportive way.
+      </p>
+      <a href="chat.html" class="btn-primary" style="margin-top: 1rem;">Talk to the AI Guide</a>
+    </section>
+
+    <section class="section" style="margin-top: 2rem;">
+      <h2>Related Resources</h2>
+      <div class="affiliate-grid">
+        <a class="affiliate-card" href="tool-cost-estimator.html">
+          <span class="affiliate-name">Cost Estimator</span>
+          <span class="affiliate-tagline">Estimate potential out-of-pocket costs</span>
+        </a>
+        <a class="affiliate-card" href="tool-insurance-finder.html">
+          <span class="affiliate-name">Insurance Coverage Finder</span>
+          <span class="affiliate-tagline">Explore platform coverage by insurance</span>
+        </a>
+        <a class="affiliate-card" href="guide-choosing-therapy.html">
+          <span class="affiliate-name">Choosing Online Therapy</span>
+          <span class="affiliate-tagline">Factors to consider when selecting</span>
+        </a>
+        <a class="affiliate-card" href="guide-first-therapy-session.html">
+          <span class="affiliate-name">Your First Session</span>
+          <span class="affiliate-tagline">What to expect from your first visit</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <p class="footer-text">
+      Information only. Not medical, mental-health, or crisis advice. Always talk to licensed professionals for care decisions.
+    </p>
+    <p class="footer-text small">
+      If you are in crisis or may hurt yourself or others, contact local emergency services or a crisis hotline immediately.
+    </p>
+  </footer>
+  <script src="cookie-consent.js"></script>
+  <script>
+    // Scenario definitions
+    const scenarios = {
+      'first-time': {
+        title: 'First Time Exploring Support',
+        steps: [
+          {
+            question: 'What brings you to explore support options?',
+            context: 'Understanding your primary motivation helps identify relevant resources.',
+            options: [
+              { value: 'stress', label: 'Managing stress or life challenges', hint: 'Work, relationships, life transitions' },
+              { value: 'mood', label: 'Mood or emotional concerns', hint: 'Feeling down, anxious, or emotionally overwhelmed' },
+              { value: 'specific', label: 'A specific issue or condition', hint: 'Something particular you want to address' },
+              { value: 'growth', label: 'Personal growth and self-improvement', hint: 'Wanting to understand yourself better' },
+              { value: 'curious', label: 'Just curious about options', hint: 'Exploring what\'s available' }
+            ]
+          },
+          {
+            question: 'How would you prefer to communicate with a provider?',
+            context: 'Different platforms specialize in different communication styles.',
+            options: [
+              { value: 'video', label: 'Video calls', hint: 'Face-to-face interaction virtually' },
+              { value: 'phone', label: 'Phone calls', hint: 'Audio-only conversations' },
+              { value: 'text', label: 'Text/messaging', hint: 'Asynchronous written communication' },
+              { value: 'flexible', label: 'Flexible/multiple options', hint: 'Want variety depending on the day' }
+            ]
+          },
+          {
+            question: 'What\'s your approximate budget situation?',
+            context: 'This helps identify appropriate platform recommendations.',
+            options: [
+              { value: 'insurance', label: 'I have insurance I\'d like to use', hint: 'Want to maximize coverage benefits' },
+              { value: 'limited', label: 'Limited budget / seeking affordable options', hint: 'Cost is a significant factor' },
+              { value: 'flexible', label: 'Budget is flexible', hint: 'Willing to pay for the right fit' },
+              { value: 'unsure', label: 'Not sure yet', hint: 'Still figuring out financial aspects' }
+            ]
+          }
+        ]
+      },
+      'insurance-complex': {
+        title: 'Insurance Coverage Questions',
+        steps: [
+          {
+            question: 'What type of insurance coverage do you have?',
+            context: 'Different insurance types have different telehealth coverage patterns.',
+            options: [
+              { value: 'employer', label: 'Employer-provided insurance', hint: 'Through your or spouse\'s job' },
+              { value: 'marketplace', label: 'Marketplace/ACA plan', hint: 'Purchased through healthcare.gov or state exchange' },
+              { value: 'medicare', label: 'Medicare', hint: 'Federal coverage for 65+ or qualifying conditions' },
+              { value: 'medicaid', label: 'Medicaid', hint: 'State-administered coverage' },
+              { value: 'multiple', label: 'Multiple / unsure', hint: 'Have more than one or not certain' }
+            ]
+          },
+          {
+            question: 'Have you checked your plan\'s mental health benefits?',
+            context: 'Many plans have separate mental health benefit details.',
+            options: [
+              { value: 'yes-good', label: 'Yes, I have mental health coverage', hint: 'Plan includes mental health benefits' },
+              { value: 'yes-limited', label: 'Yes, but coverage seems limited', hint: 'Have some coverage with restrictions' },
+              { value: 'no-access', label: 'No, I can\'t find the information', hint: 'Having trouble accessing plan details' },
+              { value: 'no-time', label: 'No, haven\'t had time to check', hint: 'Would like guidance on where to look' }
+            ]
+          },
+          {
+            question: 'What\'s your main coverage concern?',
+            context: 'This helps focus the guidance.',
+            options: [
+              { value: 'in-network', label: 'Finding in-network providers', hint: 'Want to minimize out-of-pocket costs' },
+              { value: 'deductible', label: 'Understanding deductibles and copays', hint: 'Confused about cost structure' },
+              { value: 'coverage-type', label: 'What services are covered', hint: 'Unsure if therapy/psychiatry is included' },
+              { value: 'pre-auth', label: 'Prior authorization requirements', hint: 'Whether approval is needed first' }
+            ]
+          }
+        ]
+      },
+      'provider-match': {
+        title: 'Finding the Right Provider Match',
+        steps: [
+          {
+            question: 'What type of support are you primarily looking for?',
+            context: 'Different providers specialize in different areas.',
+            options: [
+              { value: 'talk', label: 'Talk therapy / counseling', hint: 'Processing thoughts and feelings with a therapist' },
+              { value: 'medication', label: 'Medication evaluation', hint: 'Exploring whether medication might help' },
+              { value: 'both', label: 'Both therapy and medication', hint: 'Comprehensive mental health care' },
+              { value: 'coaching', label: 'Coaching or structured support', hint: 'Goal-oriented guidance and accountability' }
+            ]
+          },
+          {
+            question: 'Are there any provider characteristics important to you?',
+            context: 'Many people have preferences about who they work with.',
+            options: [
+              { value: 'identity', label: 'Specific background or identity', hint: 'Gender, cultural background, LGBTQ+ affirming' },
+              { value: 'specialty', label: 'Specific therapeutic specialty', hint: 'CBT, trauma-focused, etc.' },
+              { value: 'availability', label: 'Availability / scheduling flexibility', hint: 'Evening, weekend, or quick access' },
+              { value: 'no-pref', label: 'No strong preferences', hint: 'Open to various options' }
+            ]
+          },
+          {
+            question: 'How important is provider continuity?',
+            context: 'Some platforms guarantee the same provider; others vary.',
+            options: [
+              { value: 'same', label: 'Very important - want the same person', hint: 'Building a long-term relationship' },
+              { value: 'somewhat', label: 'Somewhat important', hint: 'Prefer consistency but flexible' },
+              { value: 'flexible', label: 'Flexible - different providers okay', hint: 'Fine with variety' }
+            ]
+          }
+        ]
+      },
+      'therapy-vs-psychiatry': {
+        title: 'Therapy vs. Psychiatry',
+        steps: [
+          {
+            question: 'What\'s your primary goal for seeking support?',
+            context: 'This helps clarify which type of provider might be most relevant.',
+            options: [
+              { value: 'understand', label: 'Understanding my thoughts and feelings', hint: 'Want to process experiences and patterns' },
+              { value: 'symptoms', label: 'Managing specific symptoms', hint: 'Dealing with anxiety, depression, sleep issues, etc.' },
+              { value: 'life-changes', label: 'Navigating life changes or challenges', hint: 'Transitions, relationships, career' },
+              { value: 'medication', label: 'Exploring medication options', hint: 'Want to discuss whether medication might help' }
+            ]
+          },
+          {
+            question: 'Have you worked with any mental health providers before?',
+            context: 'Past experience can inform current needs.',
+            options: [
+              { value: 'therapy-yes', label: 'Yes, therapy/counseling', hint: 'Have experience with talk therapy' },
+              { value: 'psych-yes', label: 'Yes, psychiatry/medication', hint: 'Have worked with a prescriber' },
+              { value: 'both', label: 'Yes, both types', hint: 'Experience with both therapy and psychiatry' },
+              { value: 'no', label: 'No, this would be my first time', hint: 'New to mental health services' }
+            ]
+          },
+          {
+            question: 'How do you feel about potentially using medication?',
+            context: 'This is a personal preference with no right answer.',
+            options: [
+              { value: 'interested', label: 'Interested in exploring', hint: 'Open to learning more about options' },
+              { value: 'hesitant', label: 'Hesitant but open', hint: 'Have concerns but willing to discuss' },
+              { value: 'prefer-no', label: 'Prefer to try without first', hint: 'Would rather try therapy-only approaches' },
+              { value: 'unsure', label: 'Not sure yet', hint: 'Need more information to decide' }
+            ]
+          }
+        ]
+      },
+      'switching': {
+        title: 'Considering Switching Providers',
+        steps: [
+          {
+            question: 'What\'s prompting you to consider a change?',
+            context: 'Understanding your motivation helps identify what to look for.',
+            options: [
+              { value: 'fit', label: 'Provider fit isn\'t quite right', hint: 'Personality, approach, or communication issues' },
+              { value: 'progress', label: 'Not seeing expected progress', hint: 'Feeling stuck or not improving' },
+              { value: 'logistics', label: 'Practical/logistical issues', hint: 'Scheduling, cost, or availability problems' },
+              { value: 'needs-changed', label: 'My needs have changed', hint: 'Looking for different type of support now' }
+            ]
+          },
+          {
+            question: 'Have you discussed your concerns with your current provider?',
+            context: 'Sometimes issues can be resolved without switching.',
+            options: [
+              { value: 'yes-tried', label: 'Yes, we\'ve tried to address them', hint: 'Discussed but issues persist' },
+              { value: 'no-uncomfortable', label: 'No, I\'m not comfortable doing so', hint: 'Prefer to just find someone new' },
+              { value: 'no-considered', label: 'No, but I\'m considering it', hint: 'Might try before switching' },
+              { value: 'not-applicable', label: 'Not applicable', hint: 'The issue isn\'t discussable' }
+            ]
+          },
+          {
+            question: 'What would you want different in a new provider/platform?',
+            context: 'This helps focus your search.',
+            options: [
+              { value: 'approach', label: 'Different therapeutic approach', hint: 'Different style or methodology' },
+              { value: 'communication', label: 'Better communication style', hint: 'How they interact with you' },
+              { value: 'practical', label: 'Practical improvements', hint: 'Scheduling, platform, cost' },
+              { value: 'specialty', label: 'More specialized expertise', hint: 'Provider who focuses on your specific needs' }
+            ]
+          }
+        ]
+      },
+      'cost-conscious': {
+        title: 'Budget-Conscious Care Options',
+        steps: [
+          {
+            question: 'What\'s your current insurance situation?',
+            context: 'This significantly affects available affordable options.',
+            options: [
+              { value: 'insured', label: 'I have insurance', hint: 'May have coverage to maximize' },
+              { value: 'uninsured', label: 'Currently uninsured', hint: 'Need self-pay or sliding scale options' },
+              { value: 'underinsured', label: 'Insurance but poor mental health coverage', hint: 'Coverage isn\'t helpful for this' },
+              { value: 'unsure', label: 'Not sure what I have', hint: 'Need to figure this out' }
+            ]
+          },
+          {
+            question: 'Have you explored any free or low-cost resources yet?',
+            context: 'There are several often-overlooked options.',
+            options: [
+              { value: 'eap', label: 'Employee Assistance Program (EAP)', hint: 'Often provides free sessions through employer' },
+              { value: 'community', label: 'Community mental health centers', hint: 'Sliding scale based on income' },
+              { value: 'university', label: 'University/training clinics', hint: 'Supervised trainees at lower cost' },
+              { value: 'none', label: 'Haven\'t explored these yet', hint: 'Would like to learn more' }
+            ]
+          },
+          {
+            question: 'What would be a manageable cost for you?',
+            context: 'This helps identify realistic options.',
+            options: [
+              { value: 'free', label: 'Need free or very low cost', hint: 'Under $25 per session' },
+              { value: 'low', label: 'Low cost ($25-60 per session)', hint: 'Some budget but limited' },
+              { value: 'moderate', label: 'Moderate ($60-100 per session)', hint: 'Can stretch for the right fit' },
+              { value: 'sliding', label: 'Need sliding scale based on income', hint: 'Want pricing tied to ability to pay' }
+            ]
+          }
+        ]
+      }
+    };
+
+    // Flow state
+    let currentScenario = null;
+    let currentStep = 0;
+    let answers = [];
+
+    // DOM elements
+    const scenarioGrid = document.getElementById('scenarioGrid');
+    const flowContainer = document.getElementById('flowContainer');
+    const flowTitle = document.getElementById('flowTitle');
+    const flowProgress = document.getElementById('flowProgress');
+    const flowSteps = document.getElementById('flowSteps');
+    const flowResults = document.getElementById('flowResults');
+    const flowClose = document.getElementById('flowClose');
+
+    // Event listeners for scenario cards
+    scenarioGrid.addEventListener('click', function(e) {
+      const card = e.target.closest('.scenario-card');
+      if (card) {
+        const scenarioId = card.dataset.scenario;
+        startScenario(scenarioId);
+      }
+    });
+
+    flowClose.addEventListener('click', closeFlow);
+
+    function startScenario(scenarioId) {
+      currentScenario = scenarios[scenarioId];
+      currentStep = 0;
+      answers = [];
+
+      flowTitle.textContent = currentScenario.title;
+      flowContainer.classList.add('visible');
+      flowResults.classList.remove('active');
+
+      renderProgress();
+      renderStep();
+      flowContainer.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function renderProgress() {
+      const totalSteps = currentScenario.steps.length;
+      flowProgress.innerHTML = Array(totalSteps).fill(0).map((_, i) => {
+        let className = 'progress-step';
+        if (i < currentStep) className += ' complete';
+        else if (i === currentStep) className += ' current';
+        return `<div class="${className}"></div>`;
+      }).join('');
+    }
+
+    function renderStep() {
+      const step = currentScenario.steps[currentStep];
+      const totalSteps = currentScenario.steps.length;
+
+      flowSteps.innerHTML = `
+        <div class="flow-step active">
+          <div class="step-question">${step.question}</div>
+          <div class="step-context">${step.context}</div>
+          <div class="step-options">
+            ${step.options.map(opt => `
+              <div class="step-option" data-value="${opt.value}">
+                <div class="option-radio"></div>
+                <div class="option-content">
+                  <div class="option-label">${opt.label}</div>
+                  <div class="option-hint">${opt.hint}</div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+          <div class="flow-actions">
+            <button class="btn-back" ${currentStep === 0 ? 'disabled' : ''} onclick="prevStep()">Back</button>
+            <button class="btn-primary" id="nextBtn" disabled>
+              ${currentStep === totalSteps - 1 ? 'See Results' : 'Continue'}
+            </button>
+          </div>
+        </div>
+      `;
+
+      // Add click handlers for options
+      const options = flowSteps.querySelectorAll('.step-option');
+      options.forEach(opt => {
+        opt.addEventListener('click', function() {
+          options.forEach(o => o.classList.remove('selected'));
+          this.classList.add('selected');
+          document.getElementById('nextBtn').disabled = false;
+        });
+      });
+
+      // Add next button handler
+      document.getElementById('nextBtn').addEventListener('click', nextStep);
+    }
+
+    function prevStep() {
+      if (currentStep > 0) {
+        currentStep--;
+        answers.pop();
+        renderProgress();
+        renderStep();
+      }
+    }
+
+    function nextStep() {
+      const selected = flowSteps.querySelector('.step-option.selected');
+      if (!selected) return;
+
+      answers.push({
+        question: currentScenario.steps[currentStep].question,
+        answer: selected.querySelector('.option-label').textContent,
+        value: selected.dataset.value
+      });
+
+      if (currentStep < currentScenario.steps.length - 1) {
+        currentStep++;
+        renderProgress();
+        renderStep();
+      } else {
+        showResults();
+      }
+    }
+
+    function showResults() {
+      flowSteps.innerHTML = '';
+      flowProgress.innerHTML = Array(currentScenario.steps.length).fill(0).map(() =>
+        '<div class="progress-step complete"></div>'
+      ).join('');
+
+      const recommendations = generateRecommendations();
+
+      flowResults.innerHTML = `
+        <div class="results-summary">
+          <div class="results-title">Your Responses</div>
+          ${answers.map(a => `
+            <div class="results-item">
+              <span class="results-label">${a.question}</span>
+              <span class="results-value">${a.answer}</span>
+            </div>
+          `).join('')}
+        </div>
+
+        <div class="recommendations">
+          <h3>Based on Your Responses</h3>
+          ${recommendations.map(rec => `
+            <div class="recommendation-card">
+              <h4>${rec.title}</h4>
+              <p>${rec.content}</p>
+            </div>
+          `).join('')}
+        </div>
+
+        <div class="next-steps">
+          <h3>Suggested Next Steps</h3>
+          <ul>
+            <li>Review the recommendations above and identify which resonate most with your situation</li>
+            <li>Use our other tools (Cost Estimator, Insurance Finder) to gather more specific information</li>
+            <li>Consider talking with our AI guide for more personalized conversation about your options</li>
+            <li>When ready, research specific platforms or providers that match your criteria</li>
+            <li>Remember: it's okay to try a provider and switch if it's not the right fit</li>
+          </ul>
+        </div>
+
+        <div class="cta-section">
+          <h3>Want to explore further?</h3>
+          <p>Our AI guide can help you think through these recommendations in more detail.</p>
+          <a href="chat.html" class="btn-primary">Talk to the AI Guide</a>
+        </div>
+
+        <div style="margin-top: 1rem; text-align: center;">
+          <button class="btn-back" onclick="closeFlow()">Start Over</button>
+        </div>
+      `;
+
+      flowResults.classList.add('active');
+    }
+
+    function generateRecommendations() {
+      // Generate contextual recommendations based on answers
+      const recs = [];
+      const answerValues = answers.map(a => a.value);
+
+      // General recommendation based on scenario
+      recs.push({
+        title: 'General Guidance',
+        content: 'Based on your responses, there are several options worth exploring. Remember that finding the right support often involves some trial and error, and that\'s completely normal.'
+      });
+
+      // Add specific recommendations based on answer patterns
+      if (answerValues.includes('insurance') || answerValues.includes('insured') || answerValues.includes('employer')) {
+        recs.push({
+          title: 'Maximize Insurance Benefits',
+          content: 'Since you have insurance, start by calling the member services number on your card to ask about mental health benefits, including telehealth coverage. Ask specifically about in-network telehealth providers and what your copay or coinsurance would be.'
+        });
+      }
+
+      if (answerValues.includes('limited') || answerValues.includes('free') || answerValues.includes('low') || answerValues.includes('uninsured')) {
+        recs.push({
+          title: 'Affordable Care Options',
+          content: 'Consider exploring community mental health centers (which offer sliding scale fees), Open Path Collective (reduced-fee therapy), or university training clinics. Many employers also offer EAP programs with free sessions that employees often don\'t know about.'
+        });
+      }
+
+      if (answerValues.includes('medication') || answerValues.includes('both') || answerValues.includes('interested')) {
+        recs.push({
+          title: 'Exploring Medication Options',
+          content: 'If you\'re interested in exploring whether medication might help, you\'ll want to see a psychiatrist or psychiatric nurse practitioner who can evaluate your situation. Many online platforms like Talkiatry or Cerebral offer psychiatric services, often with insurance coverage.'
+        });
+      }
+
+      if (answerValues.includes('video') || answerValues.includes('text') || answerValues.includes('flexible')) {
+        recs.push({
+          title: 'Communication Preferences',
+          content: 'Your preferred communication style is an important factor. Platforms like BetterHelp and Talkspace emphasize messaging and flexible scheduling. Traditional telehealth therapy typically uses video sessions. Make sure to choose a platform that matches how you want to communicate.'
+        });
+      }
+
+      if (answerValues.includes('fit') || answerValues.includes('progress') || answerValues.includes('approach')) {
+        recs.push({
+          title: 'Finding Better Fit',
+          content: 'If your current care isn\'t working well, it\'s worth considering what specifically isn\'t clicking. Different therapists use different approaches (CBT, psychodynamic, humanistic, etc.) and a different approach might resonate better with you. Don\'t hesitate to ask potential new providers about their style.'
+        });
+      }
+
+      // Always add a reminder about professional guidance
+      recs.push({
+        title: 'Important Reminder',
+        content: 'This guidance is educational and general in nature. For personalized recommendations about your mental health care, please consult with licensed healthcare professionals who can evaluate your specific situation and needs.'
+      });
+
+      return recs;
+    }
+
+    function closeFlow() {
+      flowContainer.classList.remove('visible');
+      currentScenario = null;
+      currentStep = 0;
+      answers = [];
+    }
+  </script>
+</body>
+</html>
