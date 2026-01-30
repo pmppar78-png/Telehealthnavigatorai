@@ -163,16 +163,13 @@
       flex-shrink: 0;
     }
     .table-wrapper {
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      margin: 1.25rem 0;
       max-width: 100%;
+      margin: 1.25rem 0;
     }
     .comparison-table {
       width: 100%;
       border-collapse: collapse;
       font-size: 0.85rem;
-      min-width: 400px;
     }
     .comparison-table th {
       text-align: left;
@@ -181,7 +178,6 @@
       border-bottom: 1px solid var(--border-subtle);
       color: var(--text-main);
       font-weight: 600;
-      white-space: nowrap;
     }
     .comparison-table td {
       padding: 0.75rem;
@@ -190,6 +186,51 @@
     }
     .comparison-table tr:hover {
       background: rgba(34, 197, 94, 0.03);
+    }
+    /* Mobile card layout for comparison tables */
+    @media (max-width: 640px) {
+      .comparison-table,
+      .comparison-table thead,
+      .comparison-table tbody,
+      .comparison-table th,
+      .comparison-table td,
+      .comparison-table tr {
+        display: block;
+        width: 100%;
+      }
+      .comparison-table thead {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+      }
+      .comparison-table tbody tr {
+        margin-bottom: 0.75rem;
+        background: var(--bg-elevated);
+        border: 1px solid var(--border-subtle);
+        border-radius: 0.75rem;
+        padding: 0.75rem;
+      }
+      .comparison-table td {
+        position: relative;
+        padding: 0.5rem 0.5rem 0.5rem 40%;
+        text-align: left;
+        border: none;
+        border-bottom: 1px solid var(--border-subtle);
+        min-height: 2rem;
+      }
+      .comparison-table td:last-child {
+        border-bottom: none;
+      }
+      .comparison-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0.5rem;
+        width: 35%;
+        padding-right: 0.5rem;
+        font-weight: 600;
+        color: var(--accent);
+        font-size: 0.75rem;
+      }
     }
     .stat-highlight {
       display: inline-flex;
@@ -359,22 +400,22 @@
           </thead>
           <tbody>
             <tr>
-              <td>Subscription (Weekly)</td>
-              <td>$60-$100+/week</td>
-              <td>Frequent communication needs</td>
-              <td>May include messaging; live session frequency varies</td>
+              <td data-label="Model Type">Subscription (Weekly)</td>
+              <td data-label="Typical Range">$60-$100+/week</td>
+              <td data-label="Best For">Frequent communication needs</td>
+              <td data-label="Considerations">May include messaging; live session frequency varies</td>
             </tr>
             <tr>
-              <td>Per-Session</td>
-              <td>$80-$200/session</td>
-              <td>Occasional or scheduled care</td>
-              <td>More traditional; easier to compare to in-person</td>
+              <td data-label="Model Type">Per-Session</td>
+              <td data-label="Typical Range">$80-$200/session</td>
+              <td data-label="Best For">Occasional or scheduled care</td>
+              <td data-label="Considerations">More traditional; easier to compare to in-person</td>
             </tr>
             <tr>
-              <td>Membership + Sessions</td>
-              <td>Varies widely</td>
-              <td>Combined benefits</td>
-              <td>Read terms carefully; value depends on usage</td>
+              <td data-label="Model Type">Membership + Sessions</td>
+              <td data-label="Typical Range">Varies widely</td>
+              <td data-label="Best For">Combined benefits</td>
+              <td data-label="Considerations">Read terms carefully; value depends on usage</td>
             </tr>
           </tbody>
         </table>
@@ -535,19 +576,19 @@
           </thead>
           <tbody>
             <tr>
-              <td>In-Network</td>
-              <td>Platform contracted with your insurer</td>
-              <td>Copay only (often $20-$50)</td>
+              <td data-label="Coverage Type">In-Network</td>
+              <td data-label="What It Means">Platform contracted with your insurer</td>
+              <td data-label="Cost Impact">Copay only (often $20-$50)</td>
             </tr>
             <tr>
-              <td>Out-of-Network</td>
-              <td>Not contracted; may still submit claims</td>
-              <td>Higher out-of-pocket; partial reimbursement possible</td>
+              <td data-label="Coverage Type">Out-of-Network</td>
+              <td data-label="What It Means">Not contracted; may still submit claims</td>
+              <td data-label="Cost Impact">Higher out-of-pocket; partial reimbursement possible</td>
             </tr>
             <tr>
-              <td>Self-Pay Only</td>
-              <td>Insurance not accepted</td>
-              <td>Full cost; may provide superbill for reimbursement</td>
+              <td data-label="Coverage Type">Self-Pay Only</td>
+              <td data-label="What It Means">Insurance not accepted</td>
+              <td data-label="Cost Impact">Full cost; may provide superbill for reimbursement</td>
             </tr>
           </tbody>
         </table>
