@@ -293,18 +293,20 @@ body.chat-body {
 }
 
 .checklist li {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.6rem;
+  position: relative;
+  padding-left: 1.5rem;
   margin-top: 0.4rem;
   color: var(--text-muted);
   font-size: 0.9rem;
+  line-height: 1.5;
 }
 
 .checklist li::before {
   content: "✔";
+  position: absolute;
+  left: 0;
+  top: 0;
   font-size: 0.8rem;
-  margin-top: 0.1rem;
   color: var(--accent);
 }
 
