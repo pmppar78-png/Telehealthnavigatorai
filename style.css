@@ -4,6 +4,39 @@
   box-sizing: border-box;
 }
 
+/* Global overflow prevention */
+html {
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* Prevent any element from exceeding viewport */
+img, svg, video, canvas, iframe, embed, object {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Word break for long text/URLs */
+p, li, td, th, a, span, label {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Tables responsive wrapper helper */
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
+}
+
+table {
+  max-width: 100%;
+}
+
 :root {
   --bg: #050915;
   --bg-elevated: #0b1220;
@@ -24,6 +57,8 @@ body.chat-body {
   font-family: var(--font-main);
   background: radial-gradient(circle at top left, #111827, #020617 60%);
   color: var(--text-main);
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
 /* Header */
@@ -103,6 +138,7 @@ body.chat-body {
   max-width: 960px;
   margin: 0 auto;
   padding: 1.5rem 1.25rem 3rem;
+  width: 100%;
 }
 
 .hero {
@@ -181,6 +217,8 @@ body.chat-body {
   border-radius: 1.25rem;
   padding: 1.25rem 1.25rem 1.3rem;
   border: 1px solid var(--border-subtle);
+  max-width: 100%;
+  min-width: 0;
 }
 
 .section-muted {
@@ -188,6 +226,7 @@ body.chat-body {
   border-radius: 1.25rem;
   padding: 1.4rem 1.25rem 1.5rem;
   border: 1px solid var(--border-subtle);
+  max-width: 100%;
 }
 
 /* Lists */
@@ -249,6 +288,8 @@ body.chat-body {
   background: radial-gradient(circle at top left, rgba(34, 197, 94, 0.12), rgba(15, 23, 42, 0.96));
   text-decoration: none;
   transition: border 0.15s ease, transform 0.08s ease, box-shadow 0.15s ease;
+  max-width: 100%;
+  min-width: 0;
 }
 
 .affiliate-card:hover {
@@ -404,6 +445,7 @@ body.chat-body {
   display: flex;
   flex-direction: column;
   min-height: calc(100vh - 120px);
+  width: 100%;
 }
 
 .chat-window {
@@ -528,6 +570,7 @@ body.chat-body {
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+  width: 100%;
 }
 
 .legal-page h1 {
@@ -543,6 +586,7 @@ body.chat-body {
 
 .legal-section {
   margin-bottom: 2rem;
+  max-width: 100%;
 }
 
 .legal-section h2 {
@@ -713,6 +757,7 @@ body.chat-body {
   font-size: 0.82rem;
   color: var(--text-muted);
   line-height: 1.5;
+  max-width: 100%;
 }
 
 .affiliate-disclosure-banner a {

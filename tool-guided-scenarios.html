@@ -26,10 +26,11 @@
       grid-template-columns: 1fr;
       gap: 1.25rem;
       margin-top: 1.5rem;
+      max-width: 100%;
     }
     @media (min-width: 768px) {
       .scenario-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
     .scenario-card {
@@ -39,6 +40,8 @@
       padding: 1.5rem;
       cursor: pointer;
       transition: border-color 0.15s ease, transform 0.1s ease;
+      max-width: 100%;
+      min-width: 0;
     }
     .scenario-card:hover {
       border-color: var(--accent);
@@ -70,6 +73,7 @@
       border: 1px solid var(--border-subtle);
       border-radius: 1.25rem;
       padding: 1.5rem;
+      max-width: 100%;
     }
     .flow-container.visible {
       display: block;
@@ -81,6 +85,8 @@
       margin-bottom: 1.5rem;
       padding-bottom: 1rem;
       border-bottom: 1px solid var(--border-subtle);
+      flex-wrap: wrap;
+      gap: 0.5rem;
     }
     .flow-title {
       font-weight: 700;
@@ -104,9 +110,11 @@
       display: flex;
       gap: 0.5rem;
       margin-bottom: 1.5rem;
+      flex-wrap: wrap;
     }
     .progress-step {
       flex: 1;
+      min-width: 30px;
       height: 4px;
       background: var(--bg-muted);
       border-radius: 2px;
@@ -119,6 +127,7 @@
     }
     .flow-step {
       display: none;
+      max-width: 100%;
     }
     .flow-step.active {
       display: block;
@@ -139,6 +148,7 @@
       display: flex;
       flex-direction: column;
       gap: 0.75rem;
+      max-width: 100%;
     }
     .step-option {
       display: flex;
@@ -150,6 +160,7 @@
       border-radius: 0.75rem;
       cursor: pointer;
       transition: border-color 0.15s ease, background 0.15s ease;
+      max-width: 100%;
     }
     .step-option:hover {
       border-color: var(--accent);
@@ -182,6 +193,7 @@
     }
     .option-content {
       flex: 1;
+      min-width: 0;
     }
     .option-label {
       font-weight: 600;
@@ -199,6 +211,8 @@
       margin-top: 1.5rem;
       padding-top: 1rem;
       border-top: 1px solid var(--border-subtle);
+      flex-wrap: wrap;
+      gap: 0.5rem;
     }
     .btn-back {
       background: none;
@@ -219,6 +233,7 @@
     }
     .flow-results {
       display: none;
+      max-width: 100%;
     }
     .flow-results.active {
       display: block;
@@ -229,6 +244,7 @@
       border-radius: 1rem;
       padding: 1.25rem;
       margin-bottom: 1.5rem;
+      max-width: 100%;
     }
     .results-title {
       font-weight: 700;
@@ -241,6 +257,8 @@
       justify-content: space-between;
       padding: 0.5rem 0;
       border-bottom: 1px solid var(--border-subtle);
+      flex-wrap: wrap;
+      gap: 0.5rem;
     }
     .results-item:last-child {
       border-bottom: none;
@@ -256,6 +274,7 @@
     }
     .recommendations {
       margin-top: 1.5rem;
+      max-width: 100%;
     }
     .recommendations h3 {
       font-size: 1rem;
@@ -267,6 +286,7 @@
       border-radius: 0.75rem;
       padding: 1rem;
       margin-bottom: 0.75rem;
+      max-width: 100%;
     }
     .recommendation-card h4 {
       color: #bbf7d0;
@@ -284,6 +304,7 @@
       padding: 1rem;
       background: var(--bg-muted);
       border-radius: 0.75rem;
+      max-width: 100%;
     }
     .next-steps h3 {
       font-size: 1rem;
@@ -302,6 +323,7 @@
       background: var(--bg-muted);
       border-radius: 1rem;
       text-align: center;
+      max-width: 100%;
     }
     .cta-section h3 {
       margin: 0 0 0.5rem 0;
@@ -318,6 +340,7 @@
       background: var(--bg-muted);
       border-radius: 0.75rem;
       border-left: 3px solid #f59e0b;
+      max-width: 100%;
     }
     .tool-disclaimer h3 {
       color: #f59e0b;
