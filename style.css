@@ -45,11 +45,20 @@ body.chat-body {
   z-index: 20;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 0.75rem 1.25rem;
   background: rgba(3, 7, 18, 0.92);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-subtle);
+}
+
+.site-header-inner,
+.chat-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 960px;
 }
 
 .logo-block {
@@ -350,8 +359,15 @@ body.chat-body {
   text-align: center;
 }
 
+.site-footer > *,
+.chat-footer > * {
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .footer-text {
-  margin: 0.25rem 0;
+  margin: 0.25rem auto;
 }
 
 /* Chat layout */
@@ -490,6 +506,10 @@ body.chat-body {
 @media (max-width: 640px) {
   .site-header,
   .chat-header {
+    padding: 0.75rem 1rem;
+  }
+  .site-header-inner,
+  .chat-header-inner {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.4rem;
@@ -506,6 +526,8 @@ body.chat-body {
 
 .legal-page {
   max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .legal-page h1 {
