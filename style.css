@@ -665,3 +665,160 @@ body.chat-body {
   color: #38bdf8;
   text-decoration: underline;
 }
+
+/* Personalization Panel */
+
+.personalization-panel {
+  margin-bottom: 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-elevated);
+  overflow: hidden;
+}
+
+.personalization-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: none;
+  border: none;
+  color: var(--text-main);
+  font-family: var(--font-main);
+  font-size: 0.85rem;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s ease;
+}
+
+.personalization-toggle:hover {
+  background: rgba(34, 197, 94, 0.05);
+}
+
+.toggle-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  background: var(--accent);
+  color: #022c22;
+  font-weight: 700;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.personalization-toggle[aria-expanded="true"] .toggle-icon {
+  transform: rotate(45deg);
+}
+
+.toggle-text {
+  font-weight: 600;
+}
+
+.toggle-hint {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.personalization-content {
+  padding: 0 1rem 1rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.personalization-intro {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0.75rem 0;
+}
+
+.personalization-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.pform-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.pform-group label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.pform-group select {
+  padding: 0.5rem 0.65rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border-subtle);
+  background: rgba(15, 23, 42, 0.9);
+  color: var(--text-main);
+  font-family: var(--font-main);
+  font-size: 0.85rem;
+}
+
+.pform-group select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.pform-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.pform-submit {
+  font-size: 0.85rem;
+  padding: 0.5rem 1rem;
+}
+
+.pform-skip {
+  background: none;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-family: var(--font-main);
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.pform-skip:hover {
+  border-color: var(--text-muted);
+  color: var(--text-main);
+}
+
+.personalization-panel.collapsed {
+  opacity: 0.6;
+}
+
+.personalization-panel.collapsed .personalization-toggle {
+  cursor: default;
+}
+
+.personalization-panel.collapsed .toggle-icon {
+  background: var(--text-muted);
+}
+
+.personalization-applied {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  color: var(--accent);
+}
+
+.personalization-applied::before {
+  content: "✓";
+}

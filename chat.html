@@ -28,11 +28,66 @@
   </header>
 
   <main class="chat-main">
+    <!-- Optional Personalization Panel -->
+    <div id="personalizationPanel" class="personalization-panel">
+      <button type="button" class="personalization-toggle" id="personalizationToggle" aria-expanded="false">
+        <span class="toggle-icon">+</span>
+        <span class="toggle-text">Optional: Personalize your experience</span>
+        <span class="toggle-hint">(helps the AI give more relevant suggestions)</span>
+      </button>
+      <div class="personalization-content" id="personalizationContent" style="display: none;">
+        <p class="personalization-intro">
+          Answering a few quick questions helps the AI understand your situation better.
+          <strong>This is completely optional</strong> – you can skip this and chat directly anytime.
+          Your responses are only used during this session and are not stored.
+        </p>
+        <form id="personalizationForm" class="personalization-form">
+          <div class="pform-group">
+            <label>What brings you here today?</label>
+            <select id="pq1">
+              <option value="">Skip this question</option>
+              <option value="exploring">Just exploring what's available</option>
+              <option value="stress">Dealing with stress or life challenges</option>
+              <option value="mood">Concerned about mood or emotions</option>
+              <option value="specific">Looking for help with something specific</option>
+              <option value="someone">Helping someone else find resources</option>
+            </select>
+          </div>
+          <div class="pform-group">
+            <label>What type of support interests you most?</label>
+            <select id="pq2">
+              <option value="">Skip this question</option>
+              <option value="therapy">Therapy / counseling</option>
+              <option value="psychiatry">Psychiatry / medication questions</option>
+              <option value="both">Both therapy and psychiatry</option>
+              <option value="wellness">General wellness and self-care</option>
+              <option value="unsure">Not sure yet</option>
+            </select>
+          </div>
+          <div class="pform-group">
+            <label>What's your insurance situation?</label>
+            <select id="pq3">
+              <option value="">Skip this question</option>
+              <option value="private">I have private insurance</option>
+              <option value="medicare">Medicare</option>
+              <option value="medicaid">Medicaid</option>
+              <option value="selfpay">Self-pay / no insurance</option>
+              <option value="unsure">Not sure / need to check</option>
+            </select>
+          </div>
+          <div class="pform-actions">
+            <button type="submit" class="btn-primary pform-submit">Apply &amp; Start Chatting</button>
+            <button type="button" class="pform-skip" id="skipPersonalization">Skip &amp; Chat Directly</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
     <div id="chatWindow" class="chat-window">
       <div class="message-row assistant">
         <div class="message-bubble">
           <p>
-            Hi, I’m your calm AI telehealth guide. I can help you think through different options for online
+            Hi, I'm your calm AI telehealth guide. I can help you think through different options for online
             therapy, psychiatry, and other remote support – in simple language.
           </p>
           <p class="message-small">
@@ -40,8 +95,8 @@
             please contact local emergency services or a crisis hotline right away instead of using this chat.
           </p>
           <p>
-            When you’re ready, tell me a little bit about what you’re hoping to find or what’s been on your mind.
-            If it’s helpful, I can also point you toward online platforms like BetterHelp, Talkspace, 7 Cups,
+            When you're ready, tell me a little bit about what you're hoping to find or what's been on your mind.
+            If it's helpful, I can also point you toward online platforms like BetterHelp, Talkspace, 7 Cups,
             Teladoc, Amwell, or Doctor On Demand so you can explore them on your own.
           </p>
         </div>

@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Insurance Coverage Finder – Telehealth Navigator AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Explore which telehealth platforms may work with your insurance type. Educational database with general coverage information." />
+  <link rel="stylesheet" href="style.css" />
+  <meta name="google-adsense-account" content="ca-pub-6484141649562994">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6484141649562994"
+     crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0PM741VNXH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0PM741VNXH');
+  </script>
+  <style>
+    .tool-container {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: 1.25rem;
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .filter-section {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .filter-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    @media (min-width: 640px) {
+      .filter-row {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    .filter-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .filter-group label {
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--text-main);
+    }
+    .filter-group select {
+      padding: 0.6rem 0.8rem;
+      border-radius: 0.6rem;
+      border: 1px solid var(--border-subtle);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-main);
+      font-family: var(--font-main);
+      font-size: 0.9rem;
+    }
+    .filter-group select:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    .results-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .results-count {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+    .platform-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    @media (min-width: 768px) {
+      .platform-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    .platform-card {
+      background: var(--bg-muted);
+      border: 1px solid var(--border-subtle);
+      border-radius: 1rem;
+      padding: 1rem;
+      transition: border-color 0.15s ease;
+    }
+    .platform-card:hover {
+      border-color: var(--accent);
+    }
+    .platform-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+    }
+    .platform-name {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #bbf7d0;
+    }
+    .platform-category {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      background: var(--bg-elevated);
+      padding: 0.2rem 0.5rem;
+      border-radius: 0.3rem;
+    }
+    .platform-description {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-bottom: 0.75rem;
+      line-height: 1.5;
+    }
+    .coverage-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.75rem;
+    }
+    .coverage-tag {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 0.3rem;
+      font-weight: 500;
+    }
+    .coverage-tag.yes {
+      background: rgba(34, 197, 94, 0.2);
+      color: #86efac;
+    }
+    .coverage-tag.limited {
+      background: rgba(245, 158, 11, 0.2);
+      color: #fcd34d;
+    }
+    .coverage-tag.no {
+      background: rgba(239, 68, 68, 0.15);
+      color: #fca5a5;
+    }
+    .platform-note {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 0.75rem;
+    }
+    .platform-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .platform-link {
+      font-size: 0.8rem;
+      color: var(--accent);
+      text-decoration: none;
+      padding: 0.35rem 0.7rem;
+      border: 1px solid var(--accent);
+      border-radius: 0.4rem;
+      transition: background 0.15s ease;
+    }
+    .platform-link:hover {
+      background: rgba(34, 197, 94, 0.1);
+    }
+    .no-results {
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-muted);
+    }
+    .no-results h3 {
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+    }
+    .tool-disclaimer {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background: var(--bg-muted);
+      border-radius: 0.75rem;
+      border-left: 3px solid #f59e0b;
+    }
+    .tool-disclaimer h3 {
+      color: #f59e0b;
+      font-size: 0.9rem;
+      margin: 0 0 0.5rem 0;
+    }
+    .tool-disclaimer p {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+      padding: 0.75rem;
+      background: var(--bg-muted);
+      border-radius: 0.5rem;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .legend-dot.yes { background: #86efac; }
+    .legend-dot.limited { background: #fcd34d; }
+    .legend-dot.no { background: #fca5a5; }
+    .cta-section {
+      margin-top: 2rem;
+      padding: 1.25rem;
+      background: var(--bg-muted);
+      border-radius: 1rem;
+      text-align: center;
+    }
+    .cta-section h3 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1rem;
+    }
+    .cta-section p {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin: 0 0 1rem 0;
+    }
+  </style>
+</head>
+<body class="site-body">
+  <header class="site-header">
+    <div class="logo-block">
+      <div class="status-dot"></div>
+      <div class="logo-text">
+        <span class="logo-title">TELEHEALTH NAVIGATOR AI</span>
+        <span class="logo-subtitle">Calm AI guide for online help options</span>
+      </div>
+    </div>
+    <nav class="header-actions">
+      <a href="index.html" class="btn-outline">Home</a>
+      <a href="chat.html" class="btn-primary">Talk to AI Guide</a>
+    </nav>
+  </header>
+
+  <main class="main legal-page">
+    <h1>Insurance Coverage Finder</h1>
+    <p class="legal-date">Educational database of telehealth platform coverage patterns</p>
+
+    <p>
+      Finding telehealth platforms that work with your insurance can be time-consuming. This database compiles
+      general coverage information to help you identify which platforms might be worth exploring further.
+      Always verify coverage directly with the platform and your insurance provider before starting services.
+    </p>
+
+    <div class="tool-container">
+      <div class="filter-section">
+        <div class="filter-row">
+          <div class="filter-group">
+            <label>Insurance Type</label>
+            <select id="insuranceFilter">
+              <option value="all">All insurance types</option>
+              <option value="private">Private Insurance</option>
+              <option value="medicare">Medicare</option>
+              <option value="medicaid">Medicaid</option>
+              <option value="selfpay">Self-Pay / Cash</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label>Service Category</label>
+            <select id="categoryFilter">
+              <option value="all">All categories</option>
+              <option value="therapy">Online Therapy</option>
+              <option value="psychiatry">Online Psychiatry</option>
+              <option value="general">General Telehealth</option>
+              <option value="specialty">Specialty Care</option>
+              <option value="wellness">Wellness &amp; Support</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="legend">
+        <div class="legend-item"><span class="legend-dot yes"></span> Generally accepts</div>
+        <div class="legend-item"><span class="legend-dot limited"></span> Limited / Some plans</div>
+        <div class="legend-item"><span class="legend-dot no"></span> Self-pay only</div>
+      </div>
+
+      <div class="results-header">
+        <span class="results-count" id="resultsCount">Showing all platforms</span>
+      </div>
+
+      <div class="platform-grid" id="platformGrid">
+        <!-- Platforms will be populated by JavaScript -->
+      </div>
+    </div>
+
+    <div class="tool-disclaimer">
+      <h3>Important Information About This Database</h3>
+      <p>
+        Coverage information is compiled from publicly available sources and may not reflect current policies.
+        Insurance acceptance varies by state, specific plan, and can change without notice. This database is for
+        educational purposes only. Always verify coverage directly with the platform and your insurance company.
+        In-network vs. out-of-network status significantly affects your costs. Some platforms may accept your
+        insurance for certain services but not others.
+      </p>
+    </div>
+
+    <div class="cta-section">
+      <h3>Need help understanding your options?</h3>
+      <p>Our AI guide can help you think through coverage questions and what to ask providers.</p>
+      <a href="chat.html" class="btn-primary">Talk to the AI Guide</a>
+    </div>
+
+    <section class="section section-muted" style="margin-top: 2rem;">
+      <h2>Understanding Insurance Coverage</h2>
+
+      <h3>Private Insurance</h3>
+      <p>
+        Many telehealth platforms now accept major private insurance plans. Coverage depends on whether the
+        platform is in-network with your specific plan. In-network providers typically have lower out-of-pocket
+        costs. Out-of-network services may still be partially covered but at higher cost to you.
+      </p>
+
+      <h3>Medicare</h3>
+      <p>
+        Medicare has expanded telehealth coverage significantly. Part B typically covers telehealth mental
+        health services, including therapy and psychiatry. Some platforms specialize in Medicare patients.
+        Coverage rules and locations may vary, so verify eligibility with both Medicare and the provider.
+      </p>
+
+      <h3>Medicaid</h3>
+      <p>
+        Medicaid coverage for telehealth varies significantly by state. Many states have expanded telehealth
+        benefits. Some platforms specifically work with Medicaid patients, while others do not accept Medicaid
+        at all. Check with your state's Medicaid program for current telehealth policies.
+      </p>
+
+      <h3>Self-Pay Options</h3>
+      <p>
+        Many platforms offer self-pay options with transparent pricing. Some provide sliding scale fees based
+        on income. Self-pay can sometimes offer more flexibility in choosing providers, though it may cost more
+        than using in-network insurance benefits.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Related Resources</h2>
+      <div class="affiliate-grid">
+        <a class="affiliate-card" href="tool-cost-estimator.html">
+          <span class="affiliate-name">Cost Estimator Tool</span>
+          <span class="affiliate-tagline">Estimate potential out-of-pocket costs</span>
+        </a>
+        <a class="affiliate-card" href="guide-insurance-cover-therapy.html">
+          <span class="affiliate-name">Does Insurance Cover Therapy?</span>
+          <span class="affiliate-tagline">Understanding mental health coverage</span>
+        </a>
+        <a class="affiliate-card" href="guide-medicare-telehealth.html">
+          <span class="affiliate-name">Medicare &amp; Telehealth</span>
+          <span class="affiliate-tagline">Guide for Medicare beneficiaries</span>
+        </a>
+        <a class="affiliate-card" href="guide-medicaid-telehealth.html">
+          <span class="affiliate-name">Medicaid &amp; Telehealth</span>
+          <span class="affiliate-tagline">State-by-state Medicaid coverage</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <p class="footer-text">
+      Information only. Not medical, mental-health, or crisis advice. Always talk to licensed professionals for care decisions.
+    </p>
+    <p class="footer-text small">
+      If you are in crisis or may hurt yourself or others, contact local emergency services or a crisis hotline immediately.
+    </p>
+  </footer>
+  <script src="cookie-consent.js"></script>
+  <script>
+    // Platform database (educational, general information)
+    const platforms = [
+      {
+        name: 'BetterHelp',
+        category: 'therapy',
+        description: 'Online therapy with licensed counselors via messaging, phone, and video.',
+        coverage: { private: 'no', medicare: 'no', medicaid: 'no', selfpay: 'yes' },
+        note: 'Subscription-based model. Some employers and EAPs provide coverage.',
+        url: 'https://www.betterhelp.com'
+      },
+      {
+        name: 'Talkspace',
+        category: 'therapy',
+        description: 'Messaging and live session therapy with licensed therapists.',
+        coverage: { private: 'limited', medicare: 'no', medicaid: 'no', selfpay: 'yes' },
+        note: 'Accepts some insurance plans. Check eligibility on their site.',
+        url: 'https://www.talkspace.com'
+      },
+      {
+        name: 'Cerebral',
+        category: 'psychiatry',
+        description: 'Online psychiatry and therapy for various mental health conditions.',
+        coverage: { private: 'limited', medicare: 'no', medicaid: 'no', selfpay: 'yes' },
+        note: 'Accepts select insurance plans in certain states.',
+        url: 'https://www.cerebral.com'
+      },
+      {
+        name: 'Talkiatry',
+        category: 'psychiatry',
+        description: 'In-network psychiatry services with focus on insurance acceptance.',
+        coverage: { private: 'yes', medicare: 'yes', medicaid: 'limited', selfpay: 'yes' },
+        note: 'Strong focus on in-network coverage. Wide insurance acceptance.',
+        url: 'https://www.talkiatry.com'
+      },
+      {
+        name: 'Teladoc',
+        category: 'general',
+        description: 'Comprehensive telehealth for general medical and mental health needs.',
+        coverage: { private: 'yes', medicare: 'yes', medicaid: 'limited', selfpay: 'yes' },
+        note: 'Widely accepted by insurers. Often included in employer benefits.',
+        url: 'https://www.teladoc.com'
+      },
+      {
+        name: 'MDLive',
+        category: 'general',
+        description: '24/7 telehealth for medical, dermatology, and mental health services.',
+        coverage: { private: 'yes', medicare: 'yes', medicaid: 'limited', selfpay: 'yes' },
+        note: 'Broad insurance acceptance. Check plan-specific coverage.',
+        url: 'https://www.mdlive.com'
+      },
+      {
+        name: 'Amwell',
+        category: 'general',
+        description: 'Virtual visits for urgent care, therapy, and psychiatry.',
+        coverage: { private: 'yes', medicare: 'yes', medicaid: 'limited', selfpay: 'yes' },
+        note: 'Partners with many health plans. Coverage varies by service.',
+        url: 'https://www.amwell.com'
+      },
+      {
+        name: 'Headway',
+        category: 'therapy',
+        description: 'Connects patients with in-network therapists and psychiatrists.',
+        coverage: { private: 'yes', medicare: 'no', medicaid: 'no', selfpay: 'limited' },
+        note: 'Focus on helping patients use insurance benefits.',
+        url: 'https://www.headway.co'
+      },
+      {
+        name: 'Grow Therapy',
+        category: 'therapy',
+        description: 'Affordable therapy with focus on insurance acceptance.',
+        coverage: { private: 'yes', medicare: 'no', medicaid: 'limited', selfpay: 'yes' },
+        note: 'Works to maximize insurance coverage for patients.',
+        url: 'https://www.growtherapy.com'
+      },
+      {
+        name: 'Alma',
+        category: 'therapy',
+        description: 'Therapist matching service with insurance billing support.',
+        coverage: { private: 'yes', medicare: 'no', medicaid: 'no', selfpay: 'yes' },
+        note: 'Helps therapists accept insurance, benefiting patients.',
+        url: 'https://www.helloalma.com'
+      },
+      {
+        name: 'Rula',
+        category: 'therapy',
+        description: 'Fast therapist matching with focus on insurance coverage.',
+        coverage: { private: 'yes', medicare: 'no', medicaid: 'no', selfpay: 'yes' },
+        note: 'Emphasizes quick matching with in-network providers.',
+        url: 'https://www.rula.com'
+      },
+      {
+        name: 'Done',
+        category: 'specialty',
+        description: 'Online evaluation and treatment services for ADHD.',
+        coverage: { private: 'limited', medicare: 'no', medicaid: 'no', selfpay: 'yes' },
+        note: 'Specialty focus. Insurance acceptance varies.',
+        url: 'https://www.donefirst.com'
+      },
+      {
+        name: 'Minded',
+        category: 'psychiatry',
+        description: 'Online psychiatric care and medication management.',
+        coverage: { private: 'limited', medicare: 'no', medicaid: 'no', selfpay: 'yes' },
+        note: 'Accepts select insurance plans.',
+        url: 'https://www.hellominded.com'
+      },
+      {
+        name: 'Brightside',
+        category: 'psychiatry',
+        description: 'Online therapy and psychiatry for anxiety and depression.',
+        coverage: { private: 'limited', medicare: 'no', medicaid: 'no', selfpay: 'yes' },
+        note: 'Growing insurance partnerships.',
+        url: 'https://www.brightside.com'
+      },
+      {
+        name: 'NOCD',
+        category: 'specialty',
+        description: 'Specialized treatment for OCD with licensed therapists.',
+        coverage: { private: 'yes', medicare: 'no', medicaid: 'limited', selfpay: 'yes' },
+        note: 'Strong insurance acceptance for specialty OCD care.',
+        url: 'https://www.treatmyocd.com'
+      },
+      {
+        name: 'PlushCare',
+        category: 'general',
+        description: 'Virtual primary care including mental health services.',
+        coverage: { private: 'yes', medicare: 'yes', medicaid: 'limited', selfpay: 'yes' },
+        note: 'Good insurance acceptance. Part of larger health network.',
+        url: 'https://www.plushcare.com'
+      },
+      {
+        name: 'SonderMind',
+        category: 'therapy',
+        description: 'Therapist matching with in-network focus.',
+        coverage: { private: 'yes', medicare: 'no', medicaid: 'no', selfpay: 'yes' },
+        note: 'Strong emphasis on insurance coverage.',
+        url: 'https://www.sondermind.com'
+      },
+      {
+        name: 'Calm',
+        category: 'wellness',
+        description: 'Meditation, sleep, and relaxation app.',
+        coverage: { private: 'no', medicare: 'no', medicaid: 'no', selfpay: 'yes' },
+        note: 'Subscription app. Some employers provide free access.',
+        url: 'https://www.calm.com'
+      },
+      {
+        name: 'Headspace',
+        category: 'wellness',
+        description: 'Mindfulness and meditation for everyday life.',
+        coverage: { private: 'no', medicare: 'no', medicaid: 'no', selfpay: 'yes' },
+        note: 'Subscription app. Often included in employer wellness benefits.',
+        url: 'https://www.headspace.com'
+      },
+      {
+        name: '7 Cups',
+        category: 'wellness',
+        description: 'Online emotional support and affordable therapy options.',
+        coverage: { private: 'no', medicare: 'no', medicaid: 'no', selfpay: 'yes' },
+        note: 'Free peer support available. Therapy services are self-pay.',
+        url: 'https://www.7cups.com'
+      },
+      {
+        name: 'Sesame',
+        category: 'general',
+        description: 'Affordable cash-pay telehealth with transparent pricing.',
+        coverage: { private: 'no', medicare: 'no', medicaid: 'no', selfpay: 'yes' },
+        note: 'Designed for self-pay with clear upfront pricing.',
+        url: 'https://www.sesamecare.com'
+      },
+      {
+        name: 'K Health',
+        category: 'general',
+        description: 'AI-assisted primary care with affordable visits.',
+        coverage: { private: 'limited', medicare: 'no', medicaid: 'no', selfpay: 'yes' },
+        note: 'Low-cost model. Some insurance partnerships.',
+        url: 'https://www.khealth.com'
+      }
+    ];
+
+    const categoryLabels = {
+      'therapy': 'Online Therapy',
+      'psychiatry': 'Psychiatry',
+      'general': 'General Telehealth',
+      'specialty': 'Specialty Care',
+      'wellness': 'Wellness & Support'
+    };
+
+    function renderPlatforms(filteredPlatforms) {
+      const grid = document.getElementById('platformGrid');
+      const count = document.getElementById('resultsCount');
+
+      if (filteredPlatforms.length === 0) {
+        grid.innerHTML = `
+          <div class="no-results" style="grid-column: 1 / -1;">
+            <h3>No platforms match your filters</h3>
+            <p>Try adjusting your insurance type or service category filters.</p>
+          </div>
+        `;
+        count.textContent = 'No platforms found';
+        return;
+      }
+
+      count.textContent = `Showing ${filteredPlatforms.length} platform${filteredPlatforms.length === 1 ? '' : 's'}`;
+
+      grid.innerHTML = filteredPlatforms.map(platform => {
+        const coverageTags = Object.entries(platform.coverage).map(([type, status]) => {
+          const labels = { private: 'Private', medicare: 'Medicare', medicaid: 'Medicaid', selfpay: 'Self-Pay' };
+          const statusClass = status === 'yes' ? 'yes' : (status === 'limited' ? 'limited' : 'no');
+          return `<span class="coverage-tag ${statusClass}">${labels[type]}</span>`;
+        }).join('');
+
+        return `
+          <div class="platform-card">
+            <div class="platform-header">
+              <span class="platform-name">${platform.name}</span>
+              <span class="platform-category">${categoryLabels[platform.category]}</span>
+            </div>
+            <p class="platform-description">${platform.description}</p>
+            <div class="coverage-tags">${coverageTags}</div>
+            <p class="platform-note">${platform.note}</p>
+            <div class="platform-actions">
+              <a href="${platform.url}" target="_blank" rel="noopener noreferrer sponsored" class="platform-link">Visit Website</a>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function filterPlatforms() {
+      const insuranceFilter = document.getElementById('insuranceFilter').value;
+      const categoryFilter = document.getElementById('categoryFilter').value;
+
+      let filtered = platforms;
+
+      if (categoryFilter !== 'all') {
+        filtered = filtered.filter(p => p.category === categoryFilter);
+      }
+
+      if (insuranceFilter !== 'all') {
+        filtered = filtered.filter(p => {
+          const coverage = p.coverage[insuranceFilter];
+          return coverage === 'yes' || coverage === 'limited';
+        });
+      }
+
+      renderPlatforms(filtered);
+    }
+
+    // Initialize
+    document.getElementById('insuranceFilter').addEventListener('change', filterPlatforms);
+    document.getElementById('categoryFilter').addEventListener('change', filterPlatforms);
+    renderPlatforms(platforms);
+  </script>
+</body>
+</html>

@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>State-by-State Telehealth Resources – Telehealth Navigator AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Explore telehealth access, policies, and resources by state. Interactive map and data on mental health telehealth across the United States." />
+  <link rel="stylesheet" href="style.css" />
+  <meta name="google-adsense-account" content="ca-pub-6484141649562994">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6484141649562994"
+     crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0PM741VNXH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0PM741VNXH');
+  </script>
+  <style>
+    .map-container {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: 1.25rem;
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .map-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .map-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .map-subtitle {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-top: 0.25rem;
+    }
+    .map-legend {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+    }
+    .legend-dot.excellent { background: #22c55e; }
+    .legend-dot.good { background: #84cc16; }
+    .legend-dot.moderate { background: #eab308; }
+    .legend-dot.developing { background: #f97316; }
+    .us-map-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      margin-bottom: 1rem;
+    }
+    .us-map {
+      display: grid;
+      grid-template-columns: repeat(11, 1fr);
+      gap: 3px;
+      min-width: 600px;
+      padding: 1rem 0;
+    }
+    .state-cell {
+      aspect-ratio: 1;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+      position: relative;
+    }
+    .state-cell:hover {
+      transform: scale(1.1);
+      z-index: 10;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+    .state-cell.selected {
+      outline: 2px solid white;
+      z-index: 11;
+    }
+    .state-cell.empty {
+      background: transparent;
+      cursor: default;
+    }
+    .state-cell.empty:hover {
+      transform: none;
+      box-shadow: none;
+    }
+    .state-cell.excellent { background: #22c55e; color: #052e16; }
+    .state-cell.good { background: #84cc16; color: #1a2e05; }
+    .state-cell.moderate { background: #eab308; color: #422006; }
+    .state-cell.developing { background: #f97316; color: #431407; }
+    .state-details {
+      display: none;
+      background: var(--bg-muted);
+      border: 1px solid var(--border-subtle);
+      border-radius: 1rem;
+      padding: 1.25rem;
+      margin-top: 1rem;
+    }
+    .state-details.visible {
+      display: block;
+    }
+    .state-details-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+    .state-name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .state-rating {
+      padding: 0.25rem 0.6rem;
+      border-radius: 0.4rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .state-rating.excellent { background: rgba(34, 197, 94, 0.2); color: #86efac; }
+    .state-rating.good { background: rgba(132, 204, 22, 0.2); color: #bef264; }
+    .state-rating.moderate { background: rgba(234, 179, 8, 0.2); color: #fde047; }
+    .state-rating.developing { background: rgba(249, 115, 22, 0.2); color: #fdba74; }
+    .state-info-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    @media (min-width: 640px) {
+      .state-info-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    .info-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: 0.75rem;
+      padding: 1rem;
+    }
+    .info-card h4 {
+      font-size: 0.85rem;
+      color: var(--accent);
+      margin: 0 0 0.5rem 0;
+    }
+    .info-card p, .info-card ul {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      line-height: 1.5;
+      margin: 0;
+    }
+    .info-card ul {
+      padding-left: 1.25rem;
+      margin-top: 0.5rem;
+    }
+    .info-card li {
+      margin-bottom: 0.25rem;
+    }
+    .state-close {
+      background: none;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      padding: 0.35rem 0.7rem;
+      border-radius: 0.4rem;
+      cursor: pointer;
+      font-size: 0.8rem;
+      margin-top: 1rem;
+    }
+    .state-close:hover {
+      border-color: var(--text-muted);
+      color: var(--text-main);
+    }
+    .search-filter {
+      margin-bottom: 1rem;
+    }
+    .search-input {
+      width: 100%;
+      max-width: 300px;
+      padding: 0.6rem 0.85rem;
+      border-radius: 0.6rem;
+      border: 1px solid var(--border-subtle);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-main);
+      font-family: var(--font-main);
+      font-size: 0.9rem;
+    }
+    .search-input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    .stats-overview {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    @media (min-width: 768px) {
+      .stats-overview {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    .stat-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: 1rem;
+      padding: 1rem;
+      text-align: center;
+    }
+    .stat-value {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+    .state-list {
+      margin-top: 2rem;
+    }
+    .state-list-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .state-list h3 {
+      margin: 0;
+    }
+    .view-toggle {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .view-btn {
+      padding: 0.4rem 0.8rem;
+      border-radius: 0.4rem;
+      border: 1px solid var(--border-subtle);
+      background: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+    .view-btn.active {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .state-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+    .state-table th {
+      text-align: left;
+      padding: 0.75rem;
+      border-bottom: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+    .state-table td {
+      padding: 0.75rem;
+      border-bottom: 1px solid var(--border-subtle);
+      color: var(--text-main);
+    }
+    .state-table tr:hover {
+      background: rgba(34, 197, 94, 0.05);
+    }
+    .state-table .rating-cell {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .rating-indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+    .rating-indicator.excellent { background: #22c55e; }
+    .rating-indicator.good { background: #84cc16; }
+    .rating-indicator.moderate { background: #eab308; }
+    .rating-indicator.developing { background: #f97316; }
+    .table-wrapper {
+      overflow-x: auto;
+    }
+    .methodology {
+      margin-top: 2rem;
+      padding: 1.25rem;
+      background: var(--bg-muted);
+      border-radius: 1rem;
+      border-left: 3px solid var(--accent);
+    }
+    .methodology h3 {
+      color: var(--accent);
+      font-size: 1rem;
+      margin: 0 0 0.75rem 0;
+    }
+    .methodology p {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      line-height: 1.6;
+      margin: 0 0 0.5rem 0;
+    }
+    .tool-disclaimer {
+      margin-top: 2rem;
+      padding: 1rem;
+      background: var(--bg-muted);
+      border-radius: 0.75rem;
+      border-left: 3px solid #f59e0b;
+    }
+    .tool-disclaimer h3 {
+      color: #f59e0b;
+      font-size: 0.9rem;
+      margin: 0 0 0.5rem 0;
+    }
+    .tool-disclaimer p {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+    .cta-section {
+      margin-top: 2rem;
+      padding: 1.25rem;
+      background: var(--bg-muted);
+      border-radius: 1rem;
+      text-align: center;
+    }
+    .cta-section h3 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1rem;
+    }
+    .cta-section p {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin: 0 0 1rem 0;
+    }
+  </style>
+</head>
+<body class="site-body">
+  <header class="site-header">
+    <div class="logo-block">
+      <div class="status-dot"></div>
+      <div class="logo-text">
+        <span class="logo-title">TELEHEALTH NAVIGATOR AI</span>
+        <span class="logo-subtitle">Calm AI guide for online help options</span>
+      </div>
+    </div>
+    <nav class="header-actions">
+      <a href="index.html" class="btn-outline">Home</a>
+      <a href="chat.html" class="btn-primary">Talk to AI Guide</a>
+    </nav>
+  </header>
+
+  <main class="main legal-page">
+    <h1>State-by-State Telehealth Resources</h1>
+    <p class="legal-date">Interactive analysis of telehealth access and policies across the United States</p>
+
+    <p>
+      Telehealth access and regulations vary significantly by state. This resource provides an overview of
+      telehealth-friendliness, Medicaid coverage patterns, and key considerations for residents of each state.
+      Select a state on the map or use the table below to explore detailed information.
+    </p>
+
+    <div class="stats-overview">
+      <div class="stat-card">
+        <div class="stat-value">50</div>
+        <div class="stat-label">States with telehealth mental health coverage</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">48+</div>
+        <div class="stat-label">States with Medicaid telehealth policies</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">40+</div>
+        <div class="stat-label">States with audio-only coverage</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">Most</div>
+        <div class="stat-label">States with parity laws</div>
+      </div>
+    </div>
+
+    <div class="map-container">
+      <div class="map-header">
+        <div>
+          <div class="map-title">U.S. Telehealth Access Overview</div>
+          <div class="map-subtitle">Click a state to view detailed information</div>
+        </div>
+        <div class="map-legend">
+          <div class="legend-item"><span class="legend-dot excellent"></span> Excellent access</div>
+          <div class="legend-item"><span class="legend-dot good"></span> Good access</div>
+          <div class="legend-item"><span class="legend-dot moderate"></span> Moderate access</div>
+          <div class="legend-item"><span class="legend-dot developing"></span> Developing</div>
+        </div>
+      </div>
+
+      <div class="search-filter">
+        <input type="text" class="search-input" id="stateSearch" placeholder="Search for a state...">
+      </div>
+
+      <div class="us-map-wrapper">
+        <div class="us-map" id="usMap">
+          <!-- Map will be rendered by JavaScript -->
+        </div>
+      </div>
+
+      <div class="state-details" id="stateDetails">
+        <!-- State details will be populated by JavaScript -->
+      </div>
+    </div>
+
+    <div class="state-list">
+      <div class="state-list-header">
+        <h3>All States</h3>
+      </div>
+      <div class="table-wrapper">
+        <table class="state-table" id="stateTable">
+          <thead>
+            <tr>
+              <th>State</th>
+              <th>Access Rating</th>
+              <th>Medicaid Telehealth</th>
+              <th>Parity Law</th>
+              <th>Audio-Only</th>
+            </tr>
+          </thead>
+          <tbody id="stateTableBody">
+            <!-- Table will be populated by JavaScript -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="methodology">
+      <h3>About This Data</h3>
+      <p>
+        Access ratings are based on a composite assessment of multiple factors including: state telehealth parity
+        laws, Medicaid reimbursement policies, licensure requirements, audio-only coverage, originating site
+        requirements, and overall regulatory environment for telehealth services.
+      </p>
+      <p>
+        Data is compiled from publicly available sources including state legislation, Medicaid agency publications,
+        and policy reports. Telehealth policies change frequently; this information reflects general patterns and
+        may not reflect the most recent legislative changes. Always verify current policies with your insurance
+        provider and state regulatory agencies.
+      </p>
+    </div>
+
+    <div class="tool-disclaimer">
+      <h3>Important Information</h3>
+      <p>
+        This resource provides general educational information about state telehealth landscapes. It does not
+        constitute legal, medical, or insurance advice. Telehealth policies and regulations change frequently.
+        Coverage availability depends on your specific insurance plan, provider, and circumstances. Always verify
+        current policies and coverage with your insurance company and healthcare providers before making decisions
+        about your care.
+      </p>
+    </div>
+
+    <div class="cta-section">
+      <h3>Need help understanding your options?</h3>
+      <p>Our AI guide can help you think through state-specific considerations for your telehealth journey.</p>
+      <a href="chat.html" class="btn-primary">Talk to the AI Guide</a>
+    </div>
+
+    <section class="section" style="margin-top: 2rem;">
+      <h2>Related Resources</h2>
+      <div class="affiliate-grid">
+        <a class="affiliate-card" href="tool-insurance-finder.html">
+          <span class="affiliate-name">Insurance Coverage Finder</span>
+          <span class="affiliate-tagline">Find platforms that accept your insurance</span>
+        </a>
+        <a class="affiliate-card" href="guide-medicaid-telehealth.html">
+          <span class="affiliate-name">Medicaid &amp; Telehealth</span>
+          <span class="affiliate-tagline">State Medicaid telehealth guide</span>
+        </a>
+        <a class="affiliate-card" href="guide-medicare-telehealth.html">
+          <span class="affiliate-name">Medicare &amp; Telehealth</span>
+          <span class="affiliate-tagline">Medicare telehealth coverage</span>
+        </a>
+        <a class="affiliate-card" href="guide-telehealth-rural-areas.html">
+          <span class="affiliate-name">Rural Telehealth</span>
+          <span class="affiliate-tagline">Options for remote areas</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <p class="footer-text">
+      Information only. Not medical, mental-health, or crisis advice. Always talk to licensed professionals for care decisions.
+    </p>
+    <p class="footer-text small">
+      If you are in crisis or may hurt yourself or others, contact local emergency services or a crisis hotline immediately.
+    </p>
+  </footer>
+  <script src="cookie-consent.js"></script>
+  <script>
+    // State data (educational, general patterns)
+    const stateData = {
+      'AL': { name: 'Alabama', rating: 'moderate', medicaid: 'Yes', parity: 'Limited', audioOnly: 'Yes', notes: 'Medicaid covers telehealth; some restrictions on originating sites.' },
+      'AK': { name: 'Alaska', rating: 'good', medicaid: 'Yes', parity: 'Yes', audioOnly: 'Yes', notes: 'Strong telehealth policies given geographic challenges; good Medicaid coverage.' },
+      'AZ': { name: 'Arizona', rating: 'excellent', medicaid: 'Yes', parity: 'Yes', audioOnly: 'Yes', notes: 'Comprehensive telehealth parity law; strong Medicaid coverage.' },
+      'AR': { name: 'Arkansas', rating: 'good', medicaid: 'Yes', parity: 'Yes', audioOnly: 'Yes', notes: 'Expanded telehealth policies; Medicaid covers mental health services.' },
+      'CA': { name: 'California', rating: 'excellent', medicaid: 'Yes', parity: 'Yes', audioOnly: 'Yes', notes: 'Strong consumer protections; comprehensive telehealth coverage.' },
+      'CO': { name: 'Colorado', rating: 'excellent', medicaid: 'Yes', parity: 'Yes', audioOnly: 'Yes', notes: 'Robust telehealth parity law; expanded Medicaid coverage.' },
+      'CT': { name: 'Connecticut', rating: 'excellent', medicaid: 'Yes', parity: 'Yes', audioOnly: 'Yes', notes: 'Strong mental health parity; comprehensive telehealth coverage.' },
+      'DE': { name: 'Delaware', rating: 'good', medicaid: 'Yes', parity: 'Yes', audioOnly: 'Yes', notes: 'Good telehealth infrastructure; Medicaid covers mental health telehealth.' },
+      'FL': { name: 'Florida', rating: 'good', medicaid: 'Yes', parity: 'Limited', audioOnly: 'Yes', notes: 'Large telehealth market; Medicaid coverage expanding.' },
+      'GA': { name: 'Georgia', rating: 'moderate', medicaid: 'Yes', parity: 'Limited', audioOnly: 'Yes', notes: 'Growing telehealth access; Medicaid covers some telehealth services.' },
+      'HI': { name: 'Hawaii', rating: 'good', medicaid: 'Yes', parity: 'Yes', audioOnly: 'Yes', notes: 'Island geography makes telehealth important; good coverage.' },
+      'ID': { name: 'Idaho', rating: 'moderate', medicaid: 'Yes', parity: 'Limited', audioOnly: 'Yes', notes: 'Rural areas benefit from telehealth; developing policies.' },
+      'IL': { name: 'Illinois', rating: 'excellent', medicaid: 'Yes', parity: 'Yes', audioOnly: 'Yes', notes: 'Strong telehealth parity law; comprehensive Medicaid coverage.' },
+      'IN': { name: 'Indiana', rating: 'good', medicaid: 'Yes', parity: 'Yes', audioOnly: 'Yes', notes: 'Expanded telehealth access; good Medicaid coverage.' },
+      'IA': { name: 'Iowa', rating: 'good', medicaid: 'Yes', parity: 'Yes', audioOnly: 'Yes', notes: 'Good telehealth infrastructure for rural populations.' },
+      'KS': { name: 'Kansas', rating: 'moderate', medicaid: 'Yes', parity: 'Limited', audioOnly: 'Yes', notes: 'Developing telehealth policies; Medicaid covers telehealth.' },
+      'KY': { name: 'Kentucky', rating: 'good', medicaid: 'Yes', parity: 'Yes', audioOnly: 'Yes', notes: 'Expanded Medicaid with telehealth coverage.' },
+      'LA': { name: 'Louisiana', rating: 'good', medicaid: 'Yes', parity: 'Yes', audioOnly: 'Yes', notes: 'Good telehealth coverage; Medicaid expansion included telehealth.' },
+      'ME': { name: 'Maine', rating: 'excellent', medicaid: 'Yes', parity: 'Yes', audioOnly: 'Yes', notes: 'Strong telehealth policies; good rural access.' },
+      'MD': { name: 'Maryland', rating: 'excellent', medicaid: 'Yes', parity: 'Yes', audioOnly: 'Yes', notes: 'Comprehensive telehealth parity; strong Medicaid coverage.' },
+      'MA': { name: 'Massachusetts', rating: 'excellent', medicaid: 'Yes', parity: 'Yes', audioOnly: 'Yes', notes: 'Strong telehealth infrastructure; comprehensive coverage.' },
+      'MI': { name: 'Michigan', rating: 'good', medicaid: 'Yes', parity: 'Yes', audioOnly: 'Yes', notes: 'Good telehealth access; Medicaid covers mental health telehealth.' },
+      'MN': { name: 'Minnesota', rating: 'excellent', medicaid: 'Yes', parity: 'Yes', audioOnly: 'Yes', notes: 'Pioneer in telehealth; comprehensive coverage.' },
+      'MS': { name: 'Mississippi', rating: 'moderate', medicaid: 'Yes', parity: 'Limited', audioOnly: 'Yes', notes: 'Developing telehealth infrastructure; Medicaid covers some services.' },
+      'MO': { name: 'Missouri', rating: 'good', medicaid: 'Yes', parity: 'Yes', audioOnly: 'Yes', notes: 'Expanded Medicaid includes telehealth coverage.' },
+      'MT': { name: 'Montana', rating: 'good', medicaid: 'Yes', parity: 'Yes', audioOnly: 'Yes', notes: 'Rural telehealth important; good Medicaid coverage.' },
+      'NE': { name: 'Nebraska', rating: 'good', medicaid: 'Yes', parity: 'Yes', audioOnly: 'Yes', notes: 'Good telehealth policies for rural access.' },
+      'NV': { name: 'Nevada', rating: 'good', medicaid: 'Yes', parity: 'Yes', audioOnly: 'Yes', notes: 'Expanding telehealth access; good Medicaid coverage.' },
+      'NH': { name: 'New Hampshire', rating: 'good', medicaid: 'Yes', parity: 'Yes', audioOnly: 'Yes', notes: 'Good telehealth infrastructure; Medicaid covers telehealth.' },
+      'NJ': { name: 'New Jersey', rating: 'excellent', medicaid: 'Yes', parity: 'Yes', audioOnly: 'Yes', notes: 'Strong telehealth parity law; comprehensive coverage.' },
+      'NM': { name: 'New Mexico', rating: 'good', medicaid: 'Yes', parity: 'Yes', audioOnly: 'Yes', notes: 'Good rural telehealth access; Medicaid covers telehealth.' },
+      'NY': { name: 'New York', rating: 'excellent', medicaid: 'Yes', parity: 'Yes', audioOnly: 'Yes', notes: 'Comprehensive telehealth laws; strong Medicaid coverage.' },
+      'NC': { name: 'North Carolina', rating: 'good', medicaid: 'Yes', parity: 'Yes', audioOnly: 'Yes', notes: 'Good telehealth access; Medicaid covers mental health telehealth.' },
+      'ND': { name: 'North Dakota', rating: 'good', medicaid: 'Yes', parity: 'Yes', audioOnly: 'Yes', notes: 'Rural telehealth important; good coverage.' },
+      'OH': { name: 'Ohio', rating: 'good', medicaid: 'Yes', parity: 'Yes', audioOnly: 'Yes', notes: 'Expanded Medicaid includes telehealth; good access.' },
+      'OK': { name: 'Oklahoma', rating: 'moderate', medicaid: 'Yes', parity: 'Limited', audioOnly: 'Yes', notes: 'Developing telehealth policies; Medicaid covers some telehealth.' },
+      'OR': { name: 'Oregon', rating: 'excellent', medicaid: 'Yes', parity: 'Yes', audioOnly: 'Yes', notes: 'Strong telehealth policies; comprehensive coverage.' },
+      'PA': { name: 'Pennsylvania', rating: 'good', medicaid: 'Yes', parity: 'Yes', audioOnly: 'Yes', notes: 'Good telehealth access; Medicaid covers telehealth.' },
+      'RI': { name: 'Rhode Island', rating: 'excellent', medicaid: 'Yes', parity: 'Yes', audioOnly: 'Yes', notes: 'Strong telehealth parity; comprehensive coverage.' },
+      'SC': { name: 'South Carolina', rating: 'moderate', medicaid: 'Yes', parity: 'Limited', audioOnly: 'Yes', notes: 'Growing telehealth access; Medicaid covers some services.' },
+      'SD': { name: 'South Dakota', rating: 'moderate', medicaid: 'Yes', parity: 'Limited', audioOnly: 'Yes', notes: 'Rural telehealth developing; Medicaid covers telehealth.' },
+      'TN': { name: 'Tennessee', rating: 'good', medicaid: 'Yes', parity: 'Yes', audioOnly: 'Yes', notes: 'Good telehealth policies; Medicaid covers mental health telehealth.' },
+      'TX': { name: 'Texas', rating: 'good', medicaid: 'Yes', parity: 'Yes', audioOnly: 'Yes', notes: 'Large telehealth market; good private insurance coverage.' },
+      'UT': { name: 'Utah', rating: 'good', medicaid: 'Yes', parity: 'Yes', audioOnly: 'Yes', notes: 'Good telehealth infrastructure; Medicaid covers telehealth.' },
+      'VT': { name: 'Vermont', rating: 'excellent', medicaid: 'Yes', parity: 'Yes', audioOnly: 'Yes', notes: 'Strong telehealth policies; comprehensive rural access.' },
+      'VA': { name: 'Virginia', rating: 'excellent', medicaid: 'Yes', parity: 'Yes', audioOnly: 'Yes', notes: 'Strong telehealth parity law; good Medicaid coverage.' },
+      'WA': { name: 'Washington', rating: 'excellent', medicaid: 'Yes', parity: 'Yes', audioOnly: 'Yes', notes: 'Comprehensive telehealth coverage; strong parity law.' },
+      'WV': { name: 'West Virginia', rating: 'good', medicaid: 'Yes', parity: 'Yes', audioOnly: 'Yes', notes: 'Rural telehealth important; Medicaid covers telehealth.' },
+      'WI': { name: 'Wisconsin', rating: 'good', medicaid: 'Yes', parity: 'Yes', audioOnly: 'Yes', notes: 'Good telehealth access; Medicaid covers mental health telehealth.' },
+      'WY': { name: 'Wyoming', rating: 'moderate', medicaid: 'Yes', parity: 'Limited', audioOnly: 'Yes', notes: 'Rural telehealth developing; Medicaid covers some services.' },
+      'DC': { name: 'Washington D.C.', rating: 'excellent', medicaid: 'Yes', parity: 'Yes', audioOnly: 'Yes', notes: 'Strong telehealth policies; comprehensive coverage.' }
+    };
+
+    // Map layout (simplified US shape using grid)
+    const mapLayout = [
+      ['', '', '', '', '', '', '', '', '', '', 'ME'],
+      ['', 'WA', 'MT', 'ND', 'MN', '', 'WI', '', '', 'VT', 'NH'],
+      ['', 'OR', 'ID', 'SD', 'IA', 'IL', 'MI', '', 'NY', 'MA', 'RI'],
+      ['', 'NV', 'WY', 'NE', 'MO', 'IN', 'OH', 'PA', 'NJ', 'CT', ''],
+      ['CA', 'UT', 'CO', 'KS', 'AR', 'KY', 'WV', 'VA', 'MD', 'DE', ''],
+      ['', 'AZ', 'NM', 'OK', 'LA', 'TN', 'NC', 'SC', 'DC', '', ''],
+      ['', '', '', 'TX', 'MS', 'AL', 'GA', '', '', '', ''],
+      ['AK', '', '', '', '', '', '', 'FL', '', '', ''],
+      ['', 'HI', '', '', '', '', '', '', '', '', '']
+    ];
+
+    let selectedState = null;
+
+    function renderMap() {
+      const mapEl = document.getElementById('usMap');
+      mapEl.innerHTML = mapLayout.map(row =>
+        row.map(abbr => {
+          if (!abbr) return '<div class="state-cell empty"></div>';
+          const state = stateData[abbr];
+          return `<div class="state-cell ${state.rating}" data-state="${abbr}" title="${state.name}">${abbr}</div>`;
+        }).join('')
+      ).join('');
+
+      // Add click handlers
+      mapEl.querySelectorAll('.state-cell:not(.empty)').forEach(cell => {
+        cell.addEventListener('click', () => selectState(cell.dataset.state));
+      });
+    }
+
+    function selectState(abbr) {
+      // Update selected state
+      document.querySelectorAll('.state-cell').forEach(c => c.classList.remove('selected'));
+      document.querySelector(`[data-state="${abbr}"]`)?.classList.add('selected');
+
+      selectedState = abbr;
+      const state = stateData[abbr];
+
+      const detailsEl = document.getElementById('stateDetails');
+      detailsEl.innerHTML = `
+        <div class="state-details-header">
+          <div>
+            <div class="state-name">${state.name}</div>
+          </div>
+          <div class="state-rating ${state.rating}">${state.rating.charAt(0).toUpperCase() + state.rating.slice(1)} Access</div>
+        </div>
+        <div class="state-info-grid">
+          <div class="info-card">
+            <h4>Telehealth Coverage</h4>
+            <p><strong>Medicaid Telehealth:</strong> ${state.medicaid}</p>
+            <p><strong>Parity Law:</strong> ${state.parity}</p>
+            <p><strong>Audio-Only:</strong> ${state.audioOnly}</p>
+          </div>
+          <div class="info-card">
+            <h4>Key Information</h4>
+            <p>${state.notes}</p>
+          </div>
+          <div class="info-card">
+            <h4>What This Means</h4>
+            <ul>
+              <li>Private insurance likely covers telehealth services</li>
+              <li>${state.medicaid === 'Yes' ? 'Medicaid covers mental health telehealth' : 'Check Medicaid coverage details'}</li>
+              <li>${state.parity === 'Yes' ? 'Telehealth parity requires coverage similar to in-person' : 'Coverage may vary by plan'}</li>
+              <li>${state.audioOnly === 'Yes' ? 'Phone-only sessions may be covered' : 'Video may be required for coverage'}</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <h4>Recommended Next Steps</h4>
+            <ul>
+              <li>Contact your insurance to verify telehealth benefits</li>
+              <li>Ask about in-network telehealth providers</li>
+              <li>Check if specific platforms work with your plan</li>
+              <li>Understand copay differences for telehealth vs in-person</li>
+            </ul>
+          </div>
+        </div>
+        <button class="state-close" onclick="closeStateDetails()">Close Details</button>
+      `;
+      detailsEl.classList.add('visible');
+      detailsEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function closeStateDetails() {
+      document.getElementById('stateDetails').classList.remove('visible');
+      document.querySelectorAll('.state-cell').forEach(c => c.classList.remove('selected'));
+      selectedState = null;
+    }
+
+    function renderTable() {
+      const tbody = document.getElementById('stateTableBody');
+      const states = Object.entries(stateData).sort((a, b) => a[1].name.localeCompare(b[1].name));
+
+      tbody.innerHTML = states.map(([abbr, state]) => `
+        <tr onclick="selectState('${abbr}')" style="cursor: pointer;">
+          <td><strong>${state.name}</strong></td>
+          <td>
+            <div class="rating-cell">
+              <span class="rating-indicator ${state.rating}"></span>
+              ${state.rating.charAt(0).toUpperCase() + state.rating.slice(1)}
+            </div>
+          </td>
+          <td>${state.medicaid}</td>
+          <td>${state.parity}</td>
+          <td>${state.audioOnly}</td>
+        </tr>
+      `).join('');
+    }
+
+    // Search functionality
+    document.getElementById('stateSearch').addEventListener('input', function(e) {
+      const query = e.target.value.toLowerCase();
+      const states = Object.entries(stateData);
+
+      // Highlight matching state on map
+      document.querySelectorAll('.state-cell:not(.empty)').forEach(cell => {
+        const abbr = cell.dataset.state;
+        const state = stateData[abbr];
+        const matches = state.name.toLowerCase().includes(query) || abbr.toLowerCase().includes(query);
+        cell.style.opacity = query && !matches ? '0.3' : '1';
+      });
+
+      // Filter table
+      const rows = document.querySelectorAll('#stateTableBody tr');
+      rows.forEach(row => {
+        const name = row.querySelector('td').textContent.toLowerCase();
+        row.style.display = query && !name.includes(query) ? 'none' : '';
+      });
+
+      // Auto-select if exact match
+      if (query.length >= 2) {
+        const match = states.find(([abbr, state]) =>
+          abbr.toLowerCase() === query || state.name.toLowerCase() === query
+        );
+        if (match) {
+          selectState(match[0]);
+        }
+      }
+    });
+
+    // Initialize
+    renderMap();
+    renderTable();
+  </script>
+</body>
+</html>

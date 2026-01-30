@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Telehealth Cost Estimator – Telehealth Navigator AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Estimate your potential out-of-pocket costs for online therapy and telehealth services. Educational tool with general estimates only." />
+  <link rel="stylesheet" href="style.css" />
+  <meta name="google-adsense-account" content="ca-pub-6484141649562994">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6484141649562994"
+     crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0PM741VNXH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0PM741VNXH');
+  </script>
+  <style>
+    .tool-container {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: 1.25rem;
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .tool-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .form-group label {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--text-main);
+    }
+    .form-group .label-hint {
+      font-weight: 400;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.15rem;
+    }
+    .form-group select,
+    .form-group input {
+      padding: 0.65rem 0.85rem;
+      border-radius: 0.6rem;
+      border: 1px solid var(--border-subtle);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-main);
+      font-family: var(--font-main);
+      font-size: 0.9rem;
+    }
+    .form-group select:focus,
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+    @media (min-width: 640px) {
+      .form-row {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    .estimate-results {
+      margin-top: 1.5rem;
+      padding: 1.25rem;
+      background: radial-gradient(circle at top left, rgba(34, 197, 94, 0.08), rgba(15, 23, 42, 0.95));
+      border: 1px solid var(--accent);
+      border-radius: 1rem;
+      display: none;
+    }
+    .estimate-results.visible {
+      display: block;
+    }
+    .estimate-header {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .estimate-breakdown {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .estimate-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .estimate-row:last-child {
+      border-bottom: none;
+    }
+    .estimate-label {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    .estimate-value {
+      font-weight: 600;
+      color: var(--text-main);
+      font-size: 0.95rem;
+    }
+    .estimate-total {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 2px solid var(--accent);
+    }
+    .estimate-total .estimate-label {
+      font-weight: 700;
+      color: var(--text-main);
+      font-size: 1rem;
+    }
+    .estimate-total .estimate-value {
+      font-size: 1.25rem;
+      color: var(--accent);
+    }
+    .estimate-note {
+      margin-top: 1rem;
+      padding: 0.75rem;
+      background: var(--bg-muted);
+      border-radius: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .tool-disclaimer {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background: var(--bg-muted);
+      border-radius: 0.75rem;
+      border-left: 3px solid #f59e0b;
+    }
+    .tool-disclaimer h3 {
+      color: #f59e0b;
+      font-size: 0.9rem;
+      margin: 0 0 0.5rem 0;
+    }
+    .tool-disclaimer p {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+    .range-display {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+    .range-display input[type="range"] {
+      flex: 1;
+      accent-color: var(--accent);
+    }
+    .range-value {
+      min-width: 80px;
+      text-align: right;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    .cta-section {
+      margin-top: 2rem;
+      padding: 1.25rem;
+      background: var(--bg-muted);
+      border-radius: 1rem;
+      text-align: center;
+    }
+    .cta-section h3 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1rem;
+    }
+    .cta-section p {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin: 0 0 1rem 0;
+    }
+  </style>
+</head>
+<body class="site-body">
+  <header class="site-header">
+    <div class="logo-block">
+      <div class="status-dot"></div>
+      <div class="logo-text">
+        <span class="logo-title">TELEHEALTH NAVIGATOR AI</span>
+        <span class="logo-subtitle">Calm AI guide for online help options</span>
+      </div>
+    </div>
+    <nav class="header-actions">
+      <a href="index.html" class="btn-outline">Home</a>
+      <a href="chat.html" class="btn-primary">Talk to AI Guide</a>
+    </nav>
+  </header>
+
+  <main class="main legal-page">
+    <h1>Telehealth Cost Estimator</h1>
+    <p class="legal-date">Educational tool providing general cost estimates</p>
+
+    <p>
+      Understanding potential costs is an important part of exploring telehealth options. This estimator provides
+      general ranges based on publicly available pricing information and common industry patterns. Actual costs
+      vary significantly based on your specific provider, location, insurance plan, and individual circumstances.
+    </p>
+
+    <div class="tool-container">
+      <form id="costForm" class="tool-form">
+        <div class="form-group">
+          <label>What type of service are you exploring?</label>
+          <select id="serviceType" required>
+            <option value="">Select a service type...</option>
+            <option value="therapy">Online Therapy (Talk Therapy / Counseling)</option>
+            <option value="psychiatry">Online Psychiatry (Evaluation and/or Ongoing Care)</option>
+            <option value="coaching">Life or Wellness Coaching</option>
+            <option value="general">General Telehealth (Primary Care Visit)</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Insurance coverage</label>
+            <p class="label-hint">How you plan to pay for services</p>
+            <select id="insuranceType" required>
+              <option value="">Select coverage type...</option>
+              <option value="none">Self-pay / No insurance</option>
+              <option value="private">Private insurance (employer or marketplace)</option>
+              <option value="medicare">Medicare</option>
+              <option value="medicaid">Medicaid</option>
+              <option value="eap">Employee Assistance Program (EAP)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Estimated sessions per month</label>
+            <p class="label-hint">Typical range: 2-4 for ongoing care</p>
+            <div class="range-display">
+              <input type="range" id="sessionsPerMonth" min="1" max="8" value="4">
+              <span class="range-value" id="sessionsDisplay">4 sessions</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Care duration estimate</label>
+          <p class="label-hint">How long you might use services (for planning purposes)</p>
+          <select id="duration" required>
+            <option value="">Select estimated duration...</option>
+            <option value="1">About 1 month (short-term / trial)</option>
+            <option value="3">About 3 months (standard course)</option>
+            <option value="6">About 6 months (extended care)</option>
+            <option value="12">About 12 months (ongoing support)</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn-primary">Calculate Estimate</button>
+      </form>
+
+      <div id="estimateResults" class="estimate-results">
+        <div class="estimate-header">Your Estimated Cost Range</div>
+        <div class="estimate-breakdown">
+          <div class="estimate-row">
+            <span class="estimate-label">Service type</span>
+            <span class="estimate-value" id="resultService">-</span>
+          </div>
+          <div class="estimate-row">
+            <span class="estimate-label">Est. cost per session</span>
+            <span class="estimate-value" id="resultPerSession">-</span>
+          </div>
+          <div class="estimate-row">
+            <span class="estimate-label">Sessions per month</span>
+            <span class="estimate-value" id="resultSessions">-</span>
+          </div>
+          <div class="estimate-row">
+            <span class="estimate-label">Est. monthly cost range</span>
+            <span class="estimate-value" id="resultMonthly">-</span>
+          </div>
+          <div class="estimate-row estimate-total">
+            <span class="estimate-label">Est. total for <span id="resultDuration">-</span></span>
+            <span class="estimate-value" id="resultTotal">-</span>
+          </div>
+        </div>
+        <div class="estimate-note" id="resultNote"></div>
+      </div>
+    </div>
+
+    <div class="tool-disclaimer">
+      <h3>Important Information About This Estimate</h3>
+      <p>
+        This tool provides general educational estimates only and should not be used for financial planning or
+        healthcare decisions. Actual costs depend on many factors including your specific provider's rates,
+        your insurance plan details (deductibles, copays, coinsurance, out-of-network fees), your location,
+        session length, and individual treatment needs. Many platforms offer sliding scale pricing or financial
+        assistance. Always verify pricing directly with providers and your insurance company before beginning services.
+      </p>
+    </div>
+
+    <div class="cta-section">
+      <h3>Want personalized guidance?</h3>
+      <p>Our AI guide can help you think through your options and understand what questions to ask providers.</p>
+      <a href="chat.html" class="btn-primary">Talk to the AI Guide</a>
+    </div>
+
+    <section class="section section-muted" style="margin-top: 2rem;">
+      <h2>Understanding Telehealth Costs</h2>
+      <p>
+        Telehealth pricing varies widely based on service type, provider, and payment method. Here are some
+        general patterns observed in the industry:
+      </p>
+
+      <h3>Online Therapy</h3>
+      <p>
+        Subscription-based platforms typically range from $60-$100+ per week for unlimited messaging with
+        scheduled live sessions. Traditional per-session therapy through telehealth usually falls in the
+        $80-$200 range without insurance, though in-network providers may have copays of $20-$50.
+      </p>
+
+      <h3>Online Psychiatry</h3>
+      <p>
+        Initial psychiatric evaluations often range from $150-$350 without insurance. Follow-up medication
+        management visits are typically $75-$200. Some platforms offer membership models that include visits
+        and medication coordination.
+      </p>
+
+      <h3>Insurance Considerations</h3>
+      <p>
+        Coverage for telehealth services has expanded significantly. Many insurers now cover online mental
+        health services similarly to in-person care. However, coverage varies by plan, and not all platforms
+        accept insurance. Always verify coverage before starting services.
+      </p>
+
+      <h3>Financial Assistance</h3>
+      <p>
+        Many providers and platforms offer sliding scale fees, payment plans, or financial assistance programs.
+        Community mental health centers often provide services on an income-based sliding scale. Employee
+        Assistance Programs (EAPs) frequently include free short-term counseling sessions.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Related Resources</h2>
+      <div class="affiliate-grid">
+        <a class="affiliate-card" href="guide-telehealth-costs-insurance.html">
+          <span class="affiliate-name">Telehealth Costs &amp; Insurance</span>
+          <span class="affiliate-tagline">Comprehensive guide to understanding pricing</span>
+        </a>
+        <a class="affiliate-card" href="guide-free-low-cost-therapy.html">
+          <span class="affiliate-name">Free &amp; Low-Cost Options</span>
+          <span class="affiliate-tagline">Affordable mental health resources</span>
+        </a>
+        <a class="affiliate-card" href="guide-insurance-cover-therapy.html">
+          <span class="affiliate-name">Insurance Coverage Guide</span>
+          <span class="affiliate-tagline">Understanding what your plan covers</span>
+        </a>
+        <a class="affiliate-card" href="tool-insurance-finder.html">
+          <span class="affiliate-name">Insurance Coverage Finder</span>
+          <span class="affiliate-tagline">Explore platform coverage by insurance type</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <p class="footer-text">
+      Information only. Not medical, mental-health, or crisis advice. Always talk to licensed professionals for care decisions.
+    </p>
+    <p class="footer-text small">
+      If you are in crisis or may hurt yourself or others, contact local emergency services or a crisis hotline immediately.
+    </p>
+  </footer>
+  <script src="cookie-consent.js"></script>
+  <script>
+    // Cost data based on general industry patterns (for educational purposes)
+    const costData = {
+      therapy: {
+        name: 'Online Therapy',
+        selfPay: { min: 60, max: 150 },
+        insurance: { min: 20, max: 60 },
+        medicare: { min: 15, max: 40 },
+        medicaid: { min: 0, max: 15 },
+        eap: { min: 0, max: 0, sessions: 6, note: 'EAP typically covers 3-8 free sessions, then standard costs apply.' }
+      },
+      psychiatry: {
+        name: 'Online Psychiatry',
+        selfPay: { min: 100, max: 250, initial: 200 },
+        insurance: { min: 30, max: 75 },
+        medicare: { min: 25, max: 50 },
+        medicaid: { min: 0, max: 20 },
+        eap: { min: 0, max: 0, sessions: 0, note: 'EAP typically does not cover psychiatric services. Standard rates apply.' }
+      },
+      coaching: {
+        name: 'Wellness Coaching',
+        selfPay: { min: 75, max: 200 },
+        insurance: { min: 75, max: 200, note: 'Coaching is typically not covered by insurance.' },
+        medicare: { min: 75, max: 200, note: 'Medicare does not typically cover coaching services.' },
+        medicaid: { min: 75, max: 200, note: 'Medicaid does not typically cover coaching services.' },
+        eap: { min: 0, max: 50, sessions: 3, note: 'Some EAPs include limited coaching sessions.' }
+      },
+      general: {
+        name: 'General Telehealth',
+        selfPay: { min: 50, max: 150 },
+        insurance: { min: 0, max: 40 },
+        medicare: { min: 0, max: 20 },
+        medicaid: { min: 0, max: 5 },
+        eap: { min: 50, max: 150, note: 'EAP typically does not cover general medical visits.' }
+      }
+    };
+
+    const insuranceMap = {
+      'none': 'selfPay',
+      'private': 'insurance',
+      'medicare': 'medicare',
+      'medicaid': 'medicaid',
+      'eap': 'eap'
+    };
+
+    const sessionsSlider = document.getElementById('sessionsPerMonth');
+    const sessionsDisplay = document.getElementById('sessionsDisplay');
+
+    sessionsSlider.addEventListener('input', function() {
+      sessionsDisplay.textContent = this.value + (this.value === '1' ? ' session' : ' sessions');
+    });
+
+    document.getElementById('costForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const serviceType = document.getElementById('serviceType').value;
+      const insuranceType = document.getElementById('insuranceType').value;
+      const sessions = parseInt(document.getElementById('sessionsPerMonth').value);
+      const duration = parseInt(document.getElementById('duration').value);
+
+      if (!serviceType || !insuranceType || !duration) {
+        return;
+      }
+
+      const service = costData[serviceType];
+      const insuranceKey = insuranceMap[insuranceType];
+      const rates = service[insuranceKey];
+
+      const minPerSession = rates.min;
+      const maxPerSession = rates.max;
+
+      const minMonthly = minPerSession * sessions;
+      const maxMonthly = maxPerSession * sessions;
+
+      const minTotal = minMonthly * duration;
+      const maxTotal = maxMonthly * duration;
+
+      // Update results
+      document.getElementById('resultService').textContent = service.name;
+      document.getElementById('resultPerSession').textContent = '$' + minPerSession + ' - $' + maxPerSession;
+      document.getElementById('resultSessions').textContent = sessions + '/month';
+      document.getElementById('resultMonthly').textContent = '$' + minMonthly + ' - $' + maxMonthly;
+      document.getElementById('resultDuration').textContent = duration + (duration === 1 ? ' month' : ' months');
+      document.getElementById('resultTotal').textContent = '$' + minTotal + ' - $' + maxTotal;
+
+      // Set note
+      let note = 'These estimates reflect general industry patterns and may not reflect your actual costs. ';
+      if (rates.note) {
+        note += rates.note + ' ';
+      }
+      if (insuranceType === 'eap' && rates.sessions > 0) {
+        note += 'After your EAP sessions are used, expect to pay standard rates.';
+      }
+      if (insuranceType === 'private') {
+        note += 'Costs vary significantly based on your specific plan, deductible status, and whether providers are in-network.';
+      }
+      if (serviceType === 'psychiatry') {
+        note += ' Initial evaluations may cost more than follow-up visits. Medication costs are not included.';
+      }
+      document.getElementById('resultNote').textContent = note;
+
+      // Show results
+      document.getElementById('estimateResults').classList.add('visible');
+      document.getElementById('estimateResults').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  </script>
+</body>
+</html>
