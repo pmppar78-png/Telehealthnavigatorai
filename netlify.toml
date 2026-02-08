@@ -1,2 +1,589 @@
+[build]
+  publish = "."
+
+[build.processing]
+  skip_processing = false
+
+[build.processing.html]
+  pretty_urls = true
+
 [functions]
-directory = "netlify/functions"
+  directory = "netlify/functions"
+
+# 301 redirects: .html extensions to clean URLs
+# Force=true ensures redirect even though the .html file exists on disk
+[[redirects]]
+  from = "/about.html"
+  to = "/about"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/chat.html"
+  to = "/chat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/contact.html"
+  to = "/contact"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/faq.html"
+  to = "/faq"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/privacy.html"
+  to = "/privacy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/terms.html"
+  to = "/terms"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/transparency-report.html"
+  to = "/transparency-report"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/state-telehealth-resources.html"
+  to = "/state-telehealth-resources"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tool-cost-estimator.html"
+  to = "/tool-cost-estimator"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tool-guided-scenarios.html"
+  to = "/tool-guided-scenarios"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tool-insurance-finder.html"
+  to = "/tool-insurance-finder"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-adhd-telehealth.html"
+  to = "/guide-adhd-telehealth"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-anxiety-online-therapy.html"
+  to = "/guide-anxiety-online-therapy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-autism-telehealth.html"
+  to = "/guide-autism-telehealth"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-best-couples-therapy-platforms.html"
+  to = "/guide-best-couples-therapy-platforms"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-best-medication-management.html"
+  to = "/guide-best-medication-management"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-best-online-psychiatry.html"
+  to = "/guide-best-online-psychiatry"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-best-online-therapy-platforms.html"
+  to = "/guide-best-online-therapy-platforms"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-best-teen-therapy.html"
+  to = "/guide-best-teen-therapy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-betterhelp-vs-talkspace.html"
+  to = "/guide-betterhelp-vs-talkspace"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-bipolar-telehealth.html"
+  to = "/guide-bipolar-telehealth"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-borderline-personality-disorder.html"
+  to = "/guide-borderline-personality-disorder"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-build-relationship-online-provider.html"
+  to = "/guide-build-relationship-online-provider"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-choosing-therapy.html"
+  to = "/guide-choosing-therapy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-chronic-pain-telehealth.html"
+  to = "/guide-chronic-pain-telehealth"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-college-student-therapy.html"
+  to = "/guide-college-student-therapy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-couples-therapy-online.html"
+  to = "/guide-couples-therapy-online"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-depression-treatment-online.html"
+  to = "/guide-depression-treatment-online"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-digital-detox-mental-health.html"
+  to = "/guide-digital-detox-mental-health"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-dissociative-disorders.html"
+  to = "/guide-dissociative-disorders"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-eating-disorders-online.html"
+  to = "/guide-eating-disorders-online"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-evaluate-therapist-credentials.html"
+  to = "/guide-evaluate-therapist-credentials"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-exercise-mental-health.html"
+  to = "/guide-exercise-mental-health"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-family-therapy-telehealth.html"
+  to = "/guide-family-therapy-telehealth"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-feeling-overwhelmed.html"
+  to = "/guide-feeling-overwhelmed"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-find-low-cost-telehealth.html"
+  to = "/guide-find-low-cost-telehealth"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-first-therapy-session.html"
+  to = "/guide-first-therapy-session"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-free-low-cost-therapy.html"
+  to = "/guide-free-low-cost-therapy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-grief-counseling-online.html"
+  to = "/guide-grief-counseling-online"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-hipaa-telehealth-privacy.html"
+  to = "/guide-hipaa-telehealth-privacy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-hsa-fsa-telehealth.html"
+  to = "/guide-hsa-fsa-telehealth"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-insomnia-sleep-telehealth.html"
+  to = "/guide-insomnia-sleep-telehealth"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-insurance-cover-therapy.html"
+  to = "/guide-insurance-cover-therapy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-international-telehealth.html"
+  to = "/guide-international-telehealth"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-journaling-mental-health.html"
+  to = "/guide-journaling-mental-health"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-lgbtq-affirming-therapy.html"
+  to = "/guide-lgbtq-affirming-therapy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-medicaid-telehealth.html"
+  to = "/guide-medicaid-telehealth"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-medicare-telehealth.html"
+  to = "/guide-medicare-telehealth"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-mental-wellness-routine.html"
+  to = "/guide-mental-wellness-routine"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-messaging-based-therapy.html"
+  to = "/guide-messaging-based-therapy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-mindfulness-meditation-apps.html"
+  to = "/guide-mindfulness-meditation-apps"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-mood-disorders.html"
+  to = "/guide-mood-disorders"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-multilingual-telehealth.html"
+  to = "/guide-multilingual-telehealth"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-nutrition-mental-health.html"
+  to = "/guide-nutrition-mental-health"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-ocd-therapy-online.html"
+  to = "/guide-ocd-therapy-online"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-online-therapy-ultimate.html"
+  to = "/guide-online-therapy-ultimate"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-panic-attacks.html"
+  to = "/guide-panic-attacks"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-persistent-sadness.html"
+  to = "/guide-persistent-sadness"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-phobias-online-therapy.html"
+  to = "/guide-phobias-online-therapy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-postpartum-depression-online.html"
+  to = "/guide-postpartum-depression-online"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-prepare-telehealth-appointment.html"
+  to = "/guide-prepare-telehealth-appointment"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-preventative-mental-health.html"
+  to = "/guide-preventative-mental-health"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-psychosis-telehealth.html"
+  to = "/guide-psychosis-telehealth"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-ptsd-trauma-therapy.html"
+  to = "/guide-ptsd-trauma-therapy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-relationship-issues.html"
+  to = "/guide-relationship-issues"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-schizoaffective-disorder.html"
+  to = "/guide-schizoaffective-disorder"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-schizophrenia-telehealth.html"
+  to = "/guide-schizophrenia-telehealth"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-self-help-resources.html"
+  to = "/guide-self-help-resources"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-sleep-problems.html"
+  to = "/guide-sleep-problems"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-social-anxiety-online.html"
+  to = "/guide-social-anxiety-online"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-stress-management-telehealth.html"
+  to = "/guide-stress-management-telehealth"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-subscription-vs-pay-per-session.html"
+  to = "/guide-subscription-vs-pay-per-session"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-substance-abuse-online.html"
+  to = "/guide-substance-abuse-online"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-support-groups-online.html"
+  to = "/guide-support-groups-online"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-switching-to-online-therapy.html"
+  to = "/guide-switching-to-online-therapy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-telehealth.html"
+  to = "/guide-telehealth"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-telehealth-across-state-lines.html"
+  to = "/guide-telehealth-across-state-lines"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-telehealth-costs-insurance.html"
+  to = "/guide-telehealth-costs-insurance"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-telehealth-disabilities.html"
+  to = "/guide-telehealth-disabilities"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-telehealth-emergencies.html"
+  to = "/guide-telehealth-emergencies"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-telehealth-hidden-costs.html"
+  to = "/guide-telehealth-hidden-costs"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-telehealth-laws-by-state.html"
+  to = "/guide-telehealth-laws-by-state"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-telehealth-mental-health.html"
+  to = "/guide-telehealth-mental-health"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-telehealth-parents-caregivers.html"
+  to = "/guide-telehealth-parents-caregivers"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-telehealth-primary-care.html"
+  to = "/guide-telehealth-primary-care"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-telehealth-privacy-security.html"
+  to = "/guide-telehealth-privacy-security"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-telehealth-rural-areas.html"
+  to = "/guide-telehealth-rural-areas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-telehealth-seniors.html"
+  to = "/guide-telehealth-seniors"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-telehealth-technical-setup.html"
+  to = "/guide-telehealth-technical-setup"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-text-vs-video-therapy.html"
+  to = "/guide-text-vs-video-therapy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-therapy-children.html"
+  to = "/guide-therapy-children"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-therapy-maintenance.html"
+  to = "/guide-therapy-maintenance"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-veterans-telehealth.html"
+  to = "/guide-veterans-telehealth"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-when-telehealth-isnt-right.html"
+  to = "/guide-when-telehealth-isnt-right"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-work-burnout.html"
+  to = "/guide-work-burnout"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-workplace-mental-health.html"
+  to = "/guide-workplace-mental-health"
+  status = 301
+  force = true
