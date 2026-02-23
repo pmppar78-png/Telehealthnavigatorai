@@ -13,6 +13,12 @@
 # 301 redirects: .html extensions to clean URLs
 # Force=true ensures redirect even though the .html file exists on disk
 [[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/about.html"
   to = "/about"
   status = 301
