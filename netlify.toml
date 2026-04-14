@@ -113,6 +113,12 @@
   force = true
 
 [[redirects]]
+  from = "/editorial-standards.html"
+  to = "/editorial-standards"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/state-telehealth-resources.html"
   to = "/state-telehealth-resources"
   status = 301

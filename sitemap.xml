@@ -2,123 +2,129 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://telehealthnavigatorai.com/</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-04-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/chat</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/about</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-04-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/contact</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-04-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/faq</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/privacy</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-04-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/terms</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-04-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://telehealthnavigatorai.com/editorial-standards</loc>
+    <lastmod>2026-04-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://telehealthnavigatorai.com/sitemap-page</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-04-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <!-- Tools & Resources -->
   <url>
     <loc>https://telehealthnavigatorai.com/tool-cost-estimator</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/tool-insurance-finder</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/tool-guided-scenarios</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/state-telehealth-resources</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/transparency-report</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <!-- Pillar Guides -->
   <url>
     <loc>https://telehealthnavigatorai.com/guide-telehealth</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-online-therapy-ultimate</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-telehealth-mental-health</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-telehealth-primary-care</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-telehealth-costs-insurance</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-telehealth-privacy-security</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-choosing-therapy</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -143,457 +149,457 @@
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-ocd-therapy-online</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-ptsd-trauma-therapy</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-bipolar-telehealth</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-eating-disorders-online</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-insomnia-sleep-telehealth</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-substance-abuse-online</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-grief-counseling-online</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-stress-management-telehealth</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-couples-therapy-online</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-family-therapy-telehealth</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-postpartum-depression-online</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-chronic-pain-telehealth</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-social-anxiety-online</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-autism-telehealth</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-02-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-borderline-personality-disorder</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-02-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-dissociative-disorders</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-02-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-mood-disorders</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-02-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-phobias-online-therapy</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-02-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-psychosis-telehealth</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-02-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-schizoaffective-disorder</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-02-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-schizophrenia-telehealth</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-02-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <!-- How-To Guides -->
   <url>
     <loc>https://telehealthnavigatorai.com/guide-first-therapy-session</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-prepare-telehealth-appointment</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-switching-to-online-therapy</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-messaging-based-therapy</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-evaluate-therapist-credentials</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-telehealth-technical-setup</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-when-telehealth-isnt-right</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-telehealth-emergencies</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-build-relationship-online-provider</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-telehealth-rural-areas</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-find-low-cost-telehealth</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <!-- Comparison Guides -->
   <url>
     <loc>https://telehealthnavigatorai.com/guide-best-online-therapy-platforms</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-04-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-betterhelp-vs-talkspace</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-04-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-best-online-psychiatry</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-04-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-best-medication-management</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-best-teen-therapy</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-best-couples-therapy-platforms</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-free-low-cost-therapy</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-text-vs-video-therapy</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-subscription-vs-pay-per-session</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <!-- Demographics Guides -->
   <url>
     <loc>https://telehealthnavigatorai.com/guide-telehealth-seniors</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-lgbtq-affirming-therapy</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-veterans-telehealth</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-college-student-therapy</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-telehealth-parents-caregivers</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-02-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-multilingual-telehealth</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-02-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-telehealth-disabilities</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-02-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-international-telehealth</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-02-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-therapy-children</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-02-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-workplace-mental-health</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-02-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <!-- Legal/Insurance Guides -->
   <url>
     <loc>https://telehealthnavigatorai.com/guide-insurance-cover-therapy</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-04-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-telehealth-laws-by-state</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-04-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-telehealth-across-state-lines</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-04-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-hipaa-telehealth-privacy</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-04-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-telehealth-hidden-costs</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-hsa-fsa-telehealth</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-medicaid-telehealth</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-medicare-telehealth</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <!-- Symptom Guides -->
   <url>
     <loc>https://telehealthnavigatorai.com/guide-feeling-overwhelmed</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-persistent-sadness</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-panic-attacks</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-relationship-issues</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-work-burnout</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-sleep-problems</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <!-- Wellness Guides -->
   <url>
     <loc>https://telehealthnavigatorai.com/guide-mental-wellness-routine</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-preventative-mental-health</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-mindfulness-meditation-apps</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-therapy-maintenance</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-03-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-digital-detox-mental-health</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-02-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-exercise-mental-health</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-02-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-nutrition-mental-health</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-02-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-journaling-mental-health</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-02-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-support-groups-online</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-02-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-self-help-resources</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-02-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
