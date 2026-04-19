@@ -4,8 +4,16 @@
 [build.processing]
   skip_processing = false
 
+# Enable Netlify's native pretty URL handling.
+# This causes Netlify to:
+#   - Serve /about from about.html (200)
+#   - 301 redirect /about.html -> /about
+#   - 301 redirect /about/ -> /about
+# Replacing the hand-rolled per-file redirects that previously were
+# being intercepted by a broken "/*/" catch-all and never fired in
+# production (producing duplicate /foo + /foo.html 200 responses).
 [build.processing.html]
-  pretty_urls = false
+  pretty_urls = true
 
 [functions]
   directory = "netlify/functions"
@@ -47,22 +55,19 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Strip trailing slashes — ensures /about/ redirects to /about
-# force is intentionally omitted (defaults to false) so that the root path /
-# is NOT matched — index.html exists and will be served directly.
-# Paths like /about/ have no corresponding file, so the redirect still fires.
-[[redirects]]
-  from = "/*/"
-  to = "/:splat"
-  status = 301
+# Belt-and-suspenders canonicalization:
+# Even with pretty_urls = true, explicitly 301 the .html variants to the
+# extensionless canonical URL. Extension-specific rule only — no broad
+# wildcards so non-existent paths fall through to the 404.html page
+# instead of looping (the previous `/*/` rule caused 301 self-loops on
+# every unknown URL, which Googlebot reports as "Redirect error").
 
-# 301 redirects: .html extensions to clean URLs
-# Force=true ensures redirect even though the .html file exists on disk
 [[redirects]]
   from = "/index.html"
   to = "/"
   status = 301
   force = true
+
 
 [[redirects]]
   from = "/about.html"
@@ -83,62 +88,14 @@
   force = true
 
 [[redirects]]
-  from = "/faq.html"
-  to = "/faq"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/privacy.html"
-  to = "/privacy"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/terms.html"
-  to = "/terms"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/transparency-report.html"
-  to = "/transparency-report"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/sitemap-page.html"
-  to = "/sitemap-page"
-  status = 301
-  force = true
-
-[[redirects]]
   from = "/editorial-standards.html"
   to = "/editorial-standards"
   status = 301
   force = true
 
 [[redirects]]
-  from = "/state-telehealth-resources.html"
-  to = "/state-telehealth-resources"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/tool-cost-estimator.html"
-  to = "/tool-cost-estimator"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/tool-guided-scenarios.html"
-  to = "/tool-guided-scenarios"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/tool-insurance-finder.html"
-  to = "/tool-insurance-finder"
+  from = "/faq.html"
+  to = "/faq"
   status = 301
   force = true
 
@@ -527,12 +484,6 @@
   force = true
 
 [[redirects]]
-  from = "/guide-telehealth.html"
-  to = "/guide-telehealth"
-  status = 301
-  force = true
-
-[[redirects]]
   from = "/guide-telehealth-across-state-lines.html"
   to = "/guide-telehealth-across-state-lines"
   status = 301
@@ -559,6 +510,12 @@
 [[redirects]]
   from = "/guide-telehealth-hidden-costs.html"
   to = "/guide-telehealth-hidden-costs"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-telehealth.html"
+  to = "/guide-telehealth"
   status = 301
   force = true
 
@@ -651,3 +608,52 @@
   to = "/guide-workplace-mental-health"
   status = 301
   force = true
+
+[[redirects]]
+  from = "/privacy.html"
+  to = "/privacy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/sitemap-page.html"
+  to = "/sitemap-page"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/state-telehealth-resources.html"
+  to = "/state-telehealth-resources"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/terms.html"
+  to = "/terms"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tool-cost-estimator.html"
+  to = "/tool-cost-estimator"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tool-guided-scenarios.html"
+  to = "/tool-guided-scenarios"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tool-insurance-finder.html"
+  to = "/tool-insurance-finder"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/transparency-report.html"
+  to = "/transparency-report"
+  status = 301
+  force = true
+
