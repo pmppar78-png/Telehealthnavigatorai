@@ -45,6 +45,14 @@
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
 
+# Explicit noindex for the 404 page so Search Console never sees a
+# conflicting signal between the global X-Robots-Tag: index and the
+# page-level <meta name="robots" content="noindex">.
+[[headers]]
+  for = "/404.html"
+  [headers.values]
+    X-Robots-Tag = "noindex, follow"
+
 [[headers]]
   for = "/*.css"
   [headers.values]
