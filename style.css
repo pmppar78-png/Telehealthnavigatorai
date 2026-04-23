@@ -118,7 +118,7 @@ body.chat-body {
 
 /* Global hyperlink readability — high contrast on dark background */
 a {
-  color: #7dd3fc;
+  color: #5eead4;
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 2px;
@@ -126,7 +126,7 @@ a {
 
 a:hover,
 a:focus {
-  color: #bae6fd;
+  color: #99f6e4;
   text-decoration: underline;
 }
 
@@ -720,7 +720,7 @@ a.chat-back-link,
 }
 
 .legal-section a {
-  color: #7dd3fc;
+  color: #5eead4;
   text-decoration: underline;
 }
 
@@ -755,7 +755,7 @@ a.chat-back-link,
 
 .site-footer a,
 .chat-footer a {
-  color: #7dd3fc;
+  color: #5eead4;
 }
 
 /* Cookie consent banner */
@@ -788,7 +788,7 @@ a.chat-back-link,
 }
 
 .cookie-consent-content a {
-  color: #7dd3fc;
+  color: #5eead4;
   text-decoration: underline;
 }
 
@@ -860,7 +860,7 @@ a.chat-back-link,
 }
 
 .affiliate-disclosure-banner a {
-  color: #7dd3fc;
+  color: #5eead4;
   text-decoration: underline;
 }
 
