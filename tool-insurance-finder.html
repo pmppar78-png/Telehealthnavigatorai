@@ -31,7 +31,13 @@
     "publisher": {
       "@type": "Organization",
       "name": "Telehealth Navigator AI",
-      "url": "https://telehealthnavigatorai.com"
+      "url": "https://telehealthnavigatorai.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://telehealthnavigatorai.com/logo.svg",
+        "width": 600,
+        "height": 120
+      }
     }
   }
   </script>
@@ -324,7 +330,7 @@
   <header class="site-header">
     <div class="site-header-inner">
       <div class="logo-block">
-      <div class="status-dot"></div>
+      <svg class="logo-mark" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Telehealth Navigator AI" focusable="false"><defs><linearGradient id="thn-mark-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#22c55e"/><stop offset="100%" stop-color="#15803d"/></linearGradient></defs><rect x="1" y="1" width="30" height="30" rx="9" fill="url(#thn-mark-g)"/><path d="M6.5 18 L11 18 L13 13 L16.5 22 L19 17 L22 19 L25.5 19" stroke="#ecfdf5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
       <div class="logo-text">
         <span class="logo-title">TELEHEALTH NAVIGATOR AI</span>
         <span class="logo-subtitle">Calm AI guide for online help options</span>
@@ -435,6 +441,47 @@
         on income. Self-pay can sometimes offer more flexibility in choosing providers, though it may cost more
         than using in-network insurance benefits.
       </p>
+    </section>
+
+    <section class="section section-muted" style="margin-top: 2rem;">
+      <h2>How to use this tool</h2>
+      <p>
+        The Insurance Finder surfaces patterns &mdash; which plan types tend to have broader telehealth mental-health coverage, which public programs include it, and which platforms commonly work with which carriers. It does not query your specific insurer in real time. Every output should be confirmed against your plan documents or a benefits-verification call before you commit.
+      </p>
+      <ol class="steps">
+        <li><strong>Start with the plan on your card</strong>, not the one you wish you had. If you are on a spouse's or parent's plan, use that carrier and member ID when you call to verify.</li>
+        <li><strong>Separate mental-health benefits from general medical.</strong> On many plans, outpatient mental-health sits in its own benefit bucket with different copays or visit limits. A plan that feels generous for physicals may be narrower for therapy.</li>
+        <li><strong>Ask about "in-lieu-of" telehealth coverage specifically.</strong> Most plans now cover telehealth at parity with in-person care, but a few legacy plans still treat it as a separate benefit. If the answer is "it depends on the provider," ask what the difference is and write down the CPT codes.</li>
+        <li><strong>Confirm the provider's network status, not just the platform's.</strong> A platform being "in network" usually means some of its clinicians are. The specific clinician assigned to you is the one who determines your rate.</li>
+      </ol>
+    </section>
+
+    <section class="section section-muted" style="margin-top: 2rem;">
+      <h2>What to do with the result</h2>
+      <p>
+        Once you have a shortlist of likely-covered platforms, the fastest verification path is a three-step call to your insurer's member services line:
+      </p>
+      <ul>
+        <li>Confirm that outpatient mental-health telehealth is covered on your plan.</li>
+        <li>Confirm that the platform, and ideally the specific clinician, is in network for your plan.</li>
+        <li>Ask what your copay or coinsurance will be for an initial evaluation and for follow-up sessions.</li>
+      </ul>
+      <p>
+        Write down the representative's name, the date, and the call reference number. Those details are what you will cite if a claim gets denied later. Our <a href="/guide-insurance-cover-therapy">does insurance cover therapy?</a> guide has the longer script if member services tries to give you partial answers.
+      </p>
+    </section>
+
+    <section class="section section-muted" style="margin-top: 2rem;">
+      <h2>When the answer is &ldquo;not covered&rdquo;</h2>
+      <p>
+        If your plan does not cover telehealth mental health, or if no in-network platforms meet your needs, there are still real paths:
+      </p>
+      <ul>
+        <li><strong>Out-of-network reimbursement via superbill.</strong> Many plans reimburse a portion of out-of-network care if you pay up front and submit a claim. This is slower and imperfect, but it exists.</li>
+        <li><strong>Employer EAP.</strong> Your workplace may include a short run of free sessions through an Employee Assistance Program, separate from your health insurance.</li>
+        <li><strong>Sliding-scale cash pay.</strong> Community mental health centers, training clinics, and many independent therapists set fees based on income. Our <a href="/guide-free-low-cost-therapy">free and low-cost therapy</a> guide lists concrete options.</li>
+        <li><strong>Public programs you may not know you qualify for.</strong> Medicaid expansion, state-run behavioral-health programs, and subsidized marketplace plans cover mental-health telehealth broadly in most states. Eligibility is worth a 10-minute check.</li>
+      </ul>
     </section>
 
     <section class="section">
@@ -742,13 +789,5 @@
     document.getElementById('categoryFilter').addEventListener('change', filterPlatforms);
     renderPlatforms(platforms);
   </script>
-<!-- Infolinks In-Text Ads -->
-<script type="text/javascript">
-  var infolinks_pid = 3443210;
-  var infolinks_wsid = 0;
-</script>
-<script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js" async></script>
-<!-- Skimlinks Affiliate Script -->
-<script type="text/javascript" src="https://s.skimresources.com/js/298266X1785815.skimlinks.js"></script>
 </body>
 </html>

@@ -224,8 +224,14 @@
   "publisher": {
     "@type": "Organization",
     "name": "Telehealth Navigator AI",
-    "url": "https://telehealthnavigatorai.com"
-  }
+    "url": "https://telehealthnavigatorai.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://telehealthnavigatorai.com/logo.svg",
+        "width": 600,
+        "height": 120
+      }
+    }
 }
 </script>
 <script type="application/ld+json">
@@ -259,7 +265,7 @@
   <header class="site-header">
     <div class="site-header-inner">
       <div class="logo-block">
-      <div class="status-dot"></div>
+      <svg class="logo-mark" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Telehealth Navigator AI" focusable="false"><defs><linearGradient id="thn-mark-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#22c55e"/><stop offset="100%" stop-color="#15803d"/></linearGradient></defs><rect x="1" y="1" width="30" height="30" rx="9" fill="url(#thn-mark-g)"/><path d="M6.5 18 L11 18 L13 13 L16.5 22 L19 17 L22 19 L25.5 19" stroke="#ecfdf5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
       <div class="logo-text">
         <span class="logo-title">TELEHEALTH NAVIGATOR AI</span>
         <span class="logo-subtitle">Calm AI guide for online help options</span>
@@ -413,6 +419,45 @@
         Community mental health centers often provide services on an income-based sliding scale. Employee
         Assistance Programs (EAPs) frequently include free short-term counseling sessions.
       </p>
+    </section>
+
+    <section class="section section-muted" style="margin-top: 2rem;">
+      <h2>How to use this estimator</h2>
+      <p>
+        This tool gives you a realistic range, not a quote. It is built on the price patterns we track across the telehealth market, but your actual bill depends on your specific plan, the platform's contracts, and the service codes used for each visit. Treat the output as a planning number you can take into a benefits call, not a promise.
+      </p>
+      <ol class="steps">
+        <li><strong>Pick the right service type first.</strong> Therapy, psychiatry, and combination care sit at very different price points. If you are unsure, start with therapy-only and layer on psychiatry if a clinician later recommends it.</li>
+        <li><strong>Be honest about session frequency.</strong> Most ongoing therapy works at weekly or biweekly visits. Medication management often settles at monthly once a regimen is stable. Overestimating frequency inflates the number; underestimating it hides a real cost.</li>
+        <li><strong>Use your plan details, not averages.</strong> If you know your copay or coinsurance, enter it. "Average" coverage numbers are useful for order-of-magnitude thinking but can be off by hundreds of dollars for an individual plan.</li>
+        <li><strong>Compare scenarios, not just one.</strong> The tool is most useful when you run it two or three times with different inputs &mdash; insurance versus cash pay, weekly versus biweekly, therapy only versus combined care &mdash; and compare the ranges.</li>
+      </ol>
+    </section>
+
+    <section class="section section-muted" style="margin-top: 2rem;">
+      <h2>How to interpret your result</h2>
+      <p>
+        The number at the top of the result is a monthly range, not a guaranteed price. Three things cause most of the variation between the low and high end:
+      </p>
+      <ul>
+        <li><strong>Session length and CPT code.</strong> A 45-minute therapy session (CPT 90834) and a 60-minute session (CPT 90837) bill differently and are often reimbursed differently.</li>
+        <li><strong>Intake vs. follow-up visits.</strong> First visits typically cost more than subsequent ones. The estimator averages across both.</li>
+        <li><strong>Platform fees outside the session.</strong> Some subscription platforms bundle messaging and live visits; some charge separately. Read the fee schedule before signing up.</li>
+      </ul>
+      <p>
+        If the estimated monthly cost is within reach, the next step is usually a short benefits-verification call to the number on your insurance card to confirm coverage for the specific platform and service you are considering. Our <a href="/guide-telehealth-costs-insurance">telehealth costs and insurance</a> guide has the exact questions to ask.
+      </p>
+    </section>
+
+    <section class="section section-muted" style="margin-top: 2rem;">
+      <h2>Common mistakes this tool helps you avoid</h2>
+      <ul>
+        <li>Assuming advertised subscription prices cover psychiatry visits &mdash; most subscriptions exclude medication management.</li>
+        <li>Forgetting the first-visit premium, which can add 20&ndash;50% to month one.</li>
+        <li>Counting only the session fee and missing labs, pharmacy charges, or platform service fees.</li>
+        <li>Treating your deductible as if it were an annual copay &mdash; for high-deductible plans, early-year costs are often much higher than later in the year.</li>
+        <li>Comparing in-network and out-of-network plans with the same inputs.</li>
+      </ul>
     </section>
 
     <section class="section">
@@ -571,13 +616,5 @@
       document.getElementById('estimateResults').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     });
   </script>
-<!-- Infolinks In-Text Ads -->
-<script type="text/javascript">
-  var infolinks_pid = 3443210;
-  var infolinks_wsid = 0;
-</script>
-<script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js" async></script>
-<!-- Skimlinks Affiliate Script -->
-<script type="text/javascript" src="https://s.skimresources.com/js/298266X1785815.skimlinks.js"></script>
 </body>
 </html>

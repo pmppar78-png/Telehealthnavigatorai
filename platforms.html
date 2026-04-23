@@ -41,7 +41,13 @@
     "publisher": {
       "@type": "Organization",
       "name": "Telehealth Navigator AI",
-      "url": "https://telehealthnavigatorai.com"
+      "url": "https://telehealthnavigatorai.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://telehealthnavigatorai.com/logo.svg",
+        "width": 600,
+        "height": 120
+      }
     }
   }
   </script>
@@ -70,7 +76,7 @@
   <header class="site-header">
     <div class="site-header-inner">
       <div class="logo-block">
-      <div class="status-dot"></div>
+      <svg class="logo-mark" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Telehealth Navigator AI" focusable="false"><defs><linearGradient id="thn-mark-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#22c55e"/><stop offset="100%" stop-color="#15803d"/></linearGradient></defs><rect x="1" y="1" width="30" height="30" rx="9" fill="url(#thn-mark-g)"/><path d="M6.5 18 L11 18 L13 13 L16.5 22 L19 17 L22 19 L25.5 19" stroke="#ecfdf5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
       <div class="logo-text">
         <span class="logo-title">TELEHEALTH NAVIGATOR AI</span>
         <span class="logo-subtitle">Calm AI guide for online help options</span>
@@ -156,6 +162,53 @@
         <li><a href="/getting-started">Getting Started with Telehealth</a> &mdash; once you've picked, what's next</li>
       </ul>
     </section>
+
+    <section class="legal-section">
+      <h2>How to read any platform comparison</h2>
+      <p>
+        Every platform page on this site is organized around the same five questions. Knowing them up front makes the guides faster to skim and much harder to be misled by.
+      </p>
+      <ol class="steps">
+        <li><strong>Who provides care?</strong> Staff clinicians, contracted clinicians, or a marketplace of independent therapists. This determines continuity, switching, and how accountable the platform is when something goes wrong.</li>
+        <li><strong>How are they licensed?</strong> All U.S. telehealth care must be delivered by a clinician licensed in the state where the patient is located at the time of the session. This is non-negotiable, regardless of what a platform's marketing implies.</li>
+        <li><strong>What is the pricing model?</strong> Monthly subscription, pay-per-session, or insurance-filed. Each has a different failure mode &mdash; see our <a href="/guide-subscription-vs-pay-per-session">subscription vs pay-per-session</a> guide.</li>
+        <li><strong>What happens in a crisis?</strong> Reputable platforms have written policies pointing users to 988 and 911 because they are not equipped for emergency care. If a platform implies otherwise, that is a red flag.</li>
+        <li><strong>How do you leave?</strong> Cancellation friction, record export, and prescription portability are three places where the difference between platforms becomes obvious only after you try to switch.</li>
+      </ol>
+      <p>
+        Every comparison on this site answers those five questions before it reaches pricing tables or feature lists. If a comparison elsewhere skips them, that comparison is selling, not helping.
+      </p>
+    </section>
+
+    <section class="legal-section">
+      <h2>What &ldquo;best&rdquo; actually means here</h2>
+      <p>
+        We avoid the word "best" as a standalone claim because it depends on what you need. A platform that fits an employed adult with PPO insurance and mild anxiety is often a poor fit for an uninsured college student on stimulant medication, and vice versa. Where our guides use the word, it is always qualified: best for insurance-filed care, best for short-notice scheduling, best for couples living in different states, and so on.
+      </p>
+      <p>
+        When our guides recommend a platform, the reason is written into the comparison itself. You can read the criteria and disagree with them. What we will not do is rank by who paid the most, hide affiliate relationships, or pretend a platform suits a use case it does not. Our <a href="/editorial-standards">editorial standards</a> page explains how we decide, and the <a href="/transparency-report">transparency report</a> discloses every commercial relationship.
+      </p>
+    </section>
+
+    <section class="legal-section">
+      <h2>Platform FAQ</h2>
+      <h3>Can I switch platforms mid-treatment?</h3>
+      <p>
+        Yes, and many people do. The two real obstacles are record portability (ask your current platform for a session summary or treatment record before you cancel) and, if you take medication, coordinating a prescription handoff so there is no gap. Our <a href="/guide-switching-to-online-therapy">switching to online therapy</a> guide walks through the full playbook.
+      </p>
+      <h3>Do any platforms accept Medicaid or Medicare?</h3>
+      <p>
+        Coverage varies by state and platform. For Medicaid, we track state-level coverage in <a href="/guide-medicaid-telehealth">Medicaid telehealth</a>. For Medicare, most traditional outpatient mental health visits are reimbursable via telehealth under current federal rules; see <a href="/guide-medicare-telehealth">Medicare telehealth</a>.
+      </p>
+      <h3>Is text-only therapy real therapy?</h3>
+      <p>
+        Evidence supports messaging-based care for mild to moderate conditions with specific modalities, but it is not a universal substitute for live sessions. Our <a href="/guide-messaging-based-therapy">messaging-based therapy</a> guide covers where asynchronous care fits and where it does not.
+      </p>
+      <h3>How do I verify that a platform is legitimate?</h3>
+      <p>
+        Three quick signals: the platform names the states it operates in, lists its clinicians' licensure (or a way to verify it), and publishes a crisis policy that directs users to 988/911 instead of claiming to handle emergencies internally. Our <a href="/guide-evaluate-therapist-credentials">evaluating therapist credentials</a> guide has the longer checklist.
+      </p>
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -188,13 +241,5 @@
     </p>
   </footer>
   <script src="cookie-consent.js"></script>
-<!-- Infolinks In-Text Ads -->
-<script type="text/javascript">
-  var infolinks_pid = 3443210;
-  var infolinks_wsid = 0;
-</script>
-<script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js" async></script>
-<!-- Skimlinks Affiliate Script -->
-<script type="text/javascript" src="https://s.skimresources.com/js/298266X1785815.skimlinks.js"></script>
 </body>
 </html>
