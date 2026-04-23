@@ -116,6 +116,33 @@ body.chat-body {
   max-width: 100vw;
 }
 
+/* Global hyperlink readability — high contrast on dark background */
+a {
+  color: #7dd3fc;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+a:hover,
+a:focus {
+  color: #bae6fd;
+  text-decoration: underline;
+}
+
+/* Buttons and card-style links opt out of the underline */
+a.btn-primary,
+a.btn-primary-cta,
+a.btn-outline,
+a.affiliate-card,
+a.section-nav-link,
+a.chat-back-link,
+.footer-links a,
+.site-footer a,
+.chat-footer a {
+  text-decoration: none;
+}
+
 /* Header */
 
 .sticky-header-wrap {
@@ -693,7 +720,7 @@ body.chat-body {
 }
 
 .legal-section a {
-  color: #38bdf8;
+  color: #7dd3fc;
   text-decoration: underline;
 }
 
@@ -728,7 +755,7 @@ body.chat-body {
 
 .site-footer a,
 .chat-footer a {
-  color: #38bdf8;
+  color: #7dd3fc;
 }
 
 /* Cookie consent banner */
@@ -761,7 +788,7 @@ body.chat-body {
 }
 
 .cookie-consent-content a {
-  color: #38bdf8;
+  color: #7dd3fc;
   text-decoration: underline;
 }
 
@@ -833,7 +860,7 @@ body.chat-body {
 }
 
 .affiliate-disclosure-banner a {
-  color: #38bdf8;
+  color: #7dd3fc;
   text-decoration: underline;
 }
 
