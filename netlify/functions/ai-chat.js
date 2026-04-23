@@ -60,14 +60,16 @@ exports.handler = async (event) => {
     req.write(postData);
     req.end();
   }).catch((error) => {
-    return { status: 500, data: JSON.stringify({ error: error.message }) };
+    console.error("ai-chat upstream request failed:", error && error.message);
+    return { status: 502, data: JSON.stringify({ error: "Upstream AI service unavailable. Please try again in a moment." }) };
   });
 
   if (apiResponse.status < 200 || apiResponse.status >= 300) {
+    console.error("ai-chat upstream non-2xx:", apiResponse.status);
     return {
       statusCode: apiResponse.status,
       headers: { "Content-Type": "application/json" },
-      body: apiResponse.data
+      body: JSON.stringify({ error: "The AI service returned an error. Please try again in a moment." })
     };
   }
 
