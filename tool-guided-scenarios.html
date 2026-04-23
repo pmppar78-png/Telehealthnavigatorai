@@ -31,7 +31,13 @@
     "publisher": {
       "@type": "Organization",
       "name": "Telehealth Navigator AI",
-      "url": "https://telehealthnavigatorai.com"
+      "url": "https://telehealthnavigatorai.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://telehealthnavigatorai.com/logo.svg",
+        "width": 600,
+        "height": 120
+      }
     }
   }
   </script>
@@ -440,7 +446,7 @@
   <header class="site-header">
     <div class="site-header-inner">
       <div class="logo-block">
-      <div class="status-dot"></div>
+      <svg class="logo-mark" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Telehealth Navigator AI" focusable="false"><defs><linearGradient id="thn-mark-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#22c55e"/><stop offset="100%" stop-color="#15803d"/></linearGradient></defs><rect x="1" y="1" width="30" height="30" rx="9" fill="url(#thn-mark-g)"/><path d="M6.5 18 L11 18 L13 13 L16.5 22 L19 17 L22 19 L25.5 19" stroke="#ecfdf5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
       <div class="logo-text">
         <span class="logo-title">TELEHEALTH NAVIGATOR AI</span>
         <span class="logo-subtitle">Calm AI guide for online help options</span>
@@ -542,6 +548,41 @@
         you think through your options in a calm, supportive way.
       </p>
       <a href="/chat" class="btn-primary" style="margin-top: 1rem;">Talk to the AI Guide</a>
+    </section>
+
+    <section class="section section-muted" style="margin-top: 2rem;">
+      <h2>How this tool works</h2>
+      <p>
+        Guided Decision Support walks you through a short set of questions and, based on the pattern of your answers, points you to the parts of this site most likely to be useful for your situation. It does not diagnose anything, and it does not recommend a specific therapist or platform. It is a triage aid, not a care plan.
+      </p>
+      <p>
+        The questions reflect the filters that actually matter in practice: whether you have a working diagnosis or are trying to figure one out, whether you have insurance and what kind, whether you need a prescriber in addition to a therapist, and how much urgency is behind the search. Readers in a real crisis &mdash; thoughts of suicide, serious self-harm, danger to others &mdash; should contact 988 or 911 rather than use this tool.
+      </p>
+    </section>
+
+    <section class="section section-muted" style="margin-top: 2rem;">
+      <h2>What the output means</h2>
+      <p>
+        At the end of the walkthrough, you will see one to three scenario tiles that match your answers. Each tile includes:
+      </p>
+      <ul>
+        <li><strong>A description of what the scenario usually looks like.</strong> Not a diagnosis &mdash; a summary of the constraints you described.</li>
+        <li><strong>Next steps worth considering.</strong> Reading a specific guide, running the cost estimator with your plan inputs, calling an EAP, or asking a primary-care provider for a referral.</li>
+        <li><strong>Guides and platform comparisons to read first.</strong> These are ordered by what usually helps most, given the constraints you selected.</li>
+      </ul>
+      <p>
+        If the suggestions do not fit your situation, it is almost always because the questions missed an important detail. The <a href="/chat">AI guide</a> can handle free-form follow-ups that this tool cannot, and the <a href="/sitemap-page">full site map</a> lists every guide if you prefer to browse.
+      </p>
+    </section>
+
+    <section class="section section-muted" style="margin-top: 2rem;">
+      <h2>Honest limits</h2>
+      <ul>
+        <li>This is editorial guidance, not clinical care. It cannot replace a conversation with a licensed provider.</li>
+        <li>It cannot verify your insurance in real time or check a clinician's license status. Verify both before booking.</li>
+        <li>It deliberately keeps the question set short &mdash; long questionnaires drive abandonment more than they improve outcomes. If you want depth, the condition guides and hub pages go deeper than any quiz would.</li>
+        <li>It is updated when market conditions change (licensure rules, payer policies, platform availability), not every time a single platform tweaks its pricing. Always double-check time-sensitive details at the platform itself.</li>
+      </ul>
     </section>
 
     <section class="section" style="margin-top: 2rem;">
@@ -1046,13 +1087,5 @@
       answers = [];
     }
   </script>
-<!-- Infolinks In-Text Ads -->
-<script type="text/javascript">
-  var infolinks_pid = 3443210;
-  var infolinks_wsid = 0;
-</script>
-<script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js" async></script>
-<!-- Skimlinks Affiliate Script -->
-<script type="text/javascript" src="https://s.skimresources.com/js/298266X1785815.skimlinks.js"></script>
 </body>
 </html>

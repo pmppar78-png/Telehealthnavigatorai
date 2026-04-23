@@ -41,7 +41,13 @@
     "publisher": {
       "@type": "Organization",
       "name": "Telehealth Navigator AI",
-      "url": "https://telehealthnavigatorai.com"
+      "url": "https://telehealthnavigatorai.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://telehealthnavigatorai.com/logo.svg",
+        "width": 600,
+        "height": 120
+      }
     }
   }
   </script>
@@ -70,7 +76,7 @@
   <header class="site-header">
     <div class="site-header-inner">
       <div class="logo-block">
-      <div class="status-dot"></div>
+      <svg class="logo-mark" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Telehealth Navigator AI" focusable="false"><defs><linearGradient id="thn-mark-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#22c55e"/><stop offset="100%" stop-color="#15803d"/></linearGradient></defs><rect x="1" y="1" width="30" height="30" rx="9" fill="url(#thn-mark-g)"/><path d="M6.5 18 L11 18 L13 13 L16.5 22 L19 17 L22 19 L25.5 19" stroke="#ecfdf5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
       <div class="logo-text">
         <span class="logo-title">TELEHEALTH NAVIGATOR AI</span>
         <span class="logo-subtitle">Calm AI guide for online help options</span>
@@ -157,6 +163,59 @@
         <li><a href="/getting-started">Getting Started with Telehealth</a> &mdash; billing questions to bring to your first visit</li>
       </ul>
     </section>
+
+    <section class="legal-section">
+      <h2>A quick map of how telehealth gets paid for</h2>
+      <p>
+        Almost every telehealth bill falls into one of four bucket types, and it helps to know which one yours is before you start comparing prices:
+      </p>
+      <ul>
+        <li><strong>Commercial insurance, in-network.</strong> Your plan contracts with the platform or clinician. You pay a copay or coinsurance; the plan pays the rest. Cheapest when it works, but network mismatches are the single most common complaint we see from readers.</li>
+        <li><strong>Commercial insurance, out-of-network with reimbursement.</strong> You pay up front, submit a superbill, and get a partial refund weeks later. Useful when you want a specific therapist, but the out-of-pocket risk is real.</li>
+        <li><strong>Cash pay (subscription or per-session).</strong> No insurance involved. Simpler billing, but you carry the full cost. Subscription platforms spread it across a month; per-session platforms expose the true hourly rate.</li>
+        <li><strong>Public program coverage.</strong> Medicare Part B, state Medicaid, TRICARE, and VA benefits each have their own telehealth rules. When they cover a service, your share is typically very small or zero. When they don't, you cannot usually "buy in" by adding a commercial plan to them.</li>
+      </ul>
+      <p>
+        Most of the pricing confusion online comes from platforms that flip between these buckets in their marketing &mdash; advertising a $99 monthly rate while quietly letting you bill insurance for a different service tier. The guides on this hub walk through each path so you can pick one and stop comparing apples to oranges.
+      </p>
+    </section>
+
+    <section class="legal-section">
+      <h2>Costs most people forget to count</h2>
+      <p>
+        When readers tell us they paid "more than expected," the surprise is almost never the session fee itself. It's one of these:
+      </p>
+      <ol class="steps">
+        <li><strong>The intake visit.</strong> First visits are often billed at a higher CPT code than subsequent sessions and may or may not be covered differently by your plan.</li>
+        <li><strong>Labs ordered at the psychiatry visit.</strong> Basic bloodwork for medication management is inexpensive on most plans but not free. Ask whether labs are being sent to an in-network facility.</li>
+        <li><strong>Pharmacy charges.</strong> A platform's medication-management fee is separate from the cost of the prescription itself. Generic medications are usually inexpensive; brand-name psychiatric medications sometimes are not.</li>
+        <li><strong>No-show and late-cancellation fees.</strong> Standard in both in-person and online care, typically $50&ndash;$150. Read the fee schedule before you book.</li>
+        <li><strong>Platform service fees.</strong> A handful of platforms add a separate service or administrative charge on top of the session fee. Always a line item, almost never in the advertised price.</li>
+      </ol>
+      <p>
+        Our <a href="/guide-telehealth-hidden-costs">hidden telehealth costs</a> guide goes through each of these and tells you the exact question to ask a billing department before the first visit.
+      </p>
+    </section>
+
+    <section class="legal-section">
+      <h2>Insurance and costs FAQ</h2>
+      <h3>What's the single fastest way to check coverage?</h3>
+      <p>
+        Call the member services number on the back of your card and ask two questions: "Is outpatient mental-health telehealth a covered benefit on my plan?" and "Do you have [platform name] or [clinician name] in network?" Write down the representative's name and the reference number. That call is also what you will reference if a claim later gets denied.
+      </p>
+      <h3>Can I use an HSA or FSA for a telehealth copay?</h3>
+      <p>
+        Yes for both, in almost every case. Our <a href="/guide-hsa-fsa-telehealth">HSA/FSA for telehealth</a> guide covers the edge cases and what documentation to save.
+      </p>
+      <h3>My plan says therapy is covered, but the platform says they don't take insurance. Who's right?</h3>
+      <p>
+        Both, usually. Coverage is a feature of your plan. Network status is a feature of the platform's contract with the plan. A platform that says "we don't take insurance" typically means they haven't contracted with your specific plan &mdash; but your plan may still reimburse you for the out-of-network care via a superbill. Confirm before you assume.
+      </p>
+      <h3>What if my employer offers an EAP?</h3>
+      <p>
+        Employee Assistance Programs usually include a small number of free counseling sessions (commonly three to six) before you need to transition to your regular insurance. It is the cheapest way to start care when it is available. Ask HR or check your benefits portal for the EAP phone number.
+      </p>
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -189,13 +248,5 @@
     </p>
   </footer>
   <script src="cookie-consent.js"></script>
-<!-- Infolinks In-Text Ads -->
-<script type="text/javascript">
-  var infolinks_pid = 3443210;
-  var infolinks_wsid = 0;
-</script>
-<script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js" async></script>
-<!-- Skimlinks Affiliate Script -->
-<script type="text/javascript" src="https://s.skimresources.com/js/298266X1785815.skimlinks.js"></script>
 </body>
 </html>
