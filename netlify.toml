@@ -84,6 +84,12 @@
   force = true
 
 [[redirects]]
+  from = "/author-paul-paradis.html"
+  to = "/author-paul-paradis"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/chat.html"
   to = "/chat"
   status = 301
@@ -662,6 +668,36 @@
 [[redirects]]
   from = "/transparency-report.html"
   to = "/transparency-report"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/conditions.html"
+  to = "/conditions"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/platforms.html"
+  to = "/platforms"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/insurance-and-costs.html"
+  to = "/insurance-and-costs"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/special-populations.html"
+  to = "/special-populations"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/getting-started.html"
+  to = "/getting-started"
   status = 301
   force = true
 
