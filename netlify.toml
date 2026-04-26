@@ -22,7 +22,7 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    X-Robots-Tag = "index, follow"
+    X-Robots-Tag = "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "SAMEORIGIN"
     Referrer-Policy = "strict-origin-when-cross-origin"
