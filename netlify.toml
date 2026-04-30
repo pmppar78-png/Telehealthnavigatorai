@@ -63,6 +63,26 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# Single-hop canonicalization for non-canonical hostnames so Googlebot
+# never traverses a multi-hop chain that it could classify as a
+# "Redirect error". The canonical host is the apex over HTTPS:
+# https://telehealthnavigatorai.com
+[[redirects]]
+  from = "/*"
+  to = "https://telehealthnavigatorai.com/:splat"
+  status = 301
+  force = true
+  [redirects.conditions]
+    Host = ["www.telehealthnavigatorai.com"]
+
+[[redirects]]
+  from = "/*"
+  to = "https://telehealthnavigatorai.com/:splat"
+  status = 301
+  force = true
+  [redirects.conditions]
+    Host = ["telehealthnavigatorai.netlify.app"]
+
 # Belt-and-suspenders canonicalization:
 # Even with pretty_urls = true, explicitly 301 the .html variants to the
 # extensionless canonical URL. Extension-specific rule only — no broad
@@ -77,10 +97,15 @@
   force = true
 
 
+# /about.html is intentionally served as a canonical 200 page (no redirect
+# to the extensionless variant) to clear a Google Search Console
+# "Redirect error" reported on Apr 26, 2026 against
+# https://telehealthnavigatorai.com/about.html. The force=200 rewrite
+# overrides Netlify's pretty_urls auto-301 from .html to extensionless.
 [[redirects]]
   from = "/about.html"
-  to = "/about"
-  status = 301
+  to = "/about.html"
+  status = 200
   force = true
 
 [[redirects]]
