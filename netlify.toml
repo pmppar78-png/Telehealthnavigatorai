@@ -121,12 +121,6 @@
   force = true
 
 [[redirects]]
-  from = "/reviewer/lisa-lewis-rn-bsn/"
-  to = "/reviewer/lisa-lewis-rn-bsn"
-  status = 301
-  force = true
-
-[[redirects]]
   from = "/chat.html"
   to = "/chat"
   status = 301
@@ -773,4 +767,3 @@
   to = "/getting-started"
   status = 301
   force = true
-
