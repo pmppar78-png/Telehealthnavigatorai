@@ -76,7 +76,7 @@
           'We use essential cookies for basic site functionality. We also use optional cookies for analytics and advertising (including Google AdSense). ' +
           'Non-essential cookies are blocked until you accept. ' +
           'By clicking "Accept All," you consent to our use of all cookies. ' +
-          '<a href="privacy.html">Learn more in our Privacy Policy</a>.' +
+          '<a href="/privacy">Learn more in our Privacy Policy</a>.' +
         '</p>' +
         '<div class="cookie-consent-buttons">' +
           '<button id="cookie-accept-btn" class="cookie-btn cookie-btn-accept">Accept All Cookies</button>' +
