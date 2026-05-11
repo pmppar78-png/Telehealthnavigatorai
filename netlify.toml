@@ -4,14 +4,6 @@
 [build.processing]
   skip_processing = false
 
-# Enable Netlify's native pretty URL handling.
-# This causes Netlify to:
-#   - Serve /about from about.html (200)
-#   - 301 redirect /about.html -> /about
-#   - 301 redirect /about/ -> /about
-# Replacing the hand-rolled per-file redirects that previously were
-# being intercepted by a broken "/*/" catch-all and never fired in
-# production (producing duplicate /foo + /foo.html 200 responses).
 [build.processing.html]
   pretty_urls = true
 
@@ -45,9 +37,6 @@
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
 
-# Explicit noindex for the 404 page so Search Console never sees a
-# conflicting signal between the global X-Robots-Tag: index and the
-# page-level <meta name="robots" content="noindex">.
 [[headers]]
   for = "/404.html"
   [headers.values]
@@ -63,702 +52,87 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Belt-and-suspenders canonicalization:
-# Even with pretty_urls = true, explicitly 301 the .html variants to the
-# extensionless canonical URL. Extension-specific rule only — no broad
-# wildcards so non-existent paths fall through to the 404.html page
-# instead of looping (the previous `/*/` rule caused 301 self-loops on
-# every unknown URL, which Googlebot reports as "Redirect error").
-
+# Homepage index.html redirect (pretty_urls handles all other .html files)
 [[redirects]]
   from = "/index.html"
-  to = "https://telehealthnavigatorai.com/"
+  to = "/"
   status = 301
   force = true
 
-
-[[redirects]]
-  from = "/about.html"
-  to = "https://telehealthnavigatorai.com/about"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/author-paul-paradis.html"
-  to = "https://telehealthnavigatorai.com/author-paul-paradis"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/reviewer/lisa-lewis-rn-bsn.html"
-  to = "https://telehealthnavigatorai.com/reviewer/lisa-lewis-rn-bsn"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/chat.html"
-  to = "https://telehealthnavigatorai.com/chat"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/contact.html"
-  to = "https://telehealthnavigatorai.com/contact"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/editorial-standards.html"
-  to = "https://telehealthnavigatorai.com/editorial-standards"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/faq.html"
-  to = "https://telehealthnavigatorai.com/faq"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-adhd-telehealth.html"
-  to = "https://telehealthnavigatorai.com/guide-adhd-telehealth"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-anxiety-online-therapy.html"
-  to = "https://telehealthnavigatorai.com/guide-anxiety-online-therapy"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-autism-telehealth.html"
-  to = "https://telehealthnavigatorai.com/guide-autism-telehealth"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-best-couples-therapy-platforms.html"
-  to = "https://telehealthnavigatorai.com/guide-best-couples-therapy-platforms"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-best-medication-management.html"
-  to = "https://telehealthnavigatorai.com/guide-best-medication-management"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-best-online-psychiatry.html"
-  to = "https://telehealthnavigatorai.com/guide-best-online-psychiatry"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-best-online-therapy-platforms.html"
-  to = "https://telehealthnavigatorai.com/guide-best-online-therapy-platforms"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-best-teen-therapy.html"
-  to = "https://telehealthnavigatorai.com/guide-best-teen-therapy"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-betterhelp-vs-talkspace.html"
-  to = "https://telehealthnavigatorai.com/guide-betterhelp-vs-talkspace"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-bipolar-telehealth.html"
-  to = "https://telehealthnavigatorai.com/guide-bipolar-telehealth"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-borderline-personality-disorder.html"
-  to = "https://telehealthnavigatorai.com/guide-borderline-personality-disorder"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-build-relationship-online-provider.html"
-  to = "https://telehealthnavigatorai.com/guide-build-relationship-online-provider"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-choosing-therapy.html"
-  to = "https://telehealthnavigatorai.com/guide-choosing-therapy"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-chronic-pain-telehealth.html"
-  to = "https://telehealthnavigatorai.com/guide-chronic-pain-telehealth"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-college-student-therapy.html"
-  to = "https://telehealthnavigatorai.com/guide-college-student-therapy"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-couples-therapy-online.html"
-  to = "https://telehealthnavigatorai.com/guide-couples-therapy-online"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-depression-treatment-online.html"
-  to = "https://telehealthnavigatorai.com/guide-depression-treatment-online"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-digital-detox-mental-health.html"
-  to = "https://telehealthnavigatorai.com/guide-digital-detox-mental-health"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-dissociative-disorders.html"
-  to = "https://telehealthnavigatorai.com/guide-dissociative-disorders"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-eating-disorders-online.html"
-  to = "https://telehealthnavigatorai.com/guide-eating-disorders-online"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-evaluate-therapist-credentials.html"
-  to = "https://telehealthnavigatorai.com/guide-evaluate-therapist-credentials"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-exercise-mental-health.html"
-  to = "https://telehealthnavigatorai.com/guide-exercise-mental-health"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-family-therapy-telehealth.html"
-  to = "https://telehealthnavigatorai.com/guide-family-therapy-telehealth"
-  status = 301
-  force = true
-
+# Cross-page redirects for renamed/merged guides
 [[redirects]]
   from = "/guide-feeling-overwhelmed.html"
-  to = "https://telehealthnavigatorai.com/guide-stress-management-telehealth"
+  to = "/guide-stress-management-telehealth"
   status = 301
   force = true
 
 [[redirects]]
   from = "/guide-feeling-overwhelmed"
-  to = "https://telehealthnavigatorai.com/guide-stress-management-telehealth"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-find-low-cost-telehealth.html"
-  to = "https://telehealthnavigatorai.com/guide-find-low-cost-telehealth"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-first-therapy-session.html"
-  to = "https://telehealthnavigatorai.com/guide-first-therapy-session"
+  to = "/guide-stress-management-telehealth"
   status = 301
   force = true
 
 [[redirects]]
   from = "/guide-free-low-cost-therapy.html"
-  to = "https://telehealthnavigatorai.com/guide-find-low-cost-telehealth"
+  to = "/guide-find-low-cost-telehealth"
   status = 301
   force = true
 
 [[redirects]]
   from = "/guide-free-low-cost-therapy"
-  to = "https://telehealthnavigatorai.com/guide-find-low-cost-telehealth"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-grief-counseling-online.html"
-  to = "https://telehealthnavigatorai.com/guide-grief-counseling-online"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-hipaa-telehealth-privacy.html"
-  to = "https://telehealthnavigatorai.com/guide-hipaa-telehealth-privacy"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-hsa-fsa-telehealth.html"
-  to = "https://telehealthnavigatorai.com/guide-hsa-fsa-telehealth"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-insomnia-sleep-telehealth.html"
-  to = "https://telehealthnavigatorai.com/guide-insomnia-sleep-telehealth"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-insurance-cover-therapy.html"
-  to = "https://telehealthnavigatorai.com/guide-insurance-cover-therapy"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-international-telehealth.html"
-  to = "https://telehealthnavigatorai.com/guide-international-telehealth"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-journaling-mental-health.html"
-  to = "https://telehealthnavigatorai.com/guide-journaling-mental-health"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-lgbtq-affirming-therapy.html"
-  to = "https://telehealthnavigatorai.com/guide-lgbtq-affirming-therapy"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-medicaid-telehealth.html"
-  to = "https://telehealthnavigatorai.com/guide-medicaid-telehealth"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-medicare-telehealth.html"
-  to = "https://telehealthnavigatorai.com/guide-medicare-telehealth"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-mental-wellness-routine.html"
-  to = "https://telehealthnavigatorai.com/guide-mental-wellness-routine"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-messaging-based-therapy.html"
-  to = "https://telehealthnavigatorai.com/guide-messaging-based-therapy"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-mindfulness-meditation-apps.html"
-  to = "https://telehealthnavigatorai.com/guide-mindfulness-meditation-apps"
+  to = "/guide-find-low-cost-telehealth"
   status = 301
   force = true
 
 [[redirects]]
   from = "/guide-mood-disorders.html"
-  to = "https://telehealthnavigatorai.com/guide-depression-treatment-online"
+  to = "/guide-depression-treatment-online"
   status = 301
   force = true
 
 [[redirects]]
   from = "/guide-mood-disorders"
-  to = "https://telehealthnavigatorai.com/guide-depression-treatment-online"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-multilingual-telehealth.html"
-  to = "https://telehealthnavigatorai.com/guide-multilingual-telehealth"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-nutrition-mental-health.html"
-  to = "https://telehealthnavigatorai.com/guide-nutrition-mental-health"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-ocd-therapy-online.html"
-  to = "https://telehealthnavigatorai.com/guide-ocd-therapy-online"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-online-therapy-ultimate.html"
-  to = "https://telehealthnavigatorai.com/guide-online-therapy-ultimate"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-panic-attacks.html"
-  to = "https://telehealthnavigatorai.com/guide-panic-attacks"
+  to = "/guide-depression-treatment-online"
   status = 301
   force = true
 
 [[redirects]]
   from = "/guide-persistent-sadness.html"
-  to = "https://telehealthnavigatorai.com/guide-depression-treatment-online"
+  to = "/guide-depression-treatment-online"
   status = 301
   force = true
 
 [[redirects]]
   from = "/guide-persistent-sadness"
-  to = "https://telehealthnavigatorai.com/guide-depression-treatment-online"
+  to = "/guide-depression-treatment-online"
   status = 301
   force = true
 
 [[redirects]]
   from = "/guide-phobias-online-therapy.html"
-  to = "https://telehealthnavigatorai.com/guide-anxiety-online-therapy"
+  to = "/guide-anxiety-online-therapy"
   status = 301
   force = true
 
 [[redirects]]
   from = "/guide-phobias-online-therapy"
-  to = "https://telehealthnavigatorai.com/guide-anxiety-online-therapy"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-postpartum-depression-online.html"
-  to = "https://telehealthnavigatorai.com/guide-postpartum-depression-online"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-prepare-telehealth-appointment.html"
-  to = "https://telehealthnavigatorai.com/guide-prepare-telehealth-appointment"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-preventative-mental-health.html"
-  to = "https://telehealthnavigatorai.com/guide-preventative-mental-health"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-psychosis-telehealth.html"
-  to = "https://telehealthnavigatorai.com/guide-psychosis-telehealth"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-ptsd-trauma-therapy.html"
-  to = "https://telehealthnavigatorai.com/guide-ptsd-trauma-therapy"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-relationship-issues.html"
-  to = "https://telehealthnavigatorai.com/guide-relationship-issues"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-schizoaffective-disorder.html"
-  to = "https://telehealthnavigatorai.com/guide-schizoaffective-disorder"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-schizophrenia-telehealth.html"
-  to = "https://telehealthnavigatorai.com/guide-schizophrenia-telehealth"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-self-help-resources.html"
-  to = "https://telehealthnavigatorai.com/guide-self-help-resources"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-sleep-problems.html"
-  to = "https://telehealthnavigatorai.com/guide-sleep-problems"
+  to = "/guide-anxiety-online-therapy"
   status = 301
   force = true
 
 [[redirects]]
   from = "/guide-social-anxiety-online.html"
-  to = "https://telehealthnavigatorai.com/guide-anxiety-online-therapy"
+  to = "/guide-anxiety-online-therapy"
   status = 301
   force = true
 
 [[redirects]]
   from = "/guide-social-anxiety-online"
-  to = "https://telehealthnavigatorai.com/guide-anxiety-online-therapy"
+  to = "/guide-anxiety-online-therapy"
   status = 301
   force = true
 
-[[redirects]]
-  from = "/guide-stress-management-telehealth.html"
-  to = "https://telehealthnavigatorai.com/guide-stress-management-telehealth"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-subscription-vs-pay-per-session.html"
-  to = "https://telehealthnavigatorai.com/guide-subscription-vs-pay-per-session"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-substance-abuse-online.html"
-  to = "https://telehealthnavigatorai.com/guide-substance-abuse-online"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-support-groups-online.html"
-  to = "https://telehealthnavigatorai.com/guide-support-groups-online"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-switching-to-online-therapy.html"
-  to = "https://telehealthnavigatorai.com/guide-switching-to-online-therapy"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-telehealth-across-state-lines.html"
-  to = "https://telehealthnavigatorai.com/guide-telehealth-across-state-lines"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-telehealth-costs-insurance.html"
-  to = "https://telehealthnavigatorai.com/guide-telehealth-costs-insurance"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-telehealth-disabilities.html"
-  to = "https://telehealthnavigatorai.com/guide-telehealth-disabilities"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-telehealth-emergencies.html"
-  to = "https://telehealthnavigatorai.com/guide-telehealth-emergencies"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-telehealth-hidden-costs.html"
-  to = "https://telehealthnavigatorai.com/guide-telehealth-hidden-costs"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-telehealth.html"
-  to = "https://telehealthnavigatorai.com/guide-telehealth"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-telehealth-laws-by-state.html"
-  to = "https://telehealthnavigatorai.com/guide-telehealth-laws-by-state"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-telehealth-mental-health.html"
-  to = "https://telehealthnavigatorai.com/guide-telehealth-mental-health"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-telehealth-parents-caregivers.html"
-  to = "https://telehealthnavigatorai.com/guide-telehealth-parents-caregivers"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-telehealth-primary-care.html"
-  to = "https://telehealthnavigatorai.com/guide-telehealth-primary-care"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-telehealth-privacy-security.html"
-  to = "https://telehealthnavigatorai.com/guide-telehealth-privacy-security"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-telehealth-rural-areas.html"
-  to = "https://telehealthnavigatorai.com/guide-telehealth-rural-areas"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-telehealth-seniors.html"
-  to = "https://telehealthnavigatorai.com/guide-telehealth-seniors"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-telehealth-technical-setup.html"
-  to = "https://telehealthnavigatorai.com/guide-telehealth-technical-setup"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-text-vs-video-therapy.html"
-  to = "https://telehealthnavigatorai.com/guide-text-vs-video-therapy"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-therapy-children.html"
-  to = "https://telehealthnavigatorai.com/guide-therapy-children"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-therapy-maintenance.html"
-  to = "https://telehealthnavigatorai.com/guide-therapy-maintenance"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-veterans-telehealth.html"
-  to = "https://telehealthnavigatorai.com/guide-veterans-telehealth"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-when-telehealth-isnt-right.html"
-  to = "https://telehealthnavigatorai.com/guide-when-telehealth-isnt-right"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-work-burnout.html"
-  to = "https://telehealthnavigatorai.com/guide-work-burnout"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-workplace-mental-health.html"
-  to = "https://telehealthnavigatorai.com/guide-workplace-mental-health"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/privacy.html"
-  to = "https://telehealthnavigatorai.com/privacy"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/sitemap-page.html"
-  to = "https://telehealthnavigatorai.com/sitemap-page"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/state-telehealth-resources.html"
-  to = "https://telehealthnavigatorai.com/state-telehealth-resources"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/terms.html"
-  to = "https://telehealthnavigatorai.com/terms"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/tool-cost-estimator.html"
-  to = "https://telehealthnavigatorai.com/tool-cost-estimator"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/tool-guided-scenarios.html"
-  to = "https://telehealthnavigatorai.com/tool-guided-scenarios"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/tool-insurance-finder.html"
-  to = "https://telehealthnavigatorai.com/tool-insurance-finder"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/transparency-report.html"
-  to = "https://telehealthnavigatorai.com/transparency-report"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/conditions.html"
-  to = "https://telehealthnavigatorai.com/conditions"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/platforms.html"
-  to = "https://telehealthnavigatorai.com/platforms"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/insurance-and-costs.html"
-  to = "https://telehealthnavigatorai.com/insurance-and-costs"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/special-populations.html"
-  to = "https://telehealthnavigatorai.com/special-populations"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/getting-started.html"
-  to = "https://telehealthnavigatorai.com/getting-started"
-  status = 301
-  force = true
-
-# Single-hop canonicalization for non-canonical hostnames so Googlebot
-# never traverses a multi-hop chain that it could classify as a
-# "Redirect error". The canonical host is the apex over HTTPS:
-# https://telehealthnavigatorai.com
-[[redirects]]
-  from = "http://telehealthnavigatorai.com/*"
-  to = "https://telehealthnavigatorai.com/:splat"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "http://www.telehealthnavigatorai.com/*"
-  to = "https://telehealthnavigatorai.com/:splat"
-  status = 301
-  force = true
-
+# Hostname canonicalization: www and netlify.app → apex domain
 [[redirects]]
   from = "/*"
   to = "https://telehealthnavigatorai.com/:splat"
