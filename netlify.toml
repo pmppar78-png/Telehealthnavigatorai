@@ -52,10 +52,36 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Homepage index.html redirect (pretty_urls handles all other .html files)
+# Hostname canonicalization: www and netlify.app → apex domain
+# These MUST be first so www/netlify.app requests redirect to the canonical
+# domain before any path-specific rules match (prevents redirect chains)
+[[redirects]]
+  from = "/*"
+  to = "https://telehealthnavigatorai.com/:splat"
+  status = 301
+  force = true
+  [redirects.conditions]
+    Host = ["www.telehealthnavigatorai.com"]
+
+[[redirects]]
+  from = "/*"
+  to = "https://telehealthnavigatorai.com/:splat"
+  status = 301
+  force = true
+  [redirects.conditions]
+    Host = ["telehealthnavigatorai.netlify.app"]
+
+# Explicit .html → clean URL redirects (force = true ensures these
+# take precedence over pretty_urls build processing)
 [[redirects]]
   from = "/index.html"
   to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/chat.html"
+  to = "/chat"
   status = 301
   force = true
 
@@ -131,20 +157,3 @@
   to = "/guide-anxiety-online-therapy"
   status = 301
   force = true
-
-# Hostname canonicalization: www and netlify.app → apex domain
-[[redirects]]
-  from = "/*"
-  to = "https://telehealthnavigatorai.com/:splat"
-  status = 301
-  force = true
-  [redirects.conditions]
-    Host = ["www.telehealthnavigatorai.com"]
-
-[[redirects]]
-  from = "/*"
-  to = "https://telehealthnavigatorai.com/:splat"
-  status = 301
-  force = true
-  [redirects.conditions]
-    Host = ["telehealthnavigatorai.netlify.app"]
