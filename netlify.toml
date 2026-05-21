@@ -52,9 +52,115 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Hostname canonicalization: www and netlify.app → apex domain
-# These MUST be first so www/netlify.app requests redirect to the canonical
-# domain before any path-specific rules match (prevents redirect chains)
+# ============================================================
+# REDIRECT RULES — ordered to eliminate ALL redirect chains
+# ============================================================
+# Rule processing: Netlify evaluates top-to-bottom, first match wins.
+# Strategy: specific .html rules → catch-all .html → renamed guides →
+# host canonicalization. ALL targets use absolute canonical URLs so
+# requests from ANY host (www, netlify.app) resolve in a single 301.
+# ============================================================
+
+# 1. /index.html is a special case: catch-all /*.html would map it
+#    to /index (wrong), so this explicit rule sends it to / instead.
+[[redirects]]
+  from = "/index.html"
+  to = "https://telehealthnavigatorai.com/"
+  status = 301
+  force = true
+
+# 2. Renamed/merged guide .html variants — must fire before the
+#    catch-all /*.html rule, which would redirect them to a path
+#    that no longer exists.
+[[redirects]]
+  from = "/guide-feeling-overwhelmed.html"
+  to = "https://telehealthnavigatorai.com/guide-stress-management-telehealth"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-free-low-cost-therapy.html"
+  to = "https://telehealthnavigatorai.com/guide-find-low-cost-telehealth"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-mood-disorders.html"
+  to = "https://telehealthnavigatorai.com/guide-depression-treatment-online"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-persistent-sadness.html"
+  to = "https://telehealthnavigatorai.com/guide-depression-treatment-online"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-phobias-online-therapy.html"
+  to = "https://telehealthnavigatorai.com/guide-anxiety-online-therapy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-social-anxiety-online.html"
+  to = "https://telehealthnavigatorai.com/guide-anxiety-online-therapy"
+  status = 301
+  force = true
+
+# 3. Catch-all .html → clean URL redirect. Handles ALL remaining
+#    .html requests from ANY host in a single 301 — no chains.
+#    Example: www.telehealthnavigatorai.com/about.html →
+#             telehealthnavigatorai.com/about (one redirect)
+[[redirects]]
+  from = "/*.html"
+  to = "https://telehealthnavigatorai.com/:splat"
+  status = 301
+  force = true
+
+# 4. Renamed/merged guide clean-URL variants — must fire before
+#    the host catch-all so www/netlify.app requests for old guide
+#    names resolve in a single redirect.
+[[redirects]]
+  from = "/guide-feeling-overwhelmed"
+  to = "https://telehealthnavigatorai.com/guide-stress-management-telehealth"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-free-low-cost-therapy"
+  to = "https://telehealthnavigatorai.com/guide-find-low-cost-telehealth"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-mood-disorders"
+  to = "https://telehealthnavigatorai.com/guide-depression-treatment-online"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-persistent-sadness"
+  to = "https://telehealthnavigatorai.com/guide-depression-treatment-online"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-phobias-online-therapy"
+  to = "https://telehealthnavigatorai.com/guide-anxiety-online-therapy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guide-social-anxiety-online"
+  to = "https://telehealthnavigatorai.com/guide-anxiety-online-therapy"
+  status = 301
+  force = true
+
+# 5. Host canonicalization: www and netlify.app → apex domain.
+#    Placed AFTER .html and renamed-guide rules so those specific
+#    patterns are already handled — only non-.html, non-renamed
+#    requests reach these catch-all host rules.
 [[redirects]]
   from = "/*"
   to = "https://telehealthnavigatorai.com/:splat"
@@ -70,90 +176,3 @@
   force = true
   [redirects.conditions]
     Host = ["telehealthnavigatorai.netlify.app"]
-
-# Explicit .html → clean URL redirects (force = true ensures these
-# take precedence over pretty_urls build processing)
-[[redirects]]
-  from = "/index.html"
-  to = "/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/chat.html"
-  to = "/chat"
-  status = 301
-  force = true
-
-# Cross-page redirects for renamed/merged guides
-[[redirects]]
-  from = "/guide-feeling-overwhelmed.html"
-  to = "/guide-stress-management-telehealth"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-feeling-overwhelmed"
-  to = "/guide-stress-management-telehealth"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-free-low-cost-therapy.html"
-  to = "/guide-find-low-cost-telehealth"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-free-low-cost-therapy"
-  to = "/guide-find-low-cost-telehealth"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-mood-disorders.html"
-  to = "/guide-depression-treatment-online"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-mood-disorders"
-  to = "/guide-depression-treatment-online"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-persistent-sadness.html"
-  to = "/guide-depression-treatment-online"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-persistent-sadness"
-  to = "/guide-depression-treatment-online"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-phobias-online-therapy.html"
-  to = "/guide-anxiety-online-therapy"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-phobias-online-therapy"
-  to = "/guide-anxiety-online-therapy"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-social-anxiety-online.html"
-  to = "/guide-anxiety-online-therapy"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/guide-social-anxiety-online"
-  to = "/guide-anxiety-online-therapy"
-  status = 301
-  force = true
