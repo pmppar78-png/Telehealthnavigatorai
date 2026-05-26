@@ -107,6 +107,16 @@ let conversation = [
   }
 ];
 
+function escapeHtml(text) {
+  if (!text) return "";
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
 function appendMessage(role, text) {
   if (!chatWindow) return;
   const row = document.createElement("div");
@@ -114,7 +124,12 @@ function appendMessage(role, text) {
 
   const bubble = document.createElement("div");
   bubble.className = "message-bubble";
-  bubble.innerHTML = linkify(text);
+
+  if (role === "user") {
+    bubble.textContent = text;
+  } else {
+    bubble.innerHTML = linkify(escapeHtml(text));
+  }
 
   row.appendChild(bubble);
   chatWindow.appendChild(row);
@@ -123,10 +138,9 @@ function appendMessage(role, text) {
 
 function linkify(text) {
   if (!text) return "";
-  const urlRegex = /(https?:\/\/[^\s]+)/g;
+  const urlRegex = /(https?:\/\/[^\s<&]+)/g;
   return text.replace(urlRegex, (url) => {
-    const safeUrl = url.replace(/"/g, "&quot;");
-    return `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer sponsored">${safeUrl}</a>`;
+    return `<a href="${url}" target="_blank" rel="noopener noreferrer sponsored">${url}</a>`;
   });
 }
 
@@ -157,7 +171,7 @@ async function sendMessage(message) {
 
     conversation.push({ role: "assistant", content: reply });
 
-    pendingBubble.innerHTML = linkify(reply);
+    pendingBubble.innerHTML = linkify(escapeHtml(reply));
   } catch (err) {
     pendingBubble.textContent =
       "I ran into a technical issue reaching the AI service. Please try again in a moment.";
