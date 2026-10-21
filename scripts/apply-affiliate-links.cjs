@@ -13,7 +13,7 @@
  *                                (href = https://[www.]host or host/) become trackingUrl
  *                                and get rel="sponsored noopener noreferrer". Deep links
  *                                (e.g. a pricing page cited as a source) are left alone.
- *   program-available-not-joined left untouched.
+ *   program-available-not-joined same as no-program until activated.
  *   no-program                   "sponsored" is removed from rel (noopener noreferrer kept).
  *   blocked                      reported as an error; links must be removed by hand.
  *
@@ -77,7 +77,7 @@ for (const file of listFiles()) {
       text = text.replace(tagRe, (tag, href, p) => {
         const isHome = !p || p === "/";
         if (b.status === "blocked") { errors.push(`${rel}: blocked brand ${brand} linked (${href})`); return tag; }
-        if (b.status === "no-program") {
+        if (b.status === "no-program" || b.status === "program-available-not-joined") {
           if (/\bsponsored\b/.test(tag)) { summary[brand] = (summary[brand] || 0) + 1; return fixRel(tag, false); }
           return tag;
         }
@@ -96,7 +96,7 @@ for (const file of listFiles()) {
         const entryRe = new RegExp(`(\\{[^{}]*url:\\s*")(https?://(?:www\\.)?${h}/?)("[^{}]*\\})`, "g");
         text = text.replace(entryRe, (all, a, url, c) => {
           let out = all;
-          if (b.status === "no-program") out = out.replace(/affiliate:\s*true/, "affiliate: false");
+          if (b.status === "no-program" || b.status === "program-available-not-joined") out = out.replace(/affiliate:\s*true/, "affiliate: false");
           if (b.status === "active" && b.trackingUrl) out = a + b.trackingUrl + c.replace(/affiliate:\s*false/, "affiliate: true");
           if (out !== all) summary[brand + " (chat map)"] = (summary[brand + " (chat map)"] || 0) + 1;
           return out;

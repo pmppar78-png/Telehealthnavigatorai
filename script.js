@@ -16,7 +16,7 @@ let userContext = null; // Stores personalization answers
 let conversation = [];
 
 const DISCLOSURE_HTML =
-  '<p class="chat-disclosure" style="font-size:.8rem;color:#666;margin-top:.5rem;border-top:1px solid #eee;padding-top:.4rem">Some links above are affiliate links; we may earn a commission at no cost to you. ' +
+  '<p class="chat-disclosure" style="font-size:.8rem;color:#666;margin-top:.5rem;border-top:1px solid #eee;padding-top:.4rem">We may earn a commission from some links, at no cost to you. ' +
   '<a href="/affiliate-disclosure">How this works</a></p>';
 
 function escapeHtml(text) {
@@ -52,7 +52,7 @@ function linkify(text) {
   if (!text) return "";
   const urlRegex = /(https?:\/\/[^\s<&]+)/g;
   return text.replace(urlRegex, (url) => {
-    return `<a href="${url}" target="_blank" rel="sponsored nofollow noopener noreferrer">${url}</a>`;
+    return `<a href="${url}" target="_blank" rel="nofollow noopener noreferrer">${url}</a>`;
   });
 }
 

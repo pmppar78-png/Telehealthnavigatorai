@@ -1,5 +1,5 @@
 {
-  "_readme": "Single source of truth for outbound commercial links. status: no-program = plain link (no rel=sponsored); program-available-not-joined = plain until a tracking URL is approved; active = trackingUrl filled, script rewrites hrefs and adds rel=sponsored; blocked = must not be linked. Fill trackingUrl ONLY with the link copied from the network dashboard, then run: node scripts/apply-affiliate-links.cjs (dry run) and --write.",
+  "_readme": "Single source of truth for outbound commercial links. status: no-program = plain link (no rel=sponsored); program-available-not-joined = plain link (no rel=sponsored) until a tracking URL is approved and status set to active; active = trackingUrl filled, script rewrites hrefs and adds rel=sponsored; blocked = must not be linked. Fill trackingUrl ONLY with the link copied from the network dashboard, then run: node scripts/apply-affiliate-links.cjs (dry run) and --write.",
   "brands": {
     "BetterHelp": {
       "hosts": [
@@ -33,7 +33,8 @@
     },
     "Teen Counseling / Faithful Counseling": {
       "hosts": [
-        "teencounseling.com"
+        "teencounseling.com",
+        "faithfulcounseling.com"
       ],
       "destination": "https://www.teencounseling.com",
       "trackingUrl": "",
@@ -133,7 +134,8 @@
     },
     "Wysa": {
       "hosts": [
-        "wysa.com"
+        "wysa.com",
+        "wysa.io"
       ],
       "destination": "https://www.wysa.com",
       "trackingUrl": "",
@@ -563,8 +565,8 @@
       ],
       "destination": "https://www.cerebral.com",
       "trackingUrl": "",
-      "status": "no-program",
-      "notes": "Not an affiliate target. Barred from controlled-substance prescribing (Nov 2024 DOJ NPA). Removed from ADHD contexts; remaining plain links are pending an owner decision on full removal."
+      "status": "blocked",
+      "notes": "Owner decision 2026-10-21: no links. Barred from controlled-substance prescribing (Nov 2024 DOJ NPA)."
     },
     "Parting": {
       "hosts": [
