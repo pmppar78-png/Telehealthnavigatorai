@@ -21,6 +21,12 @@
  * generator templates), and netlify/functions/chat-config.(js|mjs) (chat link map:
  * url and the affiliate flag are synced).
  *
+ * Disclosure: whenever a page ends up with at least one rel="sponsored" link, the
+ * script inserts a one-line <p class="affiliate-note"> just before the block that
+ * holds the first such link (FTC: disclose near the link), and removes that note
+ * from pages that no longer have any. Funeral generator templates are not given
+ * notes; the generated pages on disk are, the next time the script runs.
+ *
  * Never put a guessed or placeholder tracking URL in the JSON. Paste the exact
  * link from the network dashboard. After --write, review `git diff` and commit.
  */
@@ -47,6 +53,22 @@ function listFiles() {
     if (fs.existsSync(path.join(ROOT, extra))) out.push(path.join(ROOT, extra));
   }
   return out;
+}
+
+
+const NOTE_RE = /\n?[ \t]*<p class="affiliate-note">[\s\S]*?<\/p>/g;
+const DISCLOSURE_HREF = fs.existsSync(path.join(ROOT, "generate-pages.js")) ? "affiliate-disclosure.html" : "/affiliate-disclosure";
+function syncDisclosure(html, rel) {
+  if (/affiliate-disclosure\.html$/.test(rel)) return html;
+  const first = html.search(/<a\b[^>]*rel="[^"]*\bsponsored\b[^"]*"/);
+  if (first === -1) return html.replace(NOTE_RE, "");
+  if (/<p class="affiliate-note">/.test(html)) return html;
+  const head = html.slice(0, first);
+  const starts = ["<p", "<ul", "<ol", "<table", "<div"].map((t) => head.lastIndexOf(t)).filter((i) => i > -1);
+  const at = starts.length ? Math.max(...starts) : first;
+  const indent = (head.slice(0, at).match(/[ \t]*$/) || [""])[0];
+  const note = `<p class="affiliate-note"><small>We may earn a commission from some links in this section, at no cost to you. <a href="${DISCLOSURE_HREF}">How this works</a>.</small></p>\n${indent}`;
+  return html.slice(0, at) + note + html.slice(at);
 }
 
 const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -104,6 +126,9 @@ for (const file of listFiles()) {
       }
     }
   }
+  // FTC: a page with a sponsored link carries a short disclosure just before the
+  // first block that contains one. Pages with none lose the note. Idempotent.
+  if (rel.endsWith(".html")) text = syncDisclosure(text, rel);
   if (text !== orig) {
     filesChanged++;
     if (WRITE) fs.writeFileSync(file, text);
