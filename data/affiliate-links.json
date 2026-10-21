@@ -559,15 +559,6 @@
       "status": "no-program",
       "notes": "No publisher program; its 'affiliate' network is for pharmacies [OFFICIAL teamcubancard.com]"
     },
-    "Cerebral": {
-      "hosts": [
-        "cerebral.com"
-      ],
-      "destination": "https://www.cerebral.com",
-      "trackingUrl": "",
-      "status": "blocked",
-      "notes": "Owner decision 2026-10-21: no links. Barred from controlled-substance prescribing (Nov 2024 DOJ NPA)."
-    },
     "Parting": {
       "hosts": [
         "parting.com"
