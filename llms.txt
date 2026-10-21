@@ -1,0 +1,45 @@
+# Telehealth Navigator AI
+
+> An independent, educational website at telehealthnavigatorai.com that helps people in the U.S. understand telehealth and online therapy options: how online therapy, psychiatry, and telehealth platforms work, how cost and insurance coverage work, privacy considerations, and how to prepare for a first appointment. It includes condition-specific guides, platform comparisons, cost and insurance tools, and an AI chat guide.
+
+The site does not provide therapy, medical advice, diagnosis, prescriptions, or crisis services. In a crisis in the U.S., call or text 988 or call 911. Content is written by the site editor and reviewed by a registered nurse (see author and reviewer pages). The site is supported by display advertising and some affiliate links; see the Affiliate Disclosure. Prices and insurance coverage change often and should be confirmed with providers.
+
+## Start here
+- [Home](https://telehealthnavigatorai.com/)
+- [How to Start Online Therapy or Telehealth](https://telehealthnavigatorai.com/getting-started)
+- [Ultimate Guide to Online Therapy](https://telehealthnavigatorai.com/guide-online-therapy-ultimate)
+- [What Is Telehealth?](https://telehealthnavigatorai.com/guide-telehealth)
+- [FAQ](https://telehealthnavigatorai.com/faq)
+
+## Hubs
+- [Conditions](https://telehealthnavigatorai.com/conditions)
+- [Platforms](https://telehealthnavigatorai.com/platforms)
+- [Insurance and Costs](https://telehealthnavigatorai.com/insurance-and-costs)
+- [Special Populations](https://telehealthnavigatorai.com/special-populations)
+- [State Telehealth Resources](https://telehealthnavigatorai.com/state-telehealth-resources)
+
+## Tools
+- [Cost Estimator](https://telehealthnavigatorai.com/tool-cost-estimator)
+- [Insurance Finder](https://telehealthnavigatorai.com/tool-insurance-finder)
+- [Guided Scenarios](https://telehealthnavigatorai.com/tool-guided-scenarios)
+- [AI Guide Chat](https://telehealthnavigatorai.com/chat)
+
+## Key guides
+- [Best Online Therapy Platforms](https://telehealthnavigatorai.com/guide-best-online-therapy-platforms)
+- [Telehealth Costs and Insurance](https://telehealthnavigatorai.com/guide-telehealth-costs-insurance)
+- [Does Insurance Cover Therapy?](https://telehealthnavigatorai.com/guide-insurance-cover-therapy)
+- [Finding Low-Cost Telehealth](https://telehealthnavigatorai.com/guide-find-low-cost-telehealth)
+- [Telehealth Privacy and Security](https://telehealthnavigatorai.com/guide-telehealth-privacy-security)
+- [Telehealth Emergencies](https://telehealthnavigatorai.com/guide-telehealth-emergencies)
+- [When Telehealth Isn't Right](https://telehealthnavigatorai.com/guide-when-telehealth-isnt-right)
+- [Telehealth Laws by State](https://telehealthnavigatorai.com/guide-telehealth-laws-by-state)
+
+## About and policies
+- [About](https://telehealthnavigatorai.com/about)
+- [Author: Paul Paradis](https://telehealthnavigatorai.com/author-paul-paradis)
+- [Clinical Reviewer: Lisa Lewis, RN, BSN](https://telehealthnavigatorai.com/reviewer/lisa-lewis-rn-bsn)
+- [Editorial Standards](https://telehealthnavigatorai.com/editorial-standards)
+- [Transparency Report](https://telehealthnavigatorai.com/transparency-report)
+- [Affiliate Disclosure](https://telehealthnavigatorai.com/affiliate-disclosure)
+- [Privacy Policy](https://telehealthnavigatorai.com/privacy)
+- [Terms of Service](https://telehealthnavigatorai.com/terms)
