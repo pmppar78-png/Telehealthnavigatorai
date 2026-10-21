@@ -70,7 +70,7 @@ async function sendMessage(message) {
   chatWindow.scrollTop = chatWindow.scrollHeight;
 
   try {
-    const response = await fetch("/.netlify/functions/ai-chat", {
+    const response = await fetch("/api/ai-chat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
