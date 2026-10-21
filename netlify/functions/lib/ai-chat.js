@@ -85,7 +85,7 @@ exports.handler = async (event) => {
     res = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: { "Content-Type": "application/json", Authorization: `Bearer ${apiKey}` },
-      body: JSON.stringify({ model: MODEL, messages: [{ role: "system", content: system }, ...turns], temperature: 0.5, max_tokens: 900 }),
+      body: JSON.stringify({ model: MODEL, messages: [{ role: "system", content: system }, ...turns], temperature: 0.5, max_tokens: 1400 }),
       signal: AbortSignal.timeout(25000)
     });
   } catch (e) {
