@@ -1,0 +1,672 @@
+{
+  "_readme": "Single source of truth for outbound commercial links. status: no-program = plain link (no rel=sponsored); program-available-not-joined = plain link (no rel=sponsored) until a tracking URL is approved and status set to active; active = trackingUrl filled, script rewrites hrefs and adds rel=sponsored; blocked = must not be linked. Fill trackingUrl ONLY with the link copied from the network dashboard, then run: node scripts/apply-affiliate-links.cjs (dry run) and --write.",
+  "brands": {
+    "BetterHelp": {
+      "hosts": [
+        "betterhelp.com"
+      ],
+      "destination": "https://www.betterhelp.com",
+      "trackingUrl": "",
+      "status": "program-available-not-joined",
+      "network": "Impact [AGG]",
+      "notes": "Disclose relationship; no claims of personal use [OFFICIAL]"
+    },
+    "ReGain": {
+      "hosts": [
+        "regain.us"
+      ],
+      "destination": "https://www.regain.us",
+      "trackingUrl": "",
+      "status": "program-available-not-joined",
+      "network": "Unknown",
+      "notes": "Same as BetterHelp"
+    },
+    "Pride Counseling": {
+      "hosts": [
+        "pridecounseling.com"
+      ],
+      "destination": "https://www.pridecounseling.com",
+      "trackingUrl": "",
+      "status": "program-available-not-joined",
+      "network": "Unknown",
+      "notes": "Same as BetterHelp"
+    },
+    "Teen Counseling / Faithful Counseling": {
+      "hosts": [
+        "teencounseling.com",
+        "faithfulcounseling.com"
+      ],
+      "destination": "https://www.teencounseling.com",
+      "trackingUrl": "",
+      "status": "program-available-not-joined",
+      "network": "Unknown",
+      "notes": "Teen audience: extra care"
+    },
+    "Talkspace": {
+      "hosts": [
+        "talkspace.com"
+      ],
+      "destination": "https://www.talkspace.com",
+      "trackingUrl": "",
+      "status": "program-available-not-joined",
+      "network": "Impact (managed by Zorz)",
+      "notes": "Email signups, account creations and restricted promo codes don't pay [AGG]"
+    },
+    "Calmerry": {
+      "hosts": [
+        "calmerry.com"
+      ],
+      "destination": "https://www.calmerry.com",
+      "trackingUrl": "",
+      "status": "program-available-not-joined",
+      "network": "Impact [AGG]",
+      "notes": "No trademark bidding or coupon sites [AGG]"
+    },
+    "Talkiatry": {
+      "hosts": [
+        "talkiatry.com"
+      ],
+      "destination": "https://www.talkiatry.com",
+      "trackingUrl": "",
+      "status": "program-available-not-joined",
+      "network": "Impact [AGG]",
+      "notes": "Psychiatry/prescribing: no affiliate links in Rx chat answers; Google Ads would need LegitScript"
+    },
+    "Brightside Health": {
+      "hosts": [
+        "brightside.com"
+      ],
+      "destination": "https://www.brightside.com",
+      "trackingUrl": "",
+      "status": "program-available-not-joined",
+      "network": "Impact [AGG]",
+      "notes": "Prescribing; same LegitScript note"
+    },
+    "Headspace": {
+      "hosts": [
+        "headspace.com"
+      ],
+      "destination": "https://www.headspace.com",
+      "trackingUrl": "",
+      "status": "program-available-not-joined",
+      "network": "Impact (agency Acceleration Partners)",
+      "notes": "Approved types: content, review; US only (agency page)"
+    },
+    "Walmart": {
+      "hosts": [
+        "walmart.com"
+      ],
+      "destination": "https://www.walmart.com",
+      "trackingUrl": "",
+      "status": "program-available-not-joined",
+      "network": "Impact",
+      "notes": "Standard Walmart terms"
+    },
+    "SonderMind": {
+      "hosts": [
+        "sondermind.com"
+      ],
+      "destination": "https://www.sondermind.com",
+      "trackingUrl": "",
+      "status": "program-available-not-joined",
+      "network": "Impact [AGG]",
+      "notes": "Includes psychiatry; no Rx affiliate links in chat"
+    },
+    "PlushCare": {
+      "hosts": [
+        "plushcare.com"
+      ],
+      "destination": "https://www.plushcare.com",
+      "trackingUrl": "",
+      "status": "program-available-not-joined",
+      "network": "Impact [AGG]",
+      "notes": "Account creations don't pay; brand bidding banned (Cloud Traffic listing) [AGG]; prescribing service"
+    },
+    "Noom": {
+      "hosts": [
+        "noom.com"
+      ],
+      "destination": "https://www.noom.com",
+      "trackingUrl": "",
+      "status": "program-available-not-joined",
+      "network": "Impact [AGG]",
+      "notes": "Weight loss/GLP-1 adjacency: check health-claim rules"
+    },
+    "Wysa": {
+      "hosts": [
+        "wysa.com",
+        "wysa.io"
+      ],
+      "destination": "https://www.wysa.com",
+      "trackingUrl": "",
+      "status": "program-available-not-joined",
+      "network": "Impact [OFFICIAL]",
+      "notes": "US/UK/AU only; no self-referral [OFFICIAL]"
+    },
+    "Insight Timer": {
+      "hosts": [
+        "insighttimer.com"
+      ],
+      "destination": "https://www.insighttimer.com",
+      "trackingUrl": "",
+      "status": "program-available-not-joined",
+      "network": "Impact [AGG]",
+      "notes": "Unknown"
+    },
+    "Sesame Care": {
+      "hosts": [
+        "sesamecare.com"
+      ],
+      "destination": "https://www.sesamecare.com",
+      "trackingUrl": "",
+      "status": "program-available-not-joined",
+      "network": "Impact [AGG]",
+      "notes": "Prescribing service"
+    },
+    "HealthTap": {
+      "hosts": [
+        "healthtap.com"
+      ],
+      "destination": "https://www.healthtap.com",
+      "trackingUrl": "",
+      "status": "program-available-not-joined",
+      "network": "CJ [AGG]",
+      "notes": "Unknown"
+    },
+    "Nurx": {
+      "hosts": [
+        "nurx.com"
+      ],
+      "destination": "https://www.nurx.com",
+      "trackingUrl": "",
+      "status": "program-available-not-joined",
+      "network": "Unknown",
+      "notes": "Rx (birth control etc.): LegitScript; no Rx links in chat"
+    },
+    "Etsy": {
+      "hosts": [
+        "etsy.com"
+      ],
+      "destination": "https://www.etsy.com",
+      "trackingUrl": "",
+      "status": "program-available-not-joined",
+      "network": "Awin",
+      "notes": "Excludes shipping, tax, returns"
+    },
+    "Titan Casket": {
+      "hosts": [
+        "titancasket.com"
+      ],
+      "destination": "https://www.titancasket.com",
+      "trackingUrl": "",
+      "status": "program-available-not-joined",
+      "network": "Refersion",
+      "notes": "No paid ads/search/social, retargeting or coupon sites"
+    },
+    "Perfect Memorials": {
+      "hosts": [
+        "perfectmemorials.com"
+      ],
+      "destination": "https://www.perfectmemorials.com",
+      "trackingUrl": "",
+      "status": "program-available-not-joined",
+      "network": "Sovrn Commerce [AGG]",
+      "notes": "Unknown"
+    },
+    "Ever Loved": {
+      "hosts": [
+        "everloved.com"
+      ],
+      "destination": "https://everloved.com",
+      "trackingUrl": "",
+      "status": "program-available-not-joined",
+      "network": "In-house portal (HasOffers-style)",
+      "notes": "Unknown"
+    },
+    "Online-Therapy.com": {
+      "hosts": [
+        "online-therapy.com"
+      ],
+      "destination": "https://www.online-therapy.com",
+      "trackingUrl": "",
+      "status": "program-available-not-joined",
+      "network": "In-house (HasOffers); also FlexOffers",
+      "notes": "Payout method conflicts across official pages"
+    },
+    "Amazon Associates": {
+      "hosts": [
+        "amazon.com"
+      ],
+      "destination": "https://www.amazon.com",
+      "trackingUrl": "",
+      "status": "program-available-not-joined",
+      "network": "In-house",
+      "notes": "Operating Agreement disclosure line required; 3 sales in 180 days (standard terms, not re-fetched)"
+    },
+    "Costco": {
+      "hosts": [
+        "costco.com"
+      ],
+      "destination": "https://www.costco.com",
+      "trackingUrl": "",
+      "status": "program-available-not-joined",
+      "network": "Unknown",
+      "notes": "Unverified: keep plain until confirmed"
+    },
+    "Teladoc": {
+      "hosts": [
+        "teladoc.com"
+      ],
+      "destination": "https://www.teladoc.com",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "No public program found; only aggregator mentions with no terms; B2B/health-plan model"
+    },
+    "Livongo (now Teladoc)": {
+      "hosts": [
+        "livongo.com"
+      ],
+      "destination": "https://www.teladochealth.com/livongo",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "Brand absorbed into Teladoc; no program. Consider updating the link"
+    },
+    "MDLIVE": {
+      "hosts": [
+        "mdlive.com"
+      ],
+      "destination": "https://www.mdlive.com",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "No public program found (aggregator claims only, no official page)"
+    },
+    "Amwell": {
+      "hosts": [
+        "amwell.com"
+      ],
+      "destination": "https://www.amwell.com",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "No current program found; only historical FlexOffers claim [AGG]"
+    },
+    "Sanvello": {
+      "hosts": [
+        "sanvello.com"
+      ],
+      "destination": "https://www.sanvello.com",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "No official program page found; one blog list claims 30% in-house [AGG, unverified]"
+    },
+    "7 Cups": {
+      "hosts": [
+        "7cups.com"
+      ],
+      "destination": "https://www.7cups.com",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "No affiliate program; official 'Link to Us' banners only [OFFICIAL]"
+    },
+    "Woebot": {
+      "hosts": [
+        "woebot.io"
+      ],
+      "destination": "https://www.woebot.io",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "No public program found (blog list says 'TBD') [AGG]"
+    },
+    "Hello Mindful / hellominded": {
+      "hosts": [
+        "hellominded.com"
+      ],
+      "destination": "https://www.hellominded.com",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "No program found (Mindful.org's program is a different company)"
+    },
+    "Alma": {
+      "hosts": [
+        "helloalma.com"
+      ],
+      "destination": "https://www.helloalma.com",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "Provider referral only ($500) [OFFICIAL helloalma.com/refer-a-provider]"
+    },
+    "Happify": {
+      "hosts": [
+        "happify.com"
+      ],
+      "destination": "https://www.happify.com",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "Official GoAffPro portal says 'Affiliate program is currently disabled' [OFFICIAL]"
+    },
+    "Lyra Health": {
+      "hosts": [
+        "lyrahealth.com"
+      ],
+      "destination": "https://www.lyrahealth.com",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "Employer benefit; no program found"
+    },
+    "Spring Health": {
+      "hosts": [
+        "springhealth.com"
+      ],
+      "destination": "https://www.springhealth.com",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "Employer benefit; no program found"
+    },
+    "Modern Health": {
+      "hosts": [
+        "modernhealth.com"
+      ],
+      "destination": "https://www.modernhealth.com",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "Employer benefit; no program found"
+    },
+    "Ginger (now Headspace)": {
+      "hosts": [
+        "ginger.com"
+      ],
+      "destination": "https://organizations.headspace.com/",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "Merged into Headspace; no separate program. Consider updating the link"
+    },
+    "Hinge Health": {
+      "hosts": [
+        "hingehealth.com"
+      ],
+      "destination": "https://www.hingehealth.com",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "Employer/insurer benefit; no program found"
+    },
+    "Sword Health": {
+      "hosts": [
+        "swordhealth.com"
+      ],
+      "destination": "https://www.swordhealth.com",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "Employer/insurer benefit; no program found"
+    },
+    "K Health": {
+      "hosts": [
+        "khealth.com"
+      ],
+      "destination": "https://www.khealth.com",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "No public program found"
+    },
+    "Doctor On Demand": {
+      "hosts": [
+        "doctorondemand.com"
+      ],
+      "destination": "https://www.doctorondemand.com",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "No program found; now part of Included Health"
+    },
+    "Ahead (helloahead)": {
+      "hosts": [
+        "helloahead.com"
+      ],
+      "destination": "https://www.helloahead.com",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "No program found (search hits were unrelated 'Ahead Nutrition'/Inflow)"
+    },
+    "Growing Self": {
+      "hosts": [
+        "growingself.com"
+      ],
+      "destination": "https://www.growingself.com",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "No public consumer program; practitioner revenue-share membership only [OFFICIAL]"
+    },
+    "Equip": {
+      "hosts": [
+        "equip.health"
+      ],
+      "destination": "https://equip.health",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "Clinical referral pathway only [OFFICIAL]"
+    },
+    "Maven Clinic": {
+      "hosts": [
+        "mavenclinic.com"
+      ],
+      "destination": "https://www.mavenclinic.com",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "Member ambassador/referral codes only [OFFICIAL]; mostly employer benefit"
+    },
+    "Workit Health": {
+      "hosts": [
+        "workithealth.com"
+      ],
+      "destination": "https://www.workithealth.com",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "No official program; business partnerships only. Substance use: keep plain"
+    },
+    "Capsule (pharmacy)": {
+      "hosts": [
+        "capsule.com"
+      ],
+      "destination": "https://www.capsule.com",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "No program found (Capsule CRM's program is a different company). Pharmacy: keep plain"
+    },
+    "Ten Percent Happier": {
+      "hosts": [
+        "tenpercent.com"
+      ],
+      "destination": "https://www.tenpercent.com",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "Program appears closed [AGG]"
+    },
+    "Moodfit": {
+      "hosts": [
+        "getmoodfit.com"
+      ],
+      "destination": "https://www.getmoodfit.com",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "No verified program; blog-list claim only [AGG]"
+    },
+    "Daylio": {
+      "hosts": [
+        "daylio.net"
+      ],
+      "destination": "https://www.daylio.net",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "No public program found"
+    },
+    "Headway": {
+      "hosts": [
+        "headway.co"
+      ],
+      "destination": "https://www.headway.co",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "No consumer program; provider recruitment referral only ($350) [OFFICIAL headway.co/for-providers/refer]"
+    },
+    "Grow Therapy": {
+      "hosts": [
+        "growtherapy.com"
+      ],
+      "destination": "https://www.growtherapy.com",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "Provider referral only [OFFICIAL help.growtherapy.com]"
+    },
+    "Rula": {
+      "hosts": [
+        "rula.com"
+      ],
+      "destination": "https://www.rula.com",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "Provider referral only [OFFICIAL pages.rula.com/refer-a-provider]"
+    },
+    "NOCD": {
+      "hosts": [
+        "treatmyocd.com"
+      ],
+      "destination": "https://www.treatmyocd.com",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "No public program found; clinician referral directory only [OFFICIAL]"
+    },
+    "Calm": {
+      "hosts": [
+        "calm.com"
+      ],
+      "destination": "https://www.calm.com",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "Calm Help Center (May 2026): 'does not currently have an active affiliate program'; waitlist only [OFFICIAL]. Aggregators that list Impact are contradicted"
+    },
+    "GoodRx": {
+      "hosts": [
+        "goodrx.com"
+      ],
+      "destination": "https://www.goodrx.com",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "No official public program found; old Rakuten/CPA offers only [AGG]. Prescription-adjacent: keep plain"
+    },
+    "Cost Plus Drugs": {
+      "hosts": [
+        "costplusdrugs.com"
+      ],
+      "destination": "https://www.costplusdrugs.com",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "No publisher program; its 'affiliate' network is for pharmacies [OFFICIAL teamcubancard.com]"
+    },
+    "Cerebral": {
+      "hosts": [
+        "cerebral.com"
+      ],
+      "destination": "https://www.cerebral.com",
+      "trackingUrl": "",
+      "status": "blocked",
+      "notes": "Owner decision 2026-10-21: no links. Barred from controlled-substance prescribing (Nov 2024 DOJ NPA)."
+    },
+    "Parting": {
+      "hosts": [
+        "parting.com"
+      ],
+      "destination": "https://www.parting.com",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "No public program found; B2B listings model"
+    },
+    "Overnight Caskets": {
+      "hosts": [
+        "overnightcaskets.com"
+      ],
+      "destination": "https://www.overnightcaskets.com",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "No public program found; wholesale program for funeral homes only [OFFICIAL]"
+    },
+    "Best Price Caskets": {
+      "hosts": [
+        "bestpricecaskets.com"
+      ],
+      "destination": "https://www.bestpricecaskets.com",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "No public program found (search returned nothing)"
+    },
+    "Urns Northwest": {
+      "hosts": [
+        "urnsnw.com"
+      ],
+      "destination": "https://www.urnsnw.com",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "No public program found"
+    },
+    "Lantern": {
+      "hosts": [
+        "lantern.co"
+      ],
+      "destination": "https://lantern.co",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "Service decommissioned Sept 2026, moved to Wellthy [OFFICIAL lantern.co]. Don't add"
+    },
+    "Cremation Association of North America": {
+      "hosts": [
+        "cremationassociation.org"
+      ],
+      "destination": "https://www.cremationassociation.org",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "Trade association: never sponsored"
+    },
+    "Dignity Memorial": {
+      "hosts": [
+        "dignitymemorial.com"
+      ],
+      "destination": "https://www.dignitymemorial.com",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "Funeral-home brand; no program researched. Keep plain"
+    },
+    "Batesville": {
+      "hosts": [
+        "batesville.com"
+      ],
+      "destination": "https://www.batesville.com",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "Manufacturer; no program researched. Keep plain"
+    },
+    "Monument": {
+      "hosts": [
+        "joinmonument.com"
+      ],
+      "destination": "https://www.joinmonument.com",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "Substance-use treatment with prescribing (LegitScript-sensitive): keep as a plain link by owner decision 2026-10-21"
+    },
+    "Bicycle Health": {
+      "hosts": [
+        "bicyclehealth.com"
+      ],
+      "destination": "https://www.bicyclehealth.com",
+      "trackingUrl": "",
+      "status": "no-program",
+      "notes": "Substance-use treatment with prescribing (LegitScript-sensitive): keep as a plain link by owner decision 2026-10-21"
+    },
+    "Done": {
+      "hosts": [
+        "donefirst.com",
+        "done.com"
+      ],
+      "destination": "",
+      "trackingUrl": "",
+      "status": "blocked",
+      "notes": "Founders convicted (DOJ, sentenced Jul 7 2026). Never link."
+    }
+  }
+}

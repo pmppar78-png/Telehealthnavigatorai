@@ -1246,3 +1246,6 @@ a.chat-back-link,
   margin: 0 0.35rem;
   color: var(--text-muted);
 }
+
+/* Affiliate note under chat replies */
+.chat-disclosure { font-size: .8rem; color: #666; margin-top: .5rem; border-top: 1px solid #eee; padding-top: .4rem; }
