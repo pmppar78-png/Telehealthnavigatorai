@@ -28,7 +28,8 @@ async function bump(store, key) {
 export async function checkRateLimit(ip) {
   if (!ip) return { limited: false };
   try {
-    const store = getStore("chat-rate-limit");
+    // Strong consistency: the default (eventual) can serve stale counts for up to ~60s.
+    const store = getStore({ name: "chat-rate-limit", consistency: "strong" });
     const h = hashIp(ip);
     const now = Date.now();
     const win = Math.floor(now / LIMITS.shortWindowMs);
