@@ -9,19 +9,7 @@ const ALLOWED_ORIGINS = [
   "https://www.telehealthnavigatorai.com"
 ];
 
-// Best-effort per-instance limiter. Warm function instances share this map;
-// cold starts reset it. Pair it with a Netlify rate-limit rule (see README).
-const hits = new Map();
-const WINDOW_MS = 10 * 60 * 1000;
-const MAX_PER_WINDOW = 30;
-function rateLimited(ip) {
-  const now = Date.now();
-  const list = (hits.get(ip) || []).filter(t => now - t < WINDOW_MS);
-  list.push(now);
-  hits.set(ip, list);
-  if (hits.size > 5000) hits.clear();
-  return list.length > MAX_PER_WINDOW;
-}
+// Rate limiting happens in the ai-chat-v2.mjs wrapper (Netlify Blobs) before this handler runs.
 
 function json(status, obj) {
   return { statusCode: status, headers: { "Content-Type": "application/json" }, body: JSON.stringify(obj) };
@@ -55,8 +43,6 @@ exports.handler = async (event) => {
   const okOrigin = origin ? ALLOWED_ORIGINS.includes(origin) : ALLOWED_ORIGINS.some(o => referer.startsWith(o + "/"));
   if (!okOrigin) return json(403, { error: "Forbidden" });
 
-  const ip = event.headers["x-nf-client-connection-ip"] || event.headers["x-forwarded-for"] || "unknown";
-  if (rateLimited(ip)) return json(429, { reply: "You've sent a lot of messages in a short time. Please wait a few minutes and try again." });
 
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) return json(500, { error: "Chat is temporarily unavailable." });
