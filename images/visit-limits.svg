@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 220" role="img" aria-labelledby="visitLimitsTitle visitLimitsDesc">
+  <title id="visitLimitsTitle">What a video visit can and cannot do</title>
+  <desc id="visitLimitsDesc">A two-column diagram. Video can cover history, counseling, and many follow-ups. It cannot draw blood, take an X-ray, or replace emergency care. Original illustration, not a company screenshot.</desc>
+  <rect width="720" height="220" rx="12" fill="#f4f7f5"/>
+  <text x="24" y="36" font-family="Georgia, serif" font-size="18" fill="#163028">What video can and cannot do</text>
+  <g font-family="system-ui, sans-serif" font-size="14" fill="#163028">
+    <rect x="24" y="56" width="320" height="140" rx="10" fill="#ffffff" stroke="#1f7a4d"/>
+    <text x="40" y="86" font-weight="700">A video visit can</text>
+    <text x="40" y="114">Take a history and counsel</text>
+    <text x="40" y="136">Renew many medicines</text>
+    <text x="40" y="158">Decide you need to be seen in person</text>
+    <rect x="368" y="56" width="328" height="140" rx="10" fill="#ffffff" stroke="#9a3412"/>
+    <text x="384" y="86" font-weight="700">It cannot</text>
+    <text x="384" y="114">Draw blood or take an X-ray</text>
+    <text x="384" y="136">Examine a belly, ear, or wound fully</text>
+    <text x="384" y="158">Replace 911 or a 988 crisis contact</text>
+  </g>
+</svg>
