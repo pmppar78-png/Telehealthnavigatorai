@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" role="img" aria-labelledby="insuranceRouteTitle insuranceRouteDesc">
+  <title id="insuranceRouteTitle">Three ways a telehealth visit gets paid</title>
+  <desc id="insuranceRouteDesc">A diagram of in-network copay, cash subscription, and out-of-network superbill. Original illustration, not a screenshot of any company's site.</desc>
+  <rect width="720" height="280" rx="12" fill="#f4f7f5"/>
+  <text x="24" y="36" font-family="Georgia, serif" font-size="18" fill="#163028">How a visit gets paid</text>
+  <g font-family="system-ui, sans-serif" font-size="14" fill="#163028">
+    <rect x="24" y="64" width="200" height="160" rx="10" fill="#ffffff" stroke="#1f7a4d"/>
+    <text x="40" y="96" font-weight="700">In network</text>
+    <text x="40" y="122">You pay the copay</text>
+    <text x="40" y="144">or coinsurance.</text>
+    <text x="40" y="174" fill="#3d5348">Confirm the clinician,</text>
+    <text x="40" y="194" fill="#3d5348">not just the platform.</text>
+    <rect x="252" y="64" width="200" height="160" rx="10" fill="#ffffff" stroke="#1f7a4d"/>
+    <text x="268" y="96" font-weight="700">Cash subscription</text>
+    <text x="268" y="122">Weekly price, often</text>
+    <text x="268" y="144">$57 to $120 in Oct 2026.</text>
+    <text x="268" y="174" fill="#3d5348">Insurance may still</text>
+    <text x="268" y="194" fill="#3d5348">be the cheaper route.</text>
+    <rect x="480" y="64" width="216" height="160" rx="10" fill="#ffffff" stroke="#1f7a4d"/>
+    <text x="496" y="96" font-weight="700">Out of network</text>
+    <text x="496" y="122">You pay, then send</text>
+    <text x="496" y="144">a superbill.</text>
+    <text x="496" y="174" fill="#3d5348">Reimbursement is not</text>
+    <text x="496" y="194" fill="#3d5348">guaranteed.</text>
+  </g>
+</svg>
