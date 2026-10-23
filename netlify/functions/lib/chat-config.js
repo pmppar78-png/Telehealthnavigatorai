@@ -45,6 +45,25 @@ const resourceLines = LINK_MAP.map(l =>
   `- ${l.name} | ${l.url} | good fit for: ${l.topics.join("; ")}${l.affiliate ? "" : " | free/public"}`
 ).join("\n");
 
+// Verified facts for the chat. Update FACTS_CHECKED and each line whenever a
+// figure is re-checked; the system prompt tells the model to prefer these over
+// anything it remembers.
+const FACTS_CHECKED = "October 22, 2026";
+const VERIFIED_FACTS = [
+  "BetterHelp: $70-$100 per week without insurance, billed every four weeks; price depends on location and therapist availability. BetterHelp now bills insurance in-network for eligible members on many plans (it advertises copays from $15). Source: betterhelp.com/insurance.",
+  "Talkspace individual therapy without insurance: $69/week (messaging), $99/week (video plus messaging), $109/week (plan with workshops). Talkspace is in-network with many insurers and says most insured members pay $0 per session. Source: talkspace.com/pricing.",
+  "Calmerry: $57-$90 per week at regular price. Source: calmerry.com/pricing.",
+  "Online-Therapy.com: about $60, $90 and $120 per week for its three plans at regular price, with a first-month discount. Source: online-therapy.com/pricing.",
+  "ReGain (couples, part of the BetterHelp family): $70-$100 per week; it does not bill insurance. Source: regain.us.",
+  "DEA telemedicine flexibilities for prescribing controlled substances without a prior in-person visit run through December 31, 2026 (DEA extension announced December 31, 2025).",
+  "Medicare telehealth flexibilities (home as the visit site, no geographic restriction, audio-only) are extended through December 31, 2027. The in-person visit requirement for Medicare telemental health applies only after that date.",
+  "Medicare Part B 2026: standard premium $202.90 per month, annual deductible $283, then 20% coinsurance.",
+  "2026 HSA limits: $4,400 self-only, $8,750 family, $1,000 catch-up at 55+; HDHP minimum deductible $1,700 self-only / $3,400 family (IRS Rev. Proc. 2025-19). 2026 health FSA: $3,400, carryover up to $680 (Rev. Proc. 2025-32).",
+  "Done Global: its founder was convicted in a federal Adderall distribution case (sentenced July 2026); do not recommend it. Cerebral: under a November 2024 non-prosecution agreement it may not prescribe most controlled substances; do not recommend it for ADHD medication.",
+  "Crisis: 988 Suicide & Crisis Lifeline (call or text 988); 911 for immediate danger; Veterans press 1 after dialing 988."
+];
+const factLines = VERIFIED_FACTS.map(f => `- ${f}`).join("\n");
+
 const SYSTEM_PROMPT = `You are the guide on Telehealth Navigator AI, an independent educational site about online therapy, psychiatry and telehealth in the US. You are an AI, not a clinician, and you say so when it matters.
 
 Scope
@@ -95,6 +114,11 @@ Suggesting resources
 - If asked how the site makes money, say plainly that some links are affiliate links that may earn a commission, that this doesn't change what you recommend, and that details are at https://telehealthnavigatorai.com/affiliate-disclosure.html.
 
 Resources you may mention
-${resourceLines}`;
+${resourceLines}
+
+Verified facts (checked ${FACTS_CHECKED})
+- When a question touches any of the prices, dates or rules below, use these figures exactly and mention they were checked on ${FACTS_CHECKED}. They override anything you remember from training, which is often out of date. Never say BetterHelp or Talkspace "do not accept insurance".
+- If a visitor asks about a price or date that is not listed here, give a range, say it may have changed, and point them to the company's own pricing page or the official source.
+${factLines}`;
 
 module.exports = { SYSTEM_PROMPT, LINK_MAP, AFFILIATE_DOMAINS, BLOCKED_DOMAINS };
