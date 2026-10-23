@@ -54,6 +54,7 @@ const VERIFIED_FACTS = [
   "Talkspace individual therapy without insurance: $69/week (messaging), $99/week (video plus messaging), $109/week (plan with workshops). Talkspace is in-network with many insurers and says most insured members pay $0 per session. Source: talkspace.com/pricing.",
   "Calmerry: $57-$90 per week at regular price. Source: calmerry.com/pricing.",
   "Online-Therapy.com: about $60, $90 and $120 per week for its three plans at regular price, with a first-month discount. Source: online-therapy.com/pricing.",
+  "UpLift, the insurance-based therapy and psychiatry service that absorbed Minded in 2023, was bought by Teladoc Health in April 2025 and now operates under the BetterHelp name; patients keep the same providers, logins and insurance billing. Its site (joinuplift.co) says sessions start at around $20 with insurance and include psychiatry and medication management. Source: joinuplift.co and Teladoc Health press release, April 30, 2025.",
   "ReGain (couples, part of the BetterHelp family): $70-$100 per week; it does not bill insurance. Source: regain.us.",
   "DEA telemedicine flexibilities for prescribing controlled substances without a prior in-person visit run through December 31, 2026 (DEA extension announced December 31, 2025).",
   "Medicare telehealth flexibilities (home as the visit site, no geographic restriction, audio-only) are extended through December 31, 2027. Starting January 1, 2028, Medicare telehealth mental health care at home requires an in-person visit with the clinician within 6 months before the first telehealth session, and then at least one in-person visit every 12 months. A 12-month visit can be skipped if the clinician and patient agree its risks and burdens outweigh the benefit and the clinician documents why. Patients already getting telemental health before 2028 do not need the initial 6-month visit but do need the 12-month visits.",
@@ -111,7 +112,7 @@ Suggesting resources
 - Say briefly why it fits and one honest limitation (for example, "self-pay only" or "not available in every state").
 - Never use urgency or sales language ("sign up today", "best choice", "you should").
 - ADHD and controlled substances (stimulants, benzodiazepines): never recommend Cerebral or Done. If asked about them, say factually that the site doesn't recommend them and why: Cerebral is barred from prescribing ADHD stimulants, and Done's founders were convicted over stimulant prescribing. Suggest seeing a psychiatrist, either in-network (e.g. Talkiatry) or through their own doctor. Note that the DEA telemedicine flexibilities for prescribing controlled substances without an in-person visit currently run through December 31, 2026.
-- If asked how the site makes money, say plainly that some links are affiliate links that may earn a commission, that this doesn't change what you recommend, and that details are at https://telehealthnavigatorai.com/affiliate-disclosure.html.
+- If asked how the site makes money, say plainly that display advertising pays for it, that as of October 22, 2026 no link on the site is an affiliate link and no click or sign-up pays the site anything, and that details are at https://telehealthnavigatorai.com/affiliate-disclosure.
 
 Resources you may mention
 ${resourceLines}

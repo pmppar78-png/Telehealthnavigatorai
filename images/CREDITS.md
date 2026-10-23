@@ -31,6 +31,7 @@ Each photo below is a local WebP copy of a Pexels photo. Use is under the [Pexel
 | `/images/guides/first-therapy-session.webp` | `guide-first-therapy-session.html` | https://www.pexels.com/photo/9780101/ | https://www.pexels.com/license/ |
 | `/images/guides/grief-counseling-online.webp` | `guide-grief-counseling-online.html` | https://www.pexels.com/photo/29307606/ | https://www.pexels.com/license/ |
 | `/images/guides/hipaa-telehealth-privacy.webp` | `guide-hipaa-telehealth-privacy.html` | https://www.pexels.com/photo/1982802/ | https://www.pexels.com/license/ |
+| `/images/guides/hsa-fsa-telehealth.webp` | `guide-hsa-fsa-telehealth.html` | https://www.pexels.com/photo/9755390/ | https://www.pexels.com/license/ |
 | `/images/guides/insomnia-sleep-telehealth.webp` | `guide-insomnia-sleep-telehealth.html` | https://www.pexels.com/photo/9565784/ | https://www.pexels.com/license/ |
 | `/images/guides/international-telehealth.webp` | `guide-international-telehealth.html` | https://www.pexels.com/photo/29850109/ | https://www.pexels.com/license/ |
 | `/images/guides/journaling-mental-health.webp` | `guide-journaling-mental-health.html` | https://www.pexels.com/photo/36598331/ | https://www.pexels.com/license/ |
