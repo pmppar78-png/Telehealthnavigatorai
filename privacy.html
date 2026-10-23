@@ -54,6 +54,31 @@
   }
   </script>
   <meta name="google-adsense-account" content="ca-pub-6484141649562994">
+  <!-- Google Consent Mode v2 defaults: must run before the AdSense and Google tags -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied',
+      region: ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IS','IE','IT','LV','LI','LT','LU','MT','NL','NO','PL','PT','RO','SK','SI','ES','SE','GB','CH'],
+      wait_for_update: 500
+    });
+    gtag('consent', 'default', {
+      ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted', analytics_storage: 'granted'
+    });
+    (function(){
+      var m = document.cookie.match(/(?:^|; )tn_cookie_consent=([^;]*)/);
+      var c = m ? m[1] : null;
+      if (c === 'accepted' || c === 'declined') {
+        var g = c === 'accepted' ? 'granted' : 'denied';
+        gtag('consent', 'update', {ad_storage: g, ad_user_data: g, ad_personalization: g, analytics_storage: g});
+        if (c === 'declined') { (window.adsbygoogle = window.adsbygoogle || []).requestNonPersonalizedAds = 1; }
+      } else if (navigator.globalPrivacyControl === true) {
+        gtag('consent', 'update', {ad_user_data: 'denied', ad_personalization: 'denied'});
+        (window.adsbygoogle = window.adsbygoogle || []).requestNonPersonalizedAds = 1;
+      }
+    })();
+  </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6484141649562994"
      crossorigin="anonymous"></script>
   <!-- Google tag (gtag.js) -->
@@ -191,6 +216,9 @@
       <p>
         We and our third-party partners may use cookies, web beacons, and similar tracking technologies to collect information about your browsing activities. You can control cookies through your browser settings. Please note that disabling cookies may affect the functionality of our website.
       </p>
+      <p>
+        <strong>How consent works on this site:</strong> We use Google Consent Mode. For visitors in the European Economic Area, the United Kingdom and Switzerland, analytics and advertising storage is set to "denied" by default, so Google Analytics and Google AdSense do not set or read their cookies until you choose "Accept all." Elsewhere these cookies are on by default, and you can turn them off at any time with "Reject non-essential." When you reject them, Google tools run in a limited, cookieless mode and any ads shown are non-personalized. Your choice is saved in a cookie named <code>tn_cookie_consent</code> for 12 months. To change it, use the <a href="#cookie-settings" onclick="if(window.openCookieSettings){window.openCookieSettings();return false;}">Cookie settings</a> link at the bottom of any page.
+      </p>
       <p>Types of cookies we may use:</p>
       <ul>
         <li><strong>Essential cookies:</strong> Required for basic website functionality</li>
@@ -206,7 +234,7 @@
         <li>How Google uses this data: <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">How Google uses information from sites or apps that use our services</a>.</li>
         <li>Opt out of personalized ads: <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer">Google Ads Settings</a>, <a href="https://optout.aboutads.info" target="_blank" rel="noopener noreferrer">Digital Advertising Alliance (US)</a>, <a href="https://youronlinechoices.eu" target="_blank" rel="noopener noreferrer">Your Online Choices (EU)</a>.</li>
         <li>Visitors in the EEA, UK and Switzerland are asked for consent through a consent banner before personalized ads are shown, and can change their choice at any time.</li>
-        <li>US residents of states with consumer privacy laws (including California) can opt out of the sale or sharing of personal information for targeted advertising; we honor Global Privacy Control browser signals where our ad partners support them.</li>
+        <li>US residents of states with consumer privacy laws (including California) can opt out of the sale or sharing of personal information for targeted advertising; to opt out, choose "Reject non-essential" in Cookie settings at the bottom of any page. If your browser sends a Global Privacy Control signal and you have not accepted cookies, we treat it as an opt-out and turn off ad personalization.</li>
       </ul>
       <p>Telehealth Navigator is funded by these display ads and by referral commissions some companies may pay when a reader signs up through a link on our pages; see the <a href="/affiliate-disclosure.html">affiliate disclosure</a>. Ads are chosen by these networks, not by our editors, and are not endorsements. We do not let advertisers target ads using health information you enter in our tools or chat.</p>
     </section>
