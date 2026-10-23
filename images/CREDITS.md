@@ -75,7 +75,7 @@ Each photo below is a local WebP copy of a Pexels photo. Use is under the [Pexel
 | `/images/guides/text-vs-video-therapy.webp` | `guide-text-vs-video-therapy.html` | https://www.pexels.com/photo/606539/ | https://www.pexels.com/license/ |
 | `/images/guides/therapy-children.webp` | `guide-therapy-children.html` | https://www.pexels.com/photo/8014295/ | https://www.pexels.com/license/ |
 | `/images/guides/therapy-maintenance.webp` | `guide-therapy-maintenance.html` | https://www.pexels.com/photo/8989343/ | https://www.pexels.com/license/ |
-| `/images/guides/veterans-telehealth.webp` | `guide-veterans-telehealth.html` | https://www.pexels.com/photo/33413735/ | https://www.pexels.com/license/ |
+| `/images/guides/veterans-telehealth.webp` | `guide-veterans-telehealth.html` | https://www.pexels.com/photo/14149351/ | https://www.pexels.com/license/ |
 | `/images/guides/when-telehealth-isnt-right.webp` | `guide-when-telehealth-isnt-right.html` | https://www.pexels.com/photo/12193293/ | https://www.pexels.com/license/ |
 | `/images/guides/work-burnout.webp` | `guide-work-burnout.html` | https://www.pexels.com/photo/30752777/ | https://www.pexels.com/license/ |
 | `/images/guides/workplace-mental-health.webp` | `guide-workplace-mental-health.html` | https://www.pexels.com/photo/29422356/ | https://www.pexels.com/license/ |
