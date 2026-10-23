@@ -36,7 +36,7 @@ Each photo below is a local WebP copy of a Pexels photo. Use is under the [Pexel
 | `/images/guides/journaling-mental-health.webp` | `guide-journaling-mental-health.html` | https://www.pexels.com/photo/36598331/ | https://www.pexels.com/license/ |
 | `/images/guides/lgbtq-affirming-therapy.webp` | `guide-lgbtq-affirming-therapy.html` | https://www.pexels.com/photo/12886714/ | https://www.pexels.com/license/ |
 | `/images/guides/medicaid-telehealth.webp` | `guide-medicaid-telehealth.html` | https://www.pexels.com/photo/21792714/ | https://www.pexels.com/license/ |
-| `/images/guides/medicare-telehealth.webp` | `guide-medicare-telehealth.html` | https://www.pexels.com/photo/6724254/ | https://www.pexels.com/license/ |
+| `/images/guides/medicare-telehealth.webp` | `guide-medicare-telehealth.html` | https://www.pexels.com/photo/7604553/ | https://www.pexels.com/license/ |
 | `/images/guides/mental-wellness-routine.webp` | `guide-mental-wellness-routine.html` | https://www.pexels.com/photo/36714246/ | https://www.pexels.com/license/ |
 | `/images/guides/messaging-based-therapy.webp` | `guide-messaging-based-therapy.html` | https://www.pexels.com/photo/6517344/ | https://www.pexels.com/license/ |
 | `/images/guides/mindfulness-meditation-apps.webp` | `guide-mindfulness-meditation-apps.html` | https://www.pexels.com/photo/4534856/ | https://www.pexels.com/license/ |
@@ -52,7 +52,7 @@ Each photo below is a local WebP copy of a Pexels photo. Use is under the [Pexel
 | `/images/guides/relationship-issues.webp` | `guide-relationship-issues.html` | https://www.pexels.com/photo/6184473/ | https://www.pexels.com/license/ |
 | `/images/guides/schizoaffective-disorder.webp` | `guide-schizoaffective-disorder.html` | https://www.pexels.com/photo/7529663/ | https://www.pexels.com/license/ |
 | `/images/guides/schizophrenia-telehealth.webp` | `guide-schizophrenia-telehealth.html` | https://www.pexels.com/photo/27806124/ | https://www.pexels.com/license/ |
-| `/images/guides/self-help-resources.webp` | `guide-self-help-resources.html` | https://www.pexels.com/photo/10695713/ | https://www.pexels.com/license/ |
+| `/images/guides/self-help-resources.webp` | `guide-self-help-resources.html` | https://www.pexels.com/photo/7479877/ | https://www.pexels.com/license/ |
 | `/images/guides/sleep-problems.webp` | `guide-sleep-problems.html` | https://www.pexels.com/photo/9902574/ | https://www.pexels.com/license/ |
 | `/images/guides/stress-management-telehealth.webp` | `guide-stress-management-telehealth.html` | https://www.pexels.com/photo/15443739/ | https://www.pexels.com/license/ |
 | `/images/guides/subscription-vs-pay-per-session.webp` | `guide-subscription-vs-pay-per-session.html` | https://www.pexels.com/photo/9862247/ | https://www.pexels.com/license/ |
@@ -60,7 +60,7 @@ Each photo below is a local WebP copy of a Pexels photo. Use is under the [Pexel
 | `/images/guides/support-groups-online.webp` | `guide-support-groups-online.html` | https://www.pexels.com/photo/5710951/ | https://www.pexels.com/license/ |
 | `/images/guides/switching-to-online-therapy.webp` | `guide-switching-to-online-therapy.html` | https://www.pexels.com/photo/32796606/ | https://www.pexels.com/license/ |
 | `/images/guides/telehealth-across-state-lines.webp` | `guide-telehealth-across-state-lines.html` | https://www.pexels.com/photo/6584434/ | https://www.pexels.com/license/ |
-| `/images/guides/telehealth-costs-insurance.webp` | `guide-telehealth-costs-insurance.html` | https://www.pexels.com/photo/12344248/ | https://www.pexels.com/license/ |
+| `/images/guides/telehealth-costs-insurance.webp` | `guide-telehealth-costs-insurance.html` | https://www.pexels.com/photo/6753427/ | https://www.pexels.com/license/ |
 | `/images/guides/telehealth-disabilities.webp` | `guide-telehealth-disabilities.html` | https://www.pexels.com/photo/9808741/ | https://www.pexels.com/license/ |
 | `/images/guides/telehealth-emergencies.webp` | `guide-telehealth-emergencies.html` | https://www.pexels.com/photo/3339216/ | https://www.pexels.com/license/ |
 | `/images/guides/telehealth-hidden-costs.webp` | `guide-telehealth-hidden-costs.html` | https://www.pexels.com/photo/4507734/ | https://www.pexels.com/license/ |
@@ -70,7 +70,7 @@ Each photo below is a local WebP copy of a Pexels photo. Use is under the [Pexel
 | `/images/guides/telehealth-privacy-security.webp` | `guide-telehealth-privacy-security.html` | https://www.pexels.com/photo/4170142/ | https://www.pexels.com/license/ |
 | `/images/guides/telehealth-rural-areas.webp` | `guide-telehealth-rural-areas.html` | https://www.pexels.com/photo/27582023/ | https://www.pexels.com/license/ |
 | `/images/guides/telehealth-seniors.webp` | `guide-telehealth-seniors.html` | https://www.pexels.com/photo/6848348/ | https://www.pexels.com/license/ |
-| `/images/guides/telehealth-technical-setup.webp` | `guide-telehealth-technical-setup.html` | https://www.pexels.com/photo/604575/ | https://www.pexels.com/license/ |
+| `/images/guides/telehealth-technical-setup.webp` | `guide-telehealth-technical-setup.html` | https://www.pexels.com/photo/533424/ | https://www.pexels.com/license/ |
 | `/images/guides/telehealth.webp` | `guide-telehealth.html` | https://www.pexels.com/photo/6937693/ | https://www.pexels.com/license/ |
 | `/images/guides/text-vs-video-therapy.webp` | `guide-text-vs-video-therapy.html` | https://www.pexels.com/photo/606539/ | https://www.pexels.com/license/ |
 | `/images/guides/therapy-children.webp` | `guide-therapy-children.html` | https://www.pexels.com/photo/8014295/ | https://www.pexels.com/license/ |
