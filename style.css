@@ -1252,4 +1252,13 @@ a.chat-back-link,
 
 .guide-figure { margin: 1rem 0 1.25rem; }
 .guide-figure svg, .guide-figure img { display: block; width: 100%; height: auto; }
+.guide-figure img[src^="/images/guides/"] {
+  width: 100%;
+  height: 15rem;
+  object-fit: cover;
+  object-position: center 30%;
+}
+@media (max-width: 640px) {
+  .guide-figure img[src^="/images/guides/"] { height: 11rem; }
+}
 .guide-figure figcaption { margin-top: 0.4rem; font-size: 0.9rem; color: var(--text-muted, #3d5348); }
