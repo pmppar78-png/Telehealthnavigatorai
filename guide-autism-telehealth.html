@@ -20,6 +20,31 @@
   <meta name="twitter:image" content="https://telehealthnavigatorai.com/og-default.png" />
   <link rel="stylesheet" href="style.css" />
   <meta name="google-adsense-account" content="ca-pub-6484141649562994">
+  <!-- Google Consent Mode v2 defaults: must run before the AdSense and Google tags -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied',
+      region: ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IS','IE','IT','LV','LI','LT','LU','MT','NL','NO','PL','PT','RO','SK','SI','ES','SE','GB','CH'],
+      wait_for_update: 500
+    });
+    gtag('consent', 'default', {
+      ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted', analytics_storage: 'granted'
+    });
+    (function(){
+      var m = document.cookie.match(/(?:^|; )tn_cookie_consent=([^;]*)/);
+      var c = m ? m[1] : null;
+      if (c === 'accepted' || c === 'declined') {
+        var g = c === 'accepted' ? 'granted' : 'denied';
+        gtag('consent', 'update', {ad_storage: g, ad_user_data: g, ad_personalization: g, analytics_storage: g});
+        if (c === 'declined') { (window.adsbygoogle = window.adsbygoogle || []).requestNonPersonalizedAds = 1; }
+      } else if (navigator.globalPrivacyControl === true) {
+        gtag('consent', 'update', {ad_user_data: 'denied', ad_personalization: 'denied'});
+        (window.adsbygoogle = window.adsbygoogle || []).requestNonPersonalizedAds = 1;
+      }
+    })();
+  </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6484141649562994" crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0PM741VNXH"></script>
   <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-0PM741VNXH');</script>
