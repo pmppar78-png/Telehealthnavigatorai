@@ -11,12 +11,17 @@
 [functions]
   directory = "netlify/functions"
 
-# /404.html and /chat are noindex. /chat is an AI chat page with no stable,
-# crawlable content. Netlify checks header rules in order, so these more specific rules sit above
-# the sitewide "/*" rule that sends "index, follow". chat.html also carries a
-# robots meta noindex as a fallback.
+# X-Robots-Tag: noindex only on /404.html, /404, /chat and /chat.html.
+# Netlify applies every [[headers]] block whose `for` matches, so no other rule
+# sets X-Robots-Tag; with no header, pages are indexable by default. A `for`
+# path also matches with a trailing slash, so "/chat" covers /chat/.
 [[headers]]
   for = "/404.html"
+  [headers.values]
+    X-Robots-Tag = "noindex, follow"
+
+[[headers]]
+  for = "/404"
   [headers.values]
     X-Robots-Tag = "noindex, follow"
 
@@ -26,20 +31,14 @@
     X-Robots-Tag = "noindex, follow"
 
 [[headers]]
-  for = "/chat/"
-  [headers.values]
-    X-Robots-Tag = "noindex, follow"
-
-[[headers]]
   for = "/chat.html"
   [headers.values]
     X-Robots-Tag = "noindex, follow"
 
-# Custom headers for SEO, security, and crawlability
+# Sitewide security headers (no X-Robots-Tag here; see above)
 [[headers]]
   for = "/*"
   [headers.values]
-    X-Robots-Tag = "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "SAMEORIGIN"
     Referrer-Policy = "strict-origin-when-cross-origin"
