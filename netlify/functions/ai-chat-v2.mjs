@@ -18,7 +18,9 @@ export default async (req, context) => {
   const referer = headers.referer || "";
   const okOrigin = origin ? ALLOWED_ORIGINS.includes(origin) : ALLOWED_ORIGINS.some((o) => referer.startsWith(o + "/"));
   if (req.method === "POST" && okOrigin) {
-    const rl = await checkRateLimit(ip);
+    // waitUntil lets counter cleanup finish after the response (awaited if absent).
+    const waitUntil = context && typeof context.waitUntil === "function" ? context.waitUntil.bind(context) : undefined;
+    const rl = await checkRateLimit(ip, { waitUntil });
     if (rl.limited) {
       return new Response(JSON.stringify({ reply: LIMIT_MESSAGE, rateLimited: true }), {
         status: 429,

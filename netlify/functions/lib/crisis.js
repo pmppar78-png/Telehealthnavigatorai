@@ -1,6 +1,7 @@
-// Deterministic crisis screen: runs before any model call. If the latest user
-// message matches, the function returns fixed crisis resources and never calls
-// the model or shows any product or link.
+// Deterministic crisis screen: runs before any model call. If any user message
+// in the window sent to the model (the last 20 turns) matches, the function
+// returns fixed crisis resources and never calls the model or shows any
+// product or link. Assistant replies are not screened.
 const CRISIS_PATTERNS = [
   /\b(kill|killing|hurt|hurting|harm|harming)\s+(my ?self|myself)\b/i,
   /\bsuicid(e|al)\b/i,
