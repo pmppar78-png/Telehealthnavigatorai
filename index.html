@@ -132,6 +132,36 @@
     }
   }
   </script>
+  <style>
+    /* Home page video (click-to-load YouTube Short). Inline so long-cached style.css does not delay it. */
+    .home-video { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.25rem; align-items: center; margin-top: 2rem; }
+    .home-video-text h2 { margin-top: 0; }
+    .home-video-caption { color: var(--text-muted); line-height: 1.7; margin: 0 0 0.6rem; }
+    .home-video-link { font-size: 0.875rem; margin: 0; }
+    .home-video-frame { position: relative; width: 100%; max-width: 270px; margin: 0 auto; aspect-ratio: 9 / 16; border-radius: 1rem; overflow: hidden; background: #000; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45); }
+    @supports not (aspect-ratio: 9 / 16) { .home-video-frame { height: 0; padding-top: 177.78%; } }
+    .home-video-frame iframe, .home-video-play { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .home-video-play { padding: 0; margin: 0; background: #000; cursor: pointer; display: block; }
+    .home-video-play img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .home-video-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); line-height: 0; transition: transform 0.15s ease; }
+    .home-video-play:hover .home-video-icon, .home-video-play:focus-visible .home-video-icon { transform: translate(-50%, -50%) scale(1.08); }
+    .home-video-play:hover .home-video-icon path:first-child, .home-video-play:focus-visible .home-video-icon path:first-child { fill: #f00; fill-opacity: 1; }
+    .home-video-play:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
+    @media (min-width: 720px) { .home-video { grid-template-columns: minmax(0, 1fr) 240px; } .home-video-frame { max-width: 240px; } }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "Free Telehealth Help: AI Guide, Costs & Insurance #Shorts",
+  "description": "Welcome to Telehealth Navigator, and we're really glad you're here. Looking for therapy or care from home? We help you find the right fit before you sign up anywhere. What you'll find, all free and with no signup: an AI guide you can ask, any time, about costs, insurance and therapy options; free tools, including a cost estimator, an insurance coverage finder and guided decision support; telehealth rules for every state, plus Medicare and Medicaid explained; and plain-language guides to the signs of anxiety, depression, ADHD, PTSD and more, side-by-side comparisons of online therapy and psychiatry services, and how to check a provider's license. We're independent, not a therapy platform, and every guide shows its sources. General information, not medical advice.",
+  "thumbnailUrl": "https://i.ytimg.com/vi/BMcxdaicv8I/hqdefault.jpg",
+  "uploadDate": "2026-10-25T15:27:59-07:00",
+  "duration": "PT59S",
+  "embedUrl": "https://www.youtube-nocookie.com/embed/BMcxdaicv8I",
+  "inLanguage": "en-US"
+}
+  </script>
 </head>
 <body class="site-body">
   <div class="sticky-header-wrap">
@@ -183,6 +213,21 @@
       <p class="hero-note">
         When you open the chat, simply start by sharing what brought you here today. You can describe your situation, ask questions about therapy types, psychiatry, online platforms, costs, privacy, insurance—anything related to telehealth. The AI will respond thoughtfully and suggest resources and next steps you might explore with real professionals.
       </p>
+    </section>
+
+    <!-- Home video: click-to-load YouTube Short (privacy-enhanced mode) -->
+    <section id="video-overview" class="section card home-video" aria-labelledby="home-video-heading">
+      <div class="home-video-text">
+        <h2 id="home-video-heading">Watch: what Telehealth Navigator offers in 60 seconds</h2>
+        <p class="home-video-caption">A 59-second walk-through of the free AI guide, the cost and insurance tools, state telehealth rules and the condition guides, all before you sign up anywhere. The narration uses an AI-generated voice.</p>
+        <p class="home-video-link"><a href="https://youtube.com/shorts/BMcxdaicv8I" target="_blank" rel="noopener">Watch &ldquo;Free Telehealth Help: AI Guide, Costs &amp; Insurance&rdquo; on YouTube</a></p>
+      </div>
+      <div class="home-video-frame" data-video-id="BMcxdaicv8I" data-video-title="Free Telehealth Help: AI Guide, Costs &amp; Insurance #Shorts">
+        <button type="button" class="home-video-play" aria-label="Play video: Free Telehealth Help: AI Guide, Costs &amp; Insurance (59 seconds, loads YouTube)">
+          <img src="https://i.ytimg.com/vi/BMcxdaicv8I/hqdefault.jpg" alt="Thumbnail for the video &ldquo;Free Telehealth Help: AI Guide, Costs &amp; Insurance&rdquo;" width="480" height="360" loading="lazy" decoding="async" />
+          <span class="home-video-icon" aria-hidden="true"><svg viewBox="0 0 68 48" width="68" height="48" focusable="false"><path d="M66.5 7.7a8.5 8.5 0 0 0-6-6C55.3.3 34 .3 34 .3S12.7.3 7.5 1.7a8.5 8.5 0 0 0-6 6C.1 12.9.1 24 .1 24s0 11.1 1.4 16.3a8.5 8.5 0 0 0 6 6C12.7 47.7 34 47.7 34 47.7s21.3 0 26.5-1.4a8.5 8.5 0 0 0 6-6C67.9 35.1 67.9 24 67.9 24s0-11.1-1.4-16.3z" fill="#212121" fill-opacity=".8"/><path d="M45 24 27 14v20z" fill="#fff"/></svg></span>
+        </button>
+      </div>
     </section>
 
     <section class="section-grid">
@@ -949,5 +994,24 @@
       updateActiveNav();
     })();
   </script>
+<script>
+/* Home video: click-to-load facade. The YouTube player (privacy-enhanced mode) loads only after the visitor presses play. */
+(function(){
+  document.querySelectorAll('.home-video-frame[data-video-id]').forEach(function(f){
+    var b = f.querySelector('.home-video-play');
+    if (!b) return;
+    b.addEventListener('click', function(){
+      var i = document.createElement('iframe');
+      i.src = 'https://www.youtube-nocookie.com/embed/' + f.getAttribute('data-video-id') + '?autoplay=1&playsinline=1&rel=0';
+      i.title = f.getAttribute('data-video-title');
+      i.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+      i.setAttribute('allowfullscreen', '');
+      i.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+      f.replaceChild(i, b);
+      i.focus();
+    });
+  });
+})();
+</script>
 </body>
 </html>
