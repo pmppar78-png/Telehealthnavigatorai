@@ -2,7 +2,7 @@
 
 > An independent, educational website at telehealthnavigatorai.com that helps people in the U.S. understand telehealth and online therapy options: how online therapy, psychiatry, and telehealth platforms work, how cost and insurance coverage work, privacy considerations, and how to prepare for a first appointment. It includes condition-specific guides, platform comparisons, cost and insurance tools, and an AI chat guide.
 
-The site does not provide therapy, medical advice, diagnosis, prescriptions, or crisis services. In a crisis in the U.S., call or text 988 or call 911. Content is written by the site editor and reviewed by a registered nurse (see author and reviewer pages). The site is supported by display advertising and some affiliate links; see the Affiliate Disclosure. Prices and insurance coverage change often and should be confirmed with providers.
+The site does not provide therapy, medical advice, diagnosis, prescriptions, or crisis services. In a crisis in the U.S., call or text 988 or call 911. Content is written and edited by the site editor, Paul Paradis; guides that a registered nurse (Lisa Lewis, RN, BSN) has reviewed for safety language say so near the top. The site is supported by display advertising; as of October 22, 2026 no link on the site pays a commission (see the Affiliate Disclosure). Prices and insurance coverage change often and should be confirmed with providers.
 
 ## Start here
 - [Home](https://telehealthnavigatorai.com/)
@@ -37,7 +37,7 @@ The site does not provide therapy, medical advice, diagnosis, prescriptions, or 
 ## About and policies
 - [About](https://telehealthnavigatorai.com/about)
 - [Author: Paul Paradis](https://telehealthnavigatorai.com/author-paul-paradis)
-- [Clinical Reviewer: Lisa Lewis, RN, BSN](https://telehealthnavigatorai.com/reviewer/lisa-lewis-rn-bsn)
+- [Editorial Reviewer: Lisa Lewis, RN, BSN](https://telehealthnavigatorai.com/reviewer/lisa-lewis-rn-bsn)
 - [Editorial Standards](https://telehealthnavigatorai.com/editorial-standards)
 - [Transparency Report](https://telehealthnavigatorai.com/transparency-report)
 - [Affiliate Disclosure](https://telehealthnavigatorai.com/affiliate-disclosure)

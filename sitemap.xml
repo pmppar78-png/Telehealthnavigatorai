@@ -37,12 +37,6 @@
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://telehealthnavigatorai.com/chat</loc>
-    <lastmod>2026-05-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
     <loc>https://telehealthnavigatorai.com/about</loc>
     <lastmod>2026-10-24</lastmod>
     <changefreq>monthly</changefreq>
@@ -245,7 +239,7 @@
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-stress-management-telehealth</loc>
-    <lastmod>2026-05-26</lastmod>
+    <lastmod>2026-10-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -421,7 +415,7 @@
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-subscription-vs-pay-per-session</loc>
-    <lastmod>2026-05-26</lastmod>
+    <lastmod>2026-10-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -513,7 +507,7 @@
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-telehealth-hidden-costs</loc>
-    <lastmod>2026-05-26</lastmod>
+    <lastmod>2026-10-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
