@@ -48,11 +48,18 @@ function appendMessage(role, text) {
   chatWindow.scrollTop = chatWindow.scrollHeight;
 }
 
-function linkify(text) {
+function linkify(text, sponsoredHosts) {
   if (!text) return "";
   const urlRegex = /(https?:\/\/[^\s<&]+)/g;
+  const sponsored = Array.isArray(sponsoredHosts) ? sponsoredHosts : [];
   return text.replace(urlRegex, (url) => {
-    return `<a href="${url}" target="_blank" rel="nofollow noopener noreferrer">${url}</a>`;
+    let host = "";
+    try { host = new URL(url).hostname.replace(/^www\./, ""); } catch (e) { host = ""; }
+    if (host === "telehealthnavigatorai.com") {
+      return `<a href="${url}" target="_blank" rel="noopener">${url}</a>`;
+    }
+    const isSponsored = sponsored.some((d) => host === d || host.endsWith("." + d));
+    return `<a href="${url}" target="_blank" rel="${isSponsored ? "sponsored " : ""}nofollow noopener noreferrer">${url}</a>`;
   });
 }
 
@@ -83,7 +90,7 @@ async function sendMessage(message) {
 
     conversation.push({ role: "assistant", content: reply });
 
-    pendingBubble.innerHTML = linkify(escapeHtml(reply)) + (data.hasAffiliate ? DISCLOSURE_HTML : "");
+    pendingBubble.innerHTML = linkify(escapeHtml(reply), data.sponsoredHosts) + (data.hasAffiliate ? DISCLOSURE_HTML : "");
   } catch (err) {
     pendingBubble.textContent =
       "I ran into a technical issue reaching the AI service. Please try again in a moment.";

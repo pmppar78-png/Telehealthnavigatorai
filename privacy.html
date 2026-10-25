@@ -198,7 +198,7 @@
         If you are looking for a platform that complies with HIPAA for clinical conversations, we recommend connecting with a licensed telehealth provider directly. Our <a href="/guide-hipaa-telehealth-privacy">HIPAA and Telehealth Privacy Guide</a> explains how HIPAA applies to telehealth services and what protections to look for when choosing a provider.
       </p>
       <p>
-        <strong>Data handling for chat:</strong> Chat messages sent through our AI feature are processed by OpenAI's API under their standard data processing terms. Conversations are stored only in your browser session and are not retained on our servers. However, we cannot guarantee how OpenAI handles data transmitted to their service. For this reason, do not enter any information you would consider private health data.
+        <strong>Data handling for chat:</strong> Chat messages sent through our AI feature are processed by OpenAI's API under their standard data processing terms. Every request carries your messages so far, plus any answers you gave to the optional personalization questions on the chat page. Our server code passes them to OpenAI without saving them or writing their text to our logs, and the conversation itself lives only in the open chat page, so it disappears when you close or reload it. However, we cannot guarantee how OpenAI handles data transmitted to their service. For this reason, do not enter any information you would consider private health data.
       </p>
     </section>
 
@@ -248,7 +248,7 @@
     <section class="legal-section">
       <h2>Data Retention</h2>
       <p>
-        Chat conversations are stored locally in your browser session and are not permanently stored on our servers. However, messages sent to OpenAI for processing may be retained by OpenAI according to their data retention policies.
+        We keep no copy of chat conversations: they exist only in the open chat page in your browser until you close or reload it. To enforce chat rate limits (20 messages per 10 minutes and 100 per day), our server does keep request counts for each 10-minute window and each day, labelled with a hashed form of your IP address rather than the address itself and containing no message text. However, messages sent to OpenAI for processing may be retained by OpenAI according to their data retention policies.
       </p>
     </section>
 
@@ -322,7 +322,7 @@
       <a href="/terms">Terms of Service</a>
       <a href="/affiliate-disclosure">Affiliate Disclosure</a>
       <a href="/editorial-standards">Editorial Standards</a>
-      <a href="/reviewer/lisa-lewis-rn-bsn">Medical Reviewer</a>
+      <a href="/reviewer/lisa-lewis-rn-bsn">Editorial Reviewer</a>
       <a href="/sitemap-page">Site Map</a>
     </div>
     <div class="footer-links">

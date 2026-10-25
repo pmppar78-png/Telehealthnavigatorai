@@ -457,8 +457,12 @@
 
       <h3>Online Psychiatry</h3>
       <p>
-        Initial psychiatric evaluations often range from $150-$350 without insurance. Follow-up medication
-        management visits are typically $75-$200. Some platforms offer membership models that include visits
+        Without insurance, an initial psychiatric evaluation runs about $225-$500 and a follow-up medication
+        management visit about $100-$300, and prices vary by provider and state. Published first-visit and follow-up
+        prices (checked October 24, 2026): <a href="https://www.rula.com/faq/" target="_blank" rel="noopener noreferrer">Rula</a> $225 and $175, <a href="https://www.talkspace.com/pricing" target="_blank" rel="noopener noreferrer">Talkspace</a> $299 and $175, <a href="https://doctorondemand.com/about-us/cost-insurance/" target="_blank" rel="noopener noreferrer">Doctor On Demand</a> $299 and $129,
+        <a href="https://www.mdlive.com/mental-health" target="_blank" rel="noopener noreferrer">MDLIVE</a> up to $299 and $159, and <a href="https://www.joinblossomhealth.com/faq" target="_blank" rel="noopener noreferrer">Blossom Health</a> $300 and $250.
+        <a href="https://www.talkiatry.com/blog/how-much-does-a-psychiatrist-cost" target="_blank" rel="noopener noreferrer">Talkiatry's psychiatry cost guide</a>
+        puts an uninsured evaluation at $300-$500 and follow-ups at $100-$300. Some platforms offer membership models that include visits
         and medication coordination, and many people also compare
         <a href="/guide-betterhelp-vs-talkspace">BetterHelp vs Talkspace costs and features</a>
         when deciding how subscription pricing stacks up across services.
@@ -492,7 +496,7 @@
         as a planning number you can take into a benefits call, not a promise.
       </p>
       <ol class="steps">
-        <li><strong>Pick the right service type first.</strong> The first menu offers four kinds of care: online therapy, online psychiatry, life or wellness coaching, and a general telehealth (primary care) visit. Each sits at a different price point. There is no combined option, so if you want therapy and medication management together, run the estimate once for therapy and once for psychiatry and add the two totals. If you are unsure, start with therapy-only and add a psychiatry estimate if a clinician later recommends it.</li>
+        <li><strong>Pick the right service type first.</strong> The first menu offers four kinds of care: online therapy, online psychiatry, life or wellness coaching, and a general telehealth (primary care) visit. Therapy, psychiatry and general telehealth each have a self-pay range per visit, and the ranges overlap: about $80&ndash;$200 for therapy, $100&ndash;$300 for a psychiatry follow-up, and $50&ndash;$150 for a general telehealth visit. Coaching has no range: published coaching prices differ too much by format, from about $33 a text session at Headspace to $249 for a monthly video session at Wholist, so for coaching the tool shows those examples instead of an estimate. There is no combined option, so if you want therapy and medication management together, run the estimate once for therapy and once for psychiatry and add the two totals. If you are unsure, start with therapy-only and add a psychiatry estimate if a clinician later recommends it.</li>
         <li><strong>Be honest about session frequency.</strong> Most ongoing therapy works at weekly or biweekly visits. Medication management often settles at monthly once a regimen is stable. Overestimating frequency inflates the number; underestimating it hides a real cost.</li>
         <li><strong>Check the range against your own plan.</strong> The tool has no field for your copay or coinsurance, so it uses a typical range for each payment type. If you already know your copay, multiply it by your visits per month and compare that figure with the range shown. Your plan's summary of benefits, or the cost estimator on your insurer's member site, is the better source for your own numbers. &ldquo;Average&rdquo; coverage numbers are useful for order-of-magnitude thinking but can be off by hundreds of dollars for an individual plan.</li>
         <li><strong>Compare scenarios, not just one.</strong> Run it more than once with different inputs &mdash; insurance versus cash pay, four visits a month versus two, therapy alone versus therapy plus a separate psychiatry estimate &mdash; and compare the totals side by side.</li>
@@ -508,7 +512,7 @@
       </p>
       <ul>
         <li><strong>Session length and CPT code.</strong> A 45-minute therapy session (CPT 90834) and a 60-minute session (CPT 90837) bill differently and are often reimbursed differently.</li>
-        <li><strong>Intake vs. follow-up visits.</strong> First visits typically cost more than later ones. The estimator uses one per-visit range for every visit, so add the higher first-visit fee yourself; for psychiatry, the range reflects follow-up visits, and an initial evaluation often runs $150&ndash;$350.</li>
+        <li><strong>Intake vs. follow-up visits.</strong> First visits typically cost more than later ones. The estimator uses one per-visit range for every visit, so add the higher first-visit fee yourself; for psychiatry, the range reflects follow-up visits, and an initial evaluation runs about $225&ndash;$500 without insurance, depending on provider and state.</li>
         <li><strong>Platform fees outside the session.</strong> Some subscription platforms bundle messaging and live visits; some charge separately. Bundled amounts may include some related services, but separate bills from different providers can still arise. Read the fee schedule before signing up.</li>
       </ul>
       <p>
@@ -569,7 +573,7 @@
       <a href="/terms">Terms of Service</a>
       <a href="/affiliate-disclosure">Affiliate Disclosure</a>
       <a href="/editorial-standards">Editorial Standards</a>
-      <a href="/reviewer/lisa-lewis-rn-bsn">Medical Reviewer</a>
+      <a href="/reviewer/lisa-lewis-rn-bsn">Editorial Reviewer</a>
       <a href="/sitemap-page">Site Map</a>
     </div>
     <div class="footer-links">
@@ -601,7 +605,7 @@
       },
       psychiatry: {
         name: 'Online Psychiatry',
-        selfPay: { min: 75, max: 200 },
+        selfPay: { min: 100, max: 300 },
         insurance: { min: 30, max: 75 },
         medicare: { min: 25, max: 50 },
         medicaid: { min: 0, max: 20 },
@@ -609,11 +613,9 @@
       },
       coaching: {
         name: 'Wellness Coaching',
-        selfPay: { min: 75, max: 200 },
-        insurance: { min: 75, max: 200, note: 'Coaching is typically not covered by insurance.' },
-        medicare: { min: 75, max: 200, note: 'Medicare does not typically cover coaching services.' },
-        medicaid: { min: 75, max: 200, note: 'Medicaid does not typically cover coaching services.' },
-        eap: { min: 0, max: 50, sessions: 3, note: 'Some EAPs include limited coaching sessions.' }
+        // No typical range: published prices differ too much by format, so the tool shows sourced examples.
+        examples: 'Published coaching prices differ too much by format for a typical range, so this tool shows examples instead of an estimate (checked October 24, 2026). Headspace charges $99.99 a month for three 30-minute text-based coaching sessions, about $33 each (headspace.com/coaching-subscription). Wholist charges $199 a month for one live video health-coaching session, $499 a month for four (about $125 each), or $249 a month for one mindset-coaching session (wholisthealth.com/start-coaching). Coaching is typically not covered by insurance, Medicare or Medicaid.',
+        eapNote: 'Some EAPs include a few coaching sessions; ask your EAP what it covers.'
       },
       general: {
         name: 'General Telehealth',
@@ -654,6 +656,19 @@
 
       const service = costData[serviceType];
       const insuranceKey = insuranceMap[insuranceType];
+
+      if (service.examples) {
+        document.getElementById('resultService').textContent = service.name;
+        document.getElementById('resultPerSession').textContent = 'Varies by provider';
+        document.getElementById('resultSessions').textContent = sessions + ' per month';
+        document.getElementById('resultMonthly').textContent = 'See examples below';
+        document.getElementById('resultDuration').textContent = duration + (duration === 1 ? ' month' : ' months');
+        document.getElementById('resultTotal').textContent = 'See examples below';
+        document.getElementById('resultNote').textContent = service.examples + (insuranceType === 'eap' ? ' ' + service.eapNote : '');
+        document.getElementById('estimateResults').classList.add('visible');
+        document.getElementById('estimateResults').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        return;
+      }
       const rates = service[insuranceKey];
 
       const minPerSession = rates.min;
@@ -668,7 +683,7 @@
       // Update results
       document.getElementById('resultService').textContent = service.name;
       document.getElementById('resultPerSession').textContent = '$' + minPerSession + ' - $' + maxPerSession;
-      document.getElementById('resultSessions').textContent = sessions + '/month';
+      document.getElementById('resultSessions').textContent = sessions + ' per month';
       document.getElementById('resultMonthly').textContent = '$' + minMonthly + ' - $' + maxMonthly;
       document.getElementById('resultDuration').textContent = duration + (duration === 1 ? ' month' : ' months');
       document.getElementById('resultTotal').textContent = '$' + minTotal + ' - $' + maxTotal;
@@ -685,7 +700,7 @@
         note += 'Costs vary significantly based on your specific plan, deductible status, and whether providers are in-network.';
       }
       if (serviceType === 'psychiatry') {
-        note += ' The per-visit range reflects follow-up visits; an initial evaluation often costs $150-$350 without insurance. Medication costs are not included.';
+        note += ' The per-visit range reflects follow-up visits; an initial evaluation costs about $225-$500 without insurance, depending on provider and state (published prices from Rula, Talkspace, Doctor On Demand, MDLIVE and Blossom Health, and Talkiatry\'s cost guide, checked October 24, 2026). Medication costs are not included.';
       }
       document.getElementById('resultNote').textContent = note;
 
