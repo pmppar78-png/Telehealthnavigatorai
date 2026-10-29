@@ -82,6 +82,20 @@
 
 # 1. /index.html is a special case: catch-all /*.html would map it
 #    to /index (wrong), so this explicit rule sends it to / instead.
+# Alias: the editorial policy lives at /editorial-standards.
+[[redirects]]
+  from = "/editorial-policy"
+  to = "https://telehealthnavigatorai.com/editorial-standards"
+  status = 301
+  force = true
+
+# Browsers and crawlers request /favicon.ico by default; serve the logo.
+[[redirects]]
+  from = "/favicon.ico"
+  to = "/logo.svg"
+  status = 200
+  force = true
+
 [[redirects]]
   from = "/index.html"
   to = "https://telehealthnavigatorai.com/"
