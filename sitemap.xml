@@ -32,7 +32,7 @@
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/getting-started</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
@@ -44,7 +44,7 @@
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/author-paul-paradis</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -80,13 +80,13 @@
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/affiliate-disclosure</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/how-we-compare</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -98,7 +98,7 @@
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/sitemap-page</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -117,7 +117,7 @@
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/tool-guided-scenarios</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
@@ -129,7 +129,7 @@
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/transparency-report</loc>
-    <lastmod>2026-10-24</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -434,7 +434,7 @@
   </url>
   <url>
     <loc>https://telehealthnavigatorai.com/guide-veterans-telehealth</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -614,5 +614,11 @@
     <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://telehealthnavigatorai.com/disclaimer</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>
