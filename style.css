@@ -1262,3 +1262,72 @@ a.chat-back-link,
   .guide-figure img[src^="/images/guides/"] { height: 11rem; }
 }
 .guide-figure figcaption { margin-top: 0.4rem; font-size: 0.9rem; color: var(--text-muted, #3d5348); }
+
+/* Dated comparison tables on guide pages (mobile card layout comes from .table-wrapper) */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+}
+
+.data-table caption {
+  caption-side: top;
+  text-align: left;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  padding-bottom: 0.5rem;
+}
+
+.data-table th,
+.data-table td {
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--border-subtle);
+  text-align: left;
+  vertical-align: top;
+}
+
+.data-table thead th {
+  background: var(--bg-elevated);
+}
+
+.data-table tbody th {
+  font-weight: 600;
+}
+
+/* Shared "Ask the free AI guide" callout (same markup on each ranking page) */
+.ai-guide-callout {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  background: var(--accent-soft);
+  border: 1px solid var(--border-subtle);
+  border-left: 4px solid var(--accent);
+  border-radius: 0.75rem;
+}
+
+.ai-guide-callout p {
+  margin: 0 0 0.6rem;
+}
+
+.ai-guide-callout .ai-guide-callout-title {
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.ai-guide-callout .ai-guide-callout-limits,
+.ai-guide-callout .ai-guide-callout-crisis {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.ai-guide-callout .ai-guide-callout-crisis {
+  margin-bottom: 0;
+}
+
+.hero-ai-cta {
+  margin: 1.25rem 0 0.5rem;
+}
+
+.hero-ai-cta .hero-cta {
+  margin-top: 0;
+}
