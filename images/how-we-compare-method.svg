@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 220" role="img" aria-labelledby="hmTitle hmDesc">
+<title id="hmTitle">How a comparison table is built</title>
+<desc id="hmDesc">Four steps: figures come from the company's own pricing or help pages; each table row links its source and shows the date checked; when a company publishes no figure The table says so. instead of estimating; reader corrections are checked checked at the source and the page date is updated. Original diagram.</desc>
+<rect width="720" height="220" rx="12" fill="#f4f7f5"/>
+<text x="24" y="36" font-family="Georgia, serif" font-size="18" fill="#163028">How a comparison table is built</text>
+<g font-family="system-ui, sans-serif" font-size="13" fill="#163028">
+<rect x="24" y="64" width="152" height="120" rx="10" fill="#ffffff" stroke="#1f7a4d"/><text x="36" y="94" font-weight="700" font-size="14">1. Company page</text><text x="36" y="124" fill="#3d5348">Price, insurance and</text><text x="36" y="144" fill="#3d5348">format, from its site</text>
+<path d="M180 124 l12 0 m-5 -5 l5 5 l-5 5" stroke="#1f7a4d" stroke-width="2" fill="none"/>
+<rect x="196" y="64" width="152" height="120" rx="10" fill="#ffffff" stroke="#1f7a4d"/><text x="208" y="94" font-weight="700" font-size="14">2. Dated table</text><text x="208" y="124" fill="#3d5348">Each row shows the</text><text x="208" y="144" fill="#3d5348">source and check date</text>
+<path d="M352 124 l12 0 m-5 -5 l5 5 l-5 5" stroke="#1f7a4d" stroke-width="2" fill="none"/>
+<rect x="368" y="64" width="152" height="120" rx="10" fill="#ffffff" stroke="#1f7a4d"/><text x="380" y="94" font-weight="700" font-size="14">3. Gaps stay gaps</text><text x="380" y="124" fill="#3d5348">No posted price?</text><text x="380" y="144" fill="#3d5348">The table says so.</text>
+<path d="M524 124 l12 0 m-5 -5 l5 5 l-5 5" stroke="#1f7a4d" stroke-width="2" fill="none"/>
+<rect x="540" y="64" width="152" height="120" rx="10" fill="#ffffff" stroke="#1f7a4d"/><text x="552" y="94" font-weight="700" font-size="14">4. Corrections</text><text x="552" y="124" fill="#3d5348">Reader reports are</text><text x="552" y="144" fill="#3d5348">checked at the source</text>
+</g></svg>

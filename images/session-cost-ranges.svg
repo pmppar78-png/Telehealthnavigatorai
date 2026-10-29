@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" aria-labelledby="scTitle scDesc">
+<title id="scTitle">Per-session cost ranges used by the Telehealth Navigator cost estimator</title>
+<desc id="scDesc">Ranges in US dollars per session. Online therapy: no insurance $80 to $200, private insurance $20 to $50, Medicare $15 to $40, Medicaid $0 to $15. Online psychiatry follow-up visits: no insurance $100 to $300, private insurance $30 to $75, Medicare $25 to $50, Medicaid $0 to $20. These are the general ranges built into the site's cost estimator, not quotes. Original chart.</desc>
+<rect width="720" height="420" rx="12" fill="#f4f7f5"/>
+<text x="24" y="34" font-family="Georgia, serif" font-size="18" fill="#163028">What one session may cost, by how you pay (US$)</text>
+<g font-family="system-ui, sans-serif" font-size="13" fill="#3d5348">
+<line x1="200" y1="52" x2="200" y2="358" stroke="#d5e0da"/><text x="200" y="376" text-anchor="middle">$0</text>
+<line x1="265" y1="52" x2="265" y2="358" stroke="#d5e0da"/><text x="265" y="376" text-anchor="middle">$50</text>
+<line x1="330" y1="52" x2="330" y2="358" stroke="#d5e0da"/><text x="330" y="376" text-anchor="middle">$100</text>
+<line x1="395" y1="52" x2="395" y2="358" stroke="#d5e0da"/><text x="395" y="376" text-anchor="middle">$150</text>
+<line x1="460" y1="52" x2="460" y2="358" stroke="#d5e0da"/><text x="460" y="376" text-anchor="middle">$200</text>
+<line x1="525" y1="52" x2="525" y2="358" stroke="#d5e0da"/><text x="525" y="376" text-anchor="middle">$250</text>
+<line x1="590" y1="52" x2="590" y2="358" stroke="#d5e0da"/><text x="590" y="376" text-anchor="middle">$300</text>
+</g>
+<g font-family="system-ui, sans-serif" font-size="14" fill="#163028">
+<text x="24" y="70" font-weight="700">Therapy</text>
+<text x="188" y="101" text-anchor="end">No insurance</text><rect x="304" y="88" width="156" height="16" rx="8" fill="#1f7a4d"/><text x="468" y="101" font-size="13">$80 to $200</text>
+<text x="188" y="131" text-anchor="end">Private insurance</text><rect x="226" y="118" width="39" height="16" rx="8" fill="#1f7a4d"/><text x="273" y="131" font-size="13">$20 to $50</text>
+<text x="188" y="161" text-anchor="end">Medicare</text><rect x="220" y="148" width="32" height="16" rx="8" fill="#1f7a4d"/><text x="260" y="161" font-size="13">$15 to $40</text>
+<text x="188" y="191" text-anchor="end">Medicaid</text><rect x="200" y="178" width="20" height="16" rx="8" fill="#1f7a4d"/><text x="228" y="191" font-size="13">$0 to $15</text>
+<text x="24" y="228" font-weight="700">Psychiatry follow-up</text>
+<text x="188" y="259" text-anchor="end">No insurance</text><rect x="330" y="246" width="260" height="16" rx="8" fill="#2f5f8a"/><text x="598" y="259" font-size="13">$100 to $300</text>
+<text x="188" y="289" text-anchor="end">Private insurance</text><rect x="239" y="276" width="58" height="16" rx="8" fill="#2f5f8a"/><text x="306" y="289" font-size="13">$30 to $75</text>
+<text x="188" y="319" text-anchor="end">Medicare</text><rect x="232" y="306" width="32" height="16" rx="8" fill="#2f5f8a"/><text x="273" y="319" font-size="13">$25 to $50</text>
+<text x="188" y="349" text-anchor="end">Medicaid</text><rect x="200" y="336" width="26" height="16" rx="8" fill="#2f5f8a"/><text x="234" y="349" font-size="13">$0 to $20</text>
+</g>
+<text x="24" y="404" font-family="system-ui, sans-serif" font-size="12" fill="#3d5348">General ranges from our cost estimator, not quotes. Your plan, deductible and network set the real cost.</text></svg>
